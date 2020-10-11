@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "env:dev",
+      "problemMatcher": [],
+      "label": "Dev environmnet setup",
+      "detail": "node scripts/setup-environment.js dev",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "env:prod",
+      "problemMatcher": [],
+      "label": "Prod environment setup",
+      "detail": "node scripts/setup-environment.js prod",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "env:stage",
+      "problemMatcher": [],
+      "label": "Stage Environment setup",
+      "detail": "node scripts/setup-environment.js stage",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "adb-run",
+      "problemMatcher": [],
+      "label": "ADB proxy and run android",
+      "detail": "adb reverse tcp:8081 tcp:8081 && npm run android",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "android",
+      "problemMatcher": [],
+      "label": "Start Android",
+      "detail": "react-native run-android",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "api",
+      "problemMatcher": [],
+      "label": "Run dev APIS",
+      "detail": "cd express_server && npm start",
+      "presentation": {
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
