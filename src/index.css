@@ -1,8 +1,11 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Poppins-Light, Poppins-Black, Poppins-ExtraLight, Poppins-Bold,
+    Poppins-ExtraBold, Poppins-SemiBold, Poppins-Italic,
+    Poppins-ExtraLightItalic, Poppins-ExtraBoldItalic, Poppins-LightItalic,
+    Poppins-MediumItalic, Poppins-SemiBoldItalic, Poppins-ThinItalic,
+    Poppins-BlackItalic, Poppins-BoldItalic, Poppins-Medium, Poppins-Regular,
+    Poppins-Thin, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
