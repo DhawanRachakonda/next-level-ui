@@ -1,32 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './AppStyles.scss';
 
-import Common from 'common/Common';
+import ThemeProvider from 'providers/ThemeProvider';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-        <article>
-          <section>
-            <p>Import of components</p>
-            <Common />
-          </section>
-        </article>
-      </header>
-    </div>
+    <ThemeProvider>
+      <h1>App In progress</h1>
+    </ThemeProvider>
   );
 }
 

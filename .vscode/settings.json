@@ -20,6 +20,10 @@
     "editor.renderWhitespace": "all"
   },
   "prettier.requireConfig": true,
+  "prettier.tslintIntegration": true,
+  "prettier.eslintIntegration": true,
+  "prettier.jsxSingleQuote": false,
+  "prettier.singleQuote": true,
   "workbench.colorTheme": "Night Owl",
   "window.zoomLevel": 1
 }

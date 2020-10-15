@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: Poppins-Light, Poppins-Black, Poppins-ExtraLight, Poppins-Bold,
     Poppins-ExtraBold, Poppins-SemiBold, Poppins-Italic,
     Poppins-ExtraLightItalic, Poppins-ExtraBoldItalic, Poppins-LightItalic,
@@ -8,6 +7,9 @@ body {
     Poppins-Thin, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 code {
