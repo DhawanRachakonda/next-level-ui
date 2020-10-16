@@ -1,6 +1,6 @@
 const lightTheme = {
   body: '#FFF',
-  text: '#000000',
+  text: 'blue',
   toggleBorder: '#FFF',
 };
 

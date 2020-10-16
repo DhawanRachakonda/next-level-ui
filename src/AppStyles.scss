@@ -1,1 +1,6 @@
+@import 'styles/Variables.scss';
+@import 'styles/mixins.scss';
 
+body {
+  display: flex;
+}

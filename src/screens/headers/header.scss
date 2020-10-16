@@ -1,0 +1,11 @@
+@import 'styles/Variables.scss';
+@import 'styles/mixins.scss';
+
+.nextLevel-appBar {
+  .brand-img {
+    width: 5rem;
+    @include sm {
+      width: 10rem;
+    }
+  }
+}
