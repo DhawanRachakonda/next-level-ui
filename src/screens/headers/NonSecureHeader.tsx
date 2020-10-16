@@ -9,13 +9,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
@@ -24,6 +24,11 @@ import AppUtil from 'util/appUtil';
 import './header.scss';
 
 const useStyles = makeStyles((theme) => ({
+  appBarRoot: {
+    [theme.breakpoints.up('sm')]: {
+      padding: '1rem',
+    },
+  },
   grow: {
     flexGrow: 1,
   },
@@ -85,6 +90,12 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  moreIconButton: {
+    paddingRight: '0px',
+    [theme.breakpoints.up('sm')]: {
+      paddingRight: 'inherit',
+    },
+  },
 }));
 
 function Header() {
@@ -141,14 +152,6 @@ function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
@@ -170,7 +173,9 @@ function Header() {
   );
   return (
     <div>
-      <AppBar className="nextLevel-appBar">
+      <AppBar
+        classes={{ root: classes.appBarRoot }}
+        className="nextLevel-appBar">
         <Toolbar>
           <img
             className="brand-img"
@@ -193,25 +198,13 @@ function Header() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit">
-              <AccountCircle />
-            </IconButton>
+            <Button variant="contained" color="secondary">
+              Login
+            </Button>
+
+            <Button variant="contained" color="primary">
+              Sign Up
+            </Button>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -219,6 +212,7 @@ function Header() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
+              classes={{ root: classes.moreIconButton }}
               color="inherit">
               <MoreIcon />
             </IconButton>

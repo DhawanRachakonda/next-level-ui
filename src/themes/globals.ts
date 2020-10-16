@@ -41,6 +41,36 @@ function GlobalStyles(mode = 'default') {
           },
         },
       },
+      MuiButton: {
+        root: {
+          fontWeight: 'bolder',
+          textTransform: 'initial',
+        },
+        containedPrimary: {
+          backgroundColor: '#18A4E0',
+          color: '#F1F1F1',
+          '&:hover': {
+            backgroundColor: '#18A4E0',
+            boxShadow:
+              '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
+          },
+        },
+        containedSecondary: {
+          color: '#2F3D4A',
+          backgroundColor: '#FFF',
+          '&:hover': {
+            backgroundColor: '#FFF',
+          },
+        },
+        contained: {
+          padding: '0.5em 1.5em',
+          boxShadow: 'unset',
+          borderRadius: '0.5em',
+          '&:hover': {
+            boxShadow: 'unset',
+          },
+        },
+      },
       MuiAppBar: {
         colorPrimary: {
           backgroundColor: '#FFF',
@@ -50,6 +80,7 @@ function GlobalStyles(mode = 'default') {
           display: 'flex',
           flexDirection: 'column',
           flexBasis: '100%',
+          boxShadow: 'unset',
         },
       },
       MuiCssBaseline: {

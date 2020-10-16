@@ -21,6 +21,7 @@ module.exports = {
         'chore',
         'revert',
         'sync',
+        'wip',
       ],
     ],
   },
