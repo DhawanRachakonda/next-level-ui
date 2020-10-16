@@ -33,6 +33,11 @@ function GlobalStyles(mode = 'default') {
       ].join(','),
     },
     overrides: {
+      MuiContainer: {
+        root: {
+          backgroundColor: '#FFF',
+        },
+      },
       MuiInputBase: {
         input: {
           color: '#2F3D4A',

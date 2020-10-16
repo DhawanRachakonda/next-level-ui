@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
       padding: '1rem',
     },
   },
+  toolBarAfterHeader: {
+    [theme.breakpoints.up('sm')]: {
+      padding: '1rem',
+    },
+  },
   grow: {
     flexGrow: 1,
   },
@@ -161,7 +166,7 @@ function Header() {
     </Menu>
   );
   return (
-    <div>
+    <React.Fragment>
       <AppBar
         classes={{ root: classes.appBarRoot }}
         className="nextLevel-appBar">
@@ -210,7 +215,7 @@ function Header() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+    </React.Fragment>
   );
 }
 
