@@ -92,9 +92,9 @@ function AppLayout() {
       <Grid
         classes={{ root: styles.homeSiteDescRoot }}
         className="home-site--desc"
-        item
+        item={true}
         xs={12}>
-        <Grid item xs={6} className="description-container--grid">
+        <Grid item={true} xs={6} className="description-container--grid">
           <Typography
             classes={{ root: styles.homeSiteDescTypographyRow1 }}
             variant="h3"
@@ -134,7 +134,7 @@ function AppLayout() {
             />
           </Button>
         </Grid>
-        <Grid className="home-site--desc_img" item xs={6} />
+        <Grid className="home-site--desc_img" item={true} xs={6} />
 
         {/* <img src="/assets/images/Women.png" /> */}
       </Grid>
@@ -198,8 +198,11 @@ const useTopProfessorsStyles = makeStyles((theme) => ({
 function TopProfessorsCourses() {
   const styles = useTopProfessorsStyles();
   return (
-    <Grid classes={{ root: styles.topProfessorsContainerRoot }} item xs={12}>
-      <Grid item xs={12}>
+    <Grid
+      classes={{ root: styles.topProfessorsContainerRoot }}
+      item={true}
+      xs={12}>
+      <Grid item={true} xs={12}>
         <Box className={styles.topProfessorsTitleRoot}>
           <Typography
             classes={{
@@ -212,7 +215,7 @@ function TopProfessorsCourses() {
         </Box>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item={true} xs={12}>
         <Box className={styles.topProfessorsDescriptionRoot}>
           <Typography
             classes={{
@@ -226,7 +229,7 @@ function TopProfessorsCourses() {
         </Box>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item={true} xs={12}>
         <Box className={styles.topProfessorsOptionsRoot}>
           <Button
             classes={{ root: styles.topProfessorsButtonRoot }}
@@ -283,8 +286,11 @@ function Testimonials() {
   const styles = useTestimonialsStyles();
 
   return (
-    <Grid classes={{ root: styles.testimonialsContainerRoot }} item xs={12}>
-      <Grid item xs={12} md={8} lg={12}>
+    <Grid
+      classes={{ root: styles.testimonialsContainerRoot }}
+      item={true}
+      xs={12}>
+      <Grid item={true} xs={12} md={8} lg={12}>
         <Card
           className={styles.testimonialsTitleCardContainer}
           classes={{ root: styles.testimonialsTitleCardContentRoot }}>
@@ -332,16 +338,20 @@ const useFooterStyles = makeStyles((theme) => ({
   },
 }));
 
-function Footer() {
+export function Footer() {
   const styles = useFooterStyles();
   return (
     <Grid
-      container
+      container={true}
       className="footer-container"
       classes={{ root: styles.footerContainerRoot }}
-      item
+      item={true}
       xs={12}>
-      <Grid classes={{ root: styles.logoContainerRoot }} item xs={4} sm={3}>
+      <Grid
+        classes={{ root: styles.logoContainerRoot }}
+        item={true}
+        xs={4}
+        sm={3}>
         <img
           className="brand-img"
           src={AppUtil.getLogoURL()}
@@ -350,15 +360,15 @@ function Footer() {
       </Grid>
 
       <Grid
-        container
+        container={true}
         className="footer-selfDescription--container"
-        item
+        item={true}
         xs={12}
         sm={9}>
-        <Grid item xs={4}>
+        <Grid item={true} xs={4}>
           <Card className="footer-selfDescription--card">
             <CardContent>
-              <Typography gutterBottom>About us</Typography>
+              <Typography gutterBottom={true}>About us</Typography>
               <Typography
                 className="description-item"
                 variant="body2"
@@ -369,10 +379,10 @@ function Footer() {
           </Card>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item={true} xs={4}>
           <Card className="footer-selfDescription--card">
             <CardContent>
-              <Typography gutterBottom>Support</Typography>
+              <Typography gutterBottom={true}>Support</Typography>
               <Typography
                 className="description-item"
                 variant="body2"
@@ -389,10 +399,10 @@ function Footer() {
           </Card>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item={true} xs={4}>
           <Card className="footer-selfDescription--card">
             <CardContent>
-              <Typography color="textSecondary" gutterBottom>
+              <Typography color="textSecondary" gutterBottom={true}>
                 Word of the Day
               </Typography>
               <Typography variant="h5" component="h2">

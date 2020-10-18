@@ -19,6 +19,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import AppUtil from 'util/appUtil';
 
 import './header.scss';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   appBarRoot: {
@@ -108,7 +109,7 @@ function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const history = useHistory();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -130,6 +131,10 @@ function Header() {
 
   const handleMobileMenuOpen = (event: any) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const goToLoginPage = () => {
+    history.push('login');
   };
 
   const menuId = 'primary-search-account-menu';
@@ -157,7 +162,7 @@ function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        <Button variant="contained" color="secondary">
+        <Button onClick={goToLoginPage} variant="contained" color="secondary">
           Login
         </Button>
       </MenuItem>
@@ -195,7 +200,10 @@ function Header() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button variant="contained" color="secondary">
+            <Button
+              onClick={goToLoginPage}
+              variant="contained"
+              color="secondary">
               Login
             </Button>
 
