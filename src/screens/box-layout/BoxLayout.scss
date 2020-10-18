@@ -1,0 +1,15 @@
+@import "../../styles/Variables.scss";
+@import "../../styles/mixins.scss";
+
+.box-layout {
+    background-color: #fff;
+    padding-top: 50%;
+    @include sm {
+        padding: 30% 25%;
+        padding-bottom: 0%;   
+    }
+    @include md {
+        padding: 10% 30%;
+        padding-bottom: 0%;   
+    }
+}
