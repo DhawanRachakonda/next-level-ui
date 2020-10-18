@@ -31,6 +31,17 @@ function GlobalStyles(mode = 'default') {
         'Poppins-Thin',
         'sans-serif',
       ].join(','),
+      h3: {
+        textShadow: '0px 1px, 1px 0px, 1px 1px',
+      },
+      h4: {
+        textShadow: '0px 1px, 1px 0px, 1px 1px',
+      },
+      allVariants: {
+        fontWeight: 'bolder',
+        textShadow: '0px 0.2px, 0.2px 0px, 0.2px 0.2px',
+        color: '#2F3D4A',
+      },
     },
     overrides: {
       MuiContainer: {
@@ -87,6 +98,9 @@ function GlobalStyles(mode = 'default') {
           flexBasis: '100%',
           boxShadow: 'unset',
         },
+        positionFixed: {
+          position: 'unset',
+        },
       },
       MuiCssBaseline: {
         '@global': {
@@ -94,6 +108,7 @@ function GlobalStyles(mode = 'default') {
             WebkitFontSmoothing: 'auto',
           },
           body: {
+            display: 'block',
             background: defaultTheme.body,
             color: defaultTheme.text,
             fontFamily: `Poppins-Light, Poppins-Black, Poppins-ExtraLight, Poppins-Bold,

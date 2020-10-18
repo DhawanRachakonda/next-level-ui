@@ -23,7 +23,7 @@ import './header.scss';
 const useStyles = makeStyles((theme) => ({
   appBarRoot: {
     [theme.breakpoints.up('sm')]: {
-      padding: '1rem',
+      padding: '1em 0',
     },
   },
   toolBarAfterHeader: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
       '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
     [theme.breakpoints.up('sm')]: {
       width: '18rem',
-      marginLeft: theme.spacing(15),
+      marginLeft: theme.spacing(10),
     },
   },
   searchIcon: {
@@ -97,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       paddingRight: 'inherit',
     },
+  },
+
+  appBarToolBarGutters: {
+    padding: 'unset',
   },
 }));
 
@@ -149,7 +153,6 @@ function Header() {
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
-      keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
@@ -170,7 +173,7 @@ function Header() {
       <AppBar
         classes={{ root: classes.appBarRoot }}
         className="nextLevel-appBar">
-        <Toolbar>
+        <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
           <img
             className="brand-img"
             src={AppUtil.getLogoURL()}
