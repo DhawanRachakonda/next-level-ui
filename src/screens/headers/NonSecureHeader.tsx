@@ -133,8 +133,12 @@ function Header() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const goToLoginPage = () => {
+  const redirectToLoginPage = () => {
     history.push('login');
+  };
+
+  const redirectToSignUpPage = () => {
+    history.push('sign-up');
   };
 
   const menuId = 'primary-search-account-menu';
@@ -143,7 +147,7 @@ function Header() {
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
-      keepMounted
+      keepMounted={true}
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
@@ -162,12 +166,18 @@ function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        <Button onClick={goToLoginPage} variant="contained" color="secondary">
+        <Button
+          onClick={redirectToLoginPage}
+          variant="contained"
+          color="secondary">
           Login
         </Button>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
-        <Button variant="contained" color="primary">
+        <Button
+          onClick={redirectToSignUpPage}
+          variant="contained"
+          color="primary">
           Sign Up
         </Button>
       </MenuItem>
@@ -201,13 +211,16 @@ function Header() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button
-              onClick={goToLoginPage}
+              onClick={redirectToLoginPage}
               variant="contained"
               color="secondary">
               Login
             </Button>
 
-            <Button variant="contained" color="primary">
+            <Button
+              onClick={redirectToSignUpPage}
+              variant="contained"
+              color="primary">
               Sign Up
             </Button>
           </div>

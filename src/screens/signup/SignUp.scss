@@ -1,0 +1,29 @@
+@import '../../styles/Variables.scss';
+@import '../../styles/mixins.scss';
+
+.box-layout .sign-up-content {
+  @include md {
+    padding: 0px 20%;
+  }
+  position: relative;
+  padding: 0px 40px;
+  border-radius: 50px;
+  box-shadow: 0 0 5px #b6b6b6;
+  .sign-up-close-btn {
+    display: flex;
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    border: 1px solid $gray-color;
+    font-size: 16px;
+    min-width: auto;
+    height: 28px;
+  }
+  #sign-up-form {
+      .signup-data-field, .signup-btn {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+  }
+}
