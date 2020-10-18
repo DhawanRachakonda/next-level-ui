@@ -3,6 +3,7 @@
 
 .login-model {
     background-color: #fff;
+    padding-top: 50%;
     @include sm {
         padding: 30% 25%;
         padding-bottom: 0%;   
@@ -11,11 +12,10 @@
         padding: 10% 30%;
         padding-bottom: 0%;   
     }
-    padding-top: 50%;
     .login-close-btn {
         display: flex;
         position: absolute;
-        right: 15px;
+        right: 35px;
         top: 20px;
         border: 1px solid $gray-color;
         font-size: 16px;
@@ -28,8 +28,8 @@
         }
         position: relative;
         padding: 0px 40px;
-        border-radius: 15px;
-        box-shadow: 0 0 5px #686464;
+        border-radius: 50px;
+        box-shadow: 0 0 5px #b6b6b6;
         .login-info {
             text-align: center;
             margin: 50px 0px;
@@ -92,7 +92,7 @@
             .login-data-field {
                 .MuiOutlinedInput-root {
                     border-radius: 10px;
-                    box-shadow: 0px 2px 2px 0px #666666;
+                    box-shadow: 0px 2px 2px 0px #b6b6b6;
                 }
                 .MuiInputLabel-outlined {
                     transform: translate(14px, 12px) scale(1);

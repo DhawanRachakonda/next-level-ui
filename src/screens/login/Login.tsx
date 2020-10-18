@@ -15,7 +15,7 @@ interface LoginProps {
 }
 
 function Login(props: LoginProps) {
-  let history = useHistory();
+  const history = useHistory();
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [keepMeChecked, setKeepMeChecked] = useState(false);

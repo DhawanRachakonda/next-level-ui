@@ -12,7 +12,7 @@ export default function NextLevelRouter() {
   return (
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact={true} from="/" to="/home" />
         <Route path="/home" component={AppLayout} />
         <Route path="/login" component={Login} />
       </Switch>
