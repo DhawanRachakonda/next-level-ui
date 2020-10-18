@@ -332,7 +332,7 @@ const useFooterStyles = makeStyles((theme) => ({
   },
 }));
 
-function Footer() {
+export function Footer() {
   const styles = useFooterStyles();
   return (
     <Grid

@@ -108,6 +108,11 @@ function GlobalStyles(mode = 'default') {
           position: 'unset',
         },
       },
+      MuiTextField: {
+        root: {
+          borderRadius: '15px',
+        },
+      },
       MuiCssBaseline: {
         '@global': {
           html: {
