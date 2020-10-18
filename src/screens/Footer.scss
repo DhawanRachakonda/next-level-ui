@@ -4,6 +4,9 @@
 .footer-container {
   .footer-selfDescription--container {
     margin-left: 2em;
+    @include xs {
+      margin-left: 0.2em;
+    }
     @include sm {
       margin-left: initial;
     }

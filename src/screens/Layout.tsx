@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     borderRadius: '3vw',
     backgroundColor: '#CCF5FC',
-    padding: '1rem',
+    padding: `${theme.spacing(1)}px 0rem`,
     marginTop: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(5),
@@ -257,7 +257,10 @@ const useTestimonialsStyles = makeStyles((theme) => ({
     boxShadow: 'unset',
   },
   testimonialsTitleCardContentRoot: {
-    paddingLeft: theme.spacing(3),
+    paddingLeft: '0px',
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: theme.spacing(3),
+    },
   },
   testimonialsTitleCardActionsRoot: {
     marginTop: theme.spacing(1),
@@ -320,8 +323,8 @@ function Testimonials() {
 const useFooterStyles = makeStyles((theme) => ({
   footerContainerRoot: {},
   logoContainerRoot: {
-    marginLeft: '1em',
     padding: '0.5em 0.5em',
+    paddingLeft: theme.spacing(0),
     [theme.breakpoints.up('sm')]: {
       padding: '1em 3em',
       marginLeft: 'unset',

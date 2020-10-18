@@ -16,7 +16,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
+  right: 1em;
 
+  @include sm {
+    right: 0em;
+  }
   @include md {
     height: 40vh;
   }
