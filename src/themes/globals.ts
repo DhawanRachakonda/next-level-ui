@@ -113,6 +113,32 @@ function GlobalStyles(mode = 'default') {
           borderRadius: '15px',
         },
       },
+      MuiInputLabel: {
+        root: {
+          color: '#9aa2a8',
+          fontWeight: 500,
+          fontSize: '14px',
+        },
+        shrink: {
+          outlined: {
+            transform: 'translate(14px, -6px) scale(0.75)',
+          },
+        },
+        outlined: {
+          transform: 'translate(14px, 12px) scale(1)',
+        },
+      },
+      MuiOutlinedInput: {
+        root: {
+          borderRadius: '10px',
+          boxShadow: '0px 2px 2px 0px #b6b6b6',
+        },
+        input: {
+          fontSize: '14px',
+          fontWeight: 500,
+          padding: '10px',
+        },
+      },
       MuiCssBaseline: {
         '@global': {
           html: {
