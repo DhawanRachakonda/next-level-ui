@@ -44,6 +44,12 @@ function GlobalStyles(mode = 'default') {
       },
     },
     overrides: {
+      MuiDivider: {
+        root: {
+          backgroundColor: '#b3c1cd',
+          height: '2px',
+        },
+      },
       MuiContainer: {
         root: {
           backgroundColor: '#FFF',
