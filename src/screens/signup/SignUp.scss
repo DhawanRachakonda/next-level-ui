@@ -9,6 +9,12 @@
   padding: 0px 40px;
   border-radius: 50px;
   box-shadow: 0 0 5px #b6b6b6;
+  .brand-img {
+    position: absolute;
+    height: 2em;
+    top: 20px;
+    left: 35px;
+  }
   .sign-up-close-btn {
     display: flex;
     position: absolute;
@@ -19,11 +25,84 @@
     min-width: auto;
     height: 28px;
   }
+  .sign-up-info {
+    color: $icon-color;
+    text-align: center;
+    margin-bottom: 1.5em;
+    h1 {
+      font-weight: 800;
+      margin: 0;
+      margin-top: 2.5em;
+    }
+    .sign-up-msg {
+      font-size: 14px;
+      font-weight: 500;
+      .login-btn {
+        padding: 0;
+        color: $blue-color;
+        vertical-align: baseline;
+        font-weight: 500;
+        min-width: auto;
+      }
+    }
+  }
   #sign-up-form {
+      .fname-lanme-combo {
+        display: flex;
+        .signup-data-field.right {
+          border-radius: 0px 10px 10px 0px;
+        }
+        .signup-data-field.left {
+          border-radius: 10px 0px 0px 10px;
+          margin-right: 1px;
+        } 
+      }
       .signup-data-field, .signup-btn {
         width: 100%;
+        font-size: 14px;
         margin-bottom: 20px;
-        border-radius: 5px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        border-radius: 10px;
+      }
+      .signup-btn {
+        position: relative;
+        margin-bottom: 5px;
+        .arr-fwd-icn{ 
+          position: absolute;
+          right: 0.5em;
+          top: .3em;
+        }
+      } 
+      .signup-data-field.disabled {
+        background-color: #dfdfdf;
+        border-radius: 10px;
+        lable {
+          color: #9aa2a8;
+        }
+      }
+      .terms-nd-service {
+        margin: 0;
+        margin-bottom: 2em;
+        color: $icon-color;
+        .terms-nd-service-msg{
+          font-size: 0.6em;
+          vertical-align: middle;
+        }
+        .terms-nd-services-checkbox {
+          padding: 0px 5px;
+          padding-left: 9px;
+          color: $blue-color;
+        }
+        svg {
+          font-size: 0.7em;
+        }
+        .t-nd-s-link {
+          padding: 0;
+          color: $blue-color;
+          font-size: inherit;
+          vertical-align: baseline;
+        }
       }
   }
 }

@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BoxLayout from '../box-layout/BoxLayout';
 import './SignUp.scss';
 
@@ -21,12 +22,17 @@ function SignUp() {
   return (
     <BoxLayout>
       <Card className="sign-up-content">
+        <img
+          className="brand-img"
+          src="/assets/images/logo.png"
+          alt="NextLevel logo"
+        />
         <Button className="sign-up-close-btn" onClick={handleClose}>
           X
         </Button>
         <div className="sign-up-info">
           <h1>Create account</h1>
-          <span className="login-msg">
+          <span className="sign-up-msg">
             Already have an account?{' '}
             <Button onClick={redirectToSignInPage} className="login-btn">
               Sign In
@@ -47,11 +53,17 @@ function SignUpForm() {
   const [contactNo, setConatctNo] = useState();
   const [password, setPassword] = useState('');
   const [termsNdService, setTermsNdService] = useState(false);
+  const [isFieldsDisabled, setIsFieldsDisabled] = useState(true);
 
+  const updateIsFieldsDisabled = (flag: boolean) => {
+    setIsFieldsDisabled(flag);
+  };
   const updateUserName = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
-    setUserName(event.currentTarget.value);
+    const value = event.currentTarget.value;
+    updateIsFieldsDisabled(!value);
+    setUserName(value);
   };
   const updateFName = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
@@ -87,7 +99,7 @@ function SignUpForm() {
   return (
     <form id="sign-up-form">
       <TextField
-        className="signup-data-field"
+        className={'signup-data-field'}
         id="outlined-required"
         label="User name"
         variant="outlined"
@@ -96,9 +108,13 @@ function SignUpForm() {
         value={username}
         onChange={updateUserName}
       />
-      <div>
+      <div className="fname-lanme-combo">
         <TextField
-          className="signup-data-field"
+          className={
+            isFieldsDisabled
+              ? 'signup-data-field left disabled'
+              : 'signup-data-field left'
+          }
           id="outlined-required"
           label="First name"
           variant="outlined"
@@ -106,9 +122,14 @@ function SignUpForm() {
           name="fname"
           value={fname}
           onChange={updateFName}
+          disabled={isFieldsDisabled}
         />
         <TextField
-          className="signup-data-field"
+          className={
+            isFieldsDisabled
+              ? 'signup-data-field right disabled'
+              : 'signup-data-field right'
+          }
           id="outlined-required"
           label="Last name"
           variant="outlined"
@@ -116,10 +137,13 @@ function SignUpForm() {
           name="lname"
           value={lname}
           onChange={updateLName}
+          disabled={isFieldsDisabled}
         />
       </div>
       <TextField
-        className="signup-data-field"
+        className={
+          isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
+        }
         id="outlined-required"
         label="Email-Id"
         variant="outlined"
@@ -127,9 +151,12 @@ function SignUpForm() {
         name="emailId"
         value={emailId}
         onChange={updateEmailId}
+        disabled={isFieldsDisabled}
       />
       <TextField
-        className="signup-data-field"
+        className={
+          isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
+        }
         id="outlined-required"
         label="Contact No"
         variant="outlined"
@@ -137,9 +164,12 @@ function SignUpForm() {
         name="conatctNo"
         value={contactNo}
         onChange={updateContactNo}
+        disabled={isFieldsDisabled}
       />
       <TextField
-        className="signup-data-field"
+        className={
+          isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
+        }
         id="outlined-required"
         label="Password"
         variant="outlined"
@@ -147,25 +177,31 @@ function SignUpForm() {
         name="password"
         value={password}
         onChange={updatePassword}
+        disabled={isFieldsDisabled}
       />
-      <Button className="signup-btn" onClick={signUpUser}>
+      <Button
+        className="signup-btn"
+        variant="contained"
+        color="primary"
+        onClick={signUpUser}>
         <span>
-          Sign Up <span>&#8594;</span>
+          Sign Up <ArrowForwardIcon className="arr-fwd-icn" />
         </span>
       </Button>
       <FormControlLabel
-        className="keep-me-msg"
+        className="terms-nd-service"
         control={
           <Checkbox
             className={'terms-nd-services-checkbox'}
             checked={termsNdService}
             onChange={() => setTermsNdService(!termsNdService)}
-            name="keepMeChecked"
+            name="termsNdService"
           />
         }
         label={
           <span className="terms-nd-service-msg">
-            I have read and agree to the <Button>Terms and Service</Button>
+            I have read and agree to the{' '}
+            <Button className="t-nd-s-link">Terms and Service</Button>
           </span>
         }
       />

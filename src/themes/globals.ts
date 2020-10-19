@@ -118,6 +118,9 @@ function GlobalStyles(mode = 'default') {
           color: '#9aa2a8',
           fontWeight: 500,
           fontSize: '14px',
+          '&$disabled': {
+            color: '#9aa2a8',
+          },
         },
         shrink: {
           outlined: {
@@ -132,11 +135,17 @@ function GlobalStyles(mode = 'default') {
         root: {
           borderRadius: '10px',
           boxShadow: '0px 2px 2px 0px #b6b6b6',
+          '&$disabled': {
+            boxShadow: 'none',
+          },
         },
         input: {
           fontSize: '14px',
           fontWeight: 500,
           padding: '10px',
+        },
+        notchedOutline: {
+          border: 'none',
         },
       },
       MuiCssBaseline: {
