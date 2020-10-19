@@ -27,7 +27,6 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Slide from '@material-ui/core/Slide';
-import Paper from '@material-ui/core/Paper';
 
 // Footer
 import Divider from '@material-ui/core/Divider';
@@ -666,7 +665,6 @@ function TestimonySlides() {
   const onArrowClick = (direction: string) => {
     const increment = direction === 'left' ? -1 : 1;
     const newIndex = (index + increment + numSlides) % numSlides;
-    console.log('newIndex', newIndex);
 
     const oppDirection = direction === 'left' ? 'right' : 'left';
     setSlideDirection(direction);
