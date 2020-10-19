@@ -681,7 +681,7 @@ function Arrow(props: IArrowProps) {
 }
 
 function TestimonySlides_Mobile() {
-  const useStylesTestimony = makeStyles((theme: Theme) =>
+  const useStylesTestimony = makeStyles((TestimonyTheme: Theme) =>
     createStyles({
       root: {
         maxWidth: 400,
@@ -691,8 +691,8 @@ function TestimonySlides_Mobile() {
         display: 'flex',
         alignItems: 'center',
         height: 50,
-        paddingLeft: theme.spacing(4),
-        backgroundColor: theme.palette.background.default,
+        paddingLeft: TestimonyTheme.spacing(4),
+        backgroundColor: TestimonyTheme.palette.background.default,
       },
       img: {
         height: 255,
