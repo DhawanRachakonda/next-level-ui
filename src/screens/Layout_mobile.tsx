@@ -690,16 +690,28 @@ function TestimonySlides_Mobile() {
       header: {
         display: 'flex',
         alignItems: 'center',
-        height: 50,
-        paddingLeft: TestimonyTheme.spacing(4),
+        height: 'auto',
+        padding: '2vh 3vh',
         backgroundColor: TestimonyTheme.palette.background.default,
       },
+      fontColor: {
+        color: '#18A4E0',
+      },
+      separator: {
+        padding: 0,
+        color: '#18A4E0',
+        width: '30vh',
+        margin: '0 auto',
+        backgroundColor: TestimonyTheme.palette.background.default,
+        border: '1px solid',
+      },
       img: {
-        height: 255,
+        height: 240,
         maxWidth: 400,
         overflow: 'hidden',
         display: 'block',
-        width: '100%',
+        width: '80%',
+        margin: '2vh auto',
       },
     }),
   );
@@ -764,9 +776,23 @@ function TestimonySlides_Mobile() {
         <Typography>{slides[activeStep].label}</Typography>
       </Paper>
       <Paper square={true} elevation={0} className={classes.header}>
-        <Typography>{slides[activeStep].designation}</Typography>
+        <Typography className={classes.fontColor}>
+          {slides[activeStep].designation}
+        </Typography>
       </Paper>
       <Paper square={true} elevation={0} className={classes.header}>
+        <Typography className={classes.separator}></Typography>
+      </Paper>
+      <Paper
+        style={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          width: 'auto',
+          height: '50px',
+        }}
+        square={true}
+        elevation={0}
+        className={classes.header}>
         <Typography>{slides[activeStep].description}</Typography>
       </Paper>
 
