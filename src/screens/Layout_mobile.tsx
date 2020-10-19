@@ -681,7 +681,7 @@ function Arrow(props: IArrowProps) {
 }
 
 function TestimonySlides_Mobile() {
-  const useStyles = makeStyles((theme: Theme) =>
+  const useStylesTestimony = makeStyles((theme: Theme) =>
     createStyles({
       root: {
         maxWidth: 400,
@@ -745,7 +745,7 @@ function TestimonySlides_Mobile() {
       designation: `Pathology`,
     },
   ];
-  const classes = useStyles();
+  const classes = useStylesTestimony();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = slides.length;
@@ -760,12 +760,16 @@ function TestimonySlides_Mobile() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
+      <Paper square={true} elevation={0} className={classes.header}>
         <Typography>{slides[activeStep].label}</Typography>
       </Paper>
-      <Paper square elevation={0} className={classes.header}>
+      <Paper square={true} elevation={0} className={classes.header}>
         <Typography>{slides[activeStep].designation}</Typography>
       </Paper>
+      <Paper square={true} elevation={0} className={classes.header}>
+        <Typography>{slides[activeStep].description}</Typography>
+      </Paper>
+
       <img
         className={classes.img}
         src={slides[activeStep].imgPath}
