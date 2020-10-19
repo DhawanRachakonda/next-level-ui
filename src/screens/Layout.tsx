@@ -323,7 +323,7 @@ function Testimonials() {
   const styles = useTestimonialsStyles();
 
   return (
-    <TestimonialGridContainer container item={true} xs={12}>
+    <TestimonialGridContainer container={true} item={true} xs={12}>
       <Grid item={true} xs={12} lg={4}>
         <NonOutlinedCard
           className={styles.testimonialsTitleCardContainer}
@@ -690,8 +690,8 @@ function TestimonySlides() {
       </SlideGrid>
       <Slide in={slideIn} direction={slideDirection as any}>
         <SlideGrid container={true} item={true} xs={10}>
-          {slides.slice(index, index + 2).map((item, index) => (
-            <TestimonySlide key={index} item={{ ...item, id: index }} />
+          {slides.slice(index, index + 2).map((item, id) => (
+            <TestimonySlide key={id} item={{ ...item, id }} />
           ))}
         </SlideGrid>
       </Slide>
