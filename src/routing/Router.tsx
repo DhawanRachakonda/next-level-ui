@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import AppLayout from '../screens/Layout';
+import AppLayout from '../screens/Layout_mobile';
 import Login from '../screens/login/Login';
 import SignUp from '../screens/signup/SignUp';
 
