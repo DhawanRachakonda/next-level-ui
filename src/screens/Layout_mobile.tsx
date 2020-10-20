@@ -781,12 +781,11 @@ function TestimonySlides_Mobile() {
         </Typography>
       </Paper>
       <Paper square={true} elevation={0} className={classes.header}>
-        <Typography className={classes.separator}></Typography>
+        <Typography className={classes.separator} />
       </Paper>
       <Paper
         style={{
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
+          overflow: 'auto',
           width: 'auto',
           height: '50px',
         }}
