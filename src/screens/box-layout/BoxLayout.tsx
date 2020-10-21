@@ -8,7 +8,7 @@ interface BoxLayoutProps {
 
 function BoxLayout({ children }: BoxLayoutProps) {
   return (
-    <Container>
+    <Container maxWidth="xl">
       <div className="box-layout">{children}</div>
     </Container>
   );
