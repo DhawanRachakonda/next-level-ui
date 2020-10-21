@@ -1,25 +1,18 @@
 import React from 'react';
 
-import './Layout.scss';
-
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import MobileStepper from '@material-ui/core/MobileStepper';
+
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+
 import {
   makeStyles,
   withStyles,
-  Theme,
   useTheme,
   createStyles,
 } from '@material-ui/core/styles';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-
-import NonSecureHeader from './headers/NonSecureHeader';
 
 // Testimonials
 import Card from '@material-ui/core/Card';
@@ -34,19 +27,21 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Slide from '@material-ui/core/Slide';
+
+// Mobile Steeper styles
 import Paper from '@material-ui/core/Paper';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import MobileStepper from '@material-ui/core/MobileStepper';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // Footer
 import Divider from '@material-ui/core/Divider';
 import AppUtil from 'util/appUtil';
-import './Footer.scss';
+
+////////////////////////////// Local imports
 
 const useStyles = makeStyles((theme) => ({
-  appContainer: {
-    [theme.breakpoints.up('md')]: {
-      padding: '0em 5em',
-    },
-  },
   headerDividerToolbar: {
     [theme.breakpoints.up('sm')]: {
       marginTop: '3rem',
@@ -61,21 +56,6 @@ const useStyles = makeStyles((theme) => ({
       'linear-gradient(180deg, rgba(204,245,252,1) 0%, rgba(204,245,252,1) 30%, rgba(255,255,255,1) 100%)',
     padding: `${theme.spacing(1)}px 0rem`,
     marginTop: theme.spacing(3),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(5),
-    },
-    [theme.breakpoints.up('lg')]: {
-      padding: theme.spacing(12),
-    },
-  },
-  homeSiteSignupRoot: {
-    display: 'flex',
-    alignItems: 'center',
-    borderRadius: '3vw',
-    backgroundColor: '#CCF5FC',
-    padding: `${theme.spacing(1)}px 0rem`,
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(5),
     },
@@ -118,14 +98,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppLayout() {
+function HomeScreen() {
   const styles = useStyles();
   return (
-    <Container
-      maxWidth={false}
-      className="app-container"
-      classes={{ root: styles.appContainer }}>
-      <NonSecureHeader />
+    <React.Fragment>
       <Grid
         classes={{ root: styles.homeSiteDescRoot }}
         className="home-site--desc"
@@ -177,10 +153,7 @@ function AppLayout() {
       </Grid>
       <TopProfessorsCourses />
       <Testimonials />
-      <SignUpWrapper />
-      <Divider />
-      <Footer />
-    </Container>
+    </React.Fragment>
   );
 }
 
@@ -344,10 +317,12 @@ const TestimonialGrid = withStyles((theme) => ({
 
 function Testimonials() {
   const styles = useTestimonialsStyles();
+  const theme = useTheme();
+  const isScreenWithBellowLG = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <TestimonialGridContainer container={true} item={true} xs={12}>
-      <Grid item={true} xs={12} lg={4}>
+      <Grid item={true} xs={12} md={4}>
         <NonOutlinedCard
           className={styles.testimonialsTitleCardContainer}
           classes={{ root: styles.testimonialsTitleCardContentRoot }}>
@@ -379,50 +354,17 @@ function Testimonials() {
           </CardActions>
         </NonOutlinedCard>
       </Grid>
-      <TestimonialGrid container={true} item={true} xs={12} md={4} lg={8}>
-        <TestimonySlides_Mobile />
+      <TestimonialGrid container={true} item={true} xs={12} md={8}>
+        {!isScreenWithBellowLG ? (
+          <TestimonySlides />
+        ) : (
+          <TestimonySlidesMobile />
+        )}
       </TestimonialGrid>
     </TestimonialGridContainer>
   );
 }
 
-function SignUpWrapper() {
-  const styles = useStyles();
-  return (
-    <Grid
-      classes={{ root: styles.homeSiteSignupRoot }}
-      className="home-site--signup"
-      item={true}
-      xs={12}>
-      <Grid item={true} xs={8} className="description-container--grid">
-        <Typography
-          classes={{
-            root: styles.homeSiteDescTypographyRow3,
-          }}
-          variant="h5"
-          component="h5">
-          Get Started with Nextlevel today
-        </Typography>
-        <Button
-          classes={{ root: styles.getStartedButtonRoot }}
-          variant="contained"
-          color="primary">
-          <Typography
-            classes={{
-              root: styles.getStartedButtonTypoRoot,
-            }}
-            variant="h4"
-            component="h4">
-            Sign up
-          </Typography>
-        </Button>
-      </Grid>
-      <Grid className="home-site--signup_img" item={true} xs={6} />
-
-      {/* <img src="/assets/images/Women.png" /> */}
-    </Grid>
-  );
-}
 const useFooterStyles = makeStyles((theme) => ({
   footerContainerRoot: {
     [theme.breakpoints.up('lg')]: {
@@ -653,10 +595,12 @@ const SliderRightArrow = withStyles((theme) => ({
   },
 }))(ArrowRightIcon);
 
-const ArrowContainer = withStyles((theme) => ({
+const ArrowContainer = withStyles((theme: any) => ({
   root: {
     borderRadius: theme.spacing(1),
     boxShadow: '0 0 5px #b6b6b6',
+    position: 'absolute',
+    [theme.position]: theme.value,
   },
 }))(ButtonBase);
 
@@ -664,6 +608,7 @@ const SlideGrid = withStyles((theme) => ({
   root: {
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
   },
 }))(Grid);
 
@@ -677,44 +622,137 @@ function Arrow(props: IArrowProps) {
   const icon =
     direction === 'left' ? <SliderLeftArrow /> : <SliderRightArrow />;
 
-  return <ArrowContainer onClick={clickFunction}>{icon}</ArrowContainer>;
+  return (
+    <ArrowContainer style={{ [direction]: '0' }} onClick={clickFunction}>
+      {icon}
+    </ArrowContainer>
+  );
 }
 
-function TestimonySlides_Mobile() {
-  const useStylesTestimony = makeStyles((TestimonyTheme: Theme) =>
-    createStyles({
-      root: {
-        maxWidth: 400,
-        flexGrow: 1,
-      },
-      header: {
-        display: 'flex',
-        alignItems: 'center',
-        height: 'auto',
-        padding: '2vh 3vh',
-        backgroundColor: TestimonyTheme.palette.background.default,
-      },
-      fontColor: {
-        color: '#18A4E0',
-      },
-      separator: {
-        padding: 0,
-        color: '#18A4E0',
-        width: '30vh',
-        margin: '0 auto',
-        backgroundColor: TestimonyTheme.palette.background.default,
-        border: '1px solid',
-      },
-      img: {
-        height: 240,
-        maxWidth: 400,
-        overflow: 'hidden',
-        display: 'block',
-        width: '80%',
-        margin: '2vh auto',
-      },
-    }),
+function TestimonySlides() {
+  const slides = [
+    {
+      name: 'Dr. Dilip Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Anatomy`,
+    },
+    {
+      name: 'Dr. Manoj Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Pathology`,
+    },
+    {
+      name: 'Dr. Dilip Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Anatomy`,
+    },
+    {
+      name: 'Dr. Manoj Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Pathology`,
+    },
+    {
+      name: 'Dr. Dilip Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Anatomy`,
+    },
+    {
+      name: 'Dr. Manoj Kumar',
+      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
+    species, ranging across all continents except Antarctica`,
+      designation: `Pathology`,
+    },
+  ];
+  const [slideIn, setSlideIn] = React.useState(true);
+  const [index, setIndex] = React.useState(0);
+  const numSlides = slides.length;
+  const [slideDirection, setSlideDirection] = React.useState('right');
+  const onArrowClick = (direction: string) => {
+    const increment = direction === 'left' ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
+
+    const oppDirection = direction === 'left' ? 'right' : 'left';
+    setSlideDirection(direction);
+    setSlideIn(false);
+
+    setTimeout(() => {
+      setIndex(newIndex);
+      setSlideDirection(oppDirection);
+      setSlideIn(true);
+    }, 500);
+  };
+  return (
+    <SlideGrid container={true} item={true} xs={12}>
+      <Arrow
+        direction="left"
+        clickFunction={() => {
+          onArrowClick('left');
+        }}
+      />
+      <Slide in={slideIn} direction={slideDirection as any}>
+        <SlideGrid container={true} item={true} xs={12}>
+          {slides.slice(index, index + 2).map((item, id) => (
+            <TestimonySlide key={id} item={{ ...item, id }} />
+          ))}
+        </SlideGrid>
+      </Slide>
+      <Arrow
+        direction="right"
+        clickFunction={() => {
+          onArrowClick('right');
+        }}
+      />
+    </SlideGrid>
   );
+}
+
+const useStylesTestimony = makeStyles((TestimonyTheme) =>
+  createStyles({
+    root: {
+      maxWidth: 400,
+      flexGrow: 1,
+    },
+    header: {
+      display: 'flex',
+      alignItems: 'center',
+      height: 'auto',
+      padding: '2vh 3vh',
+    },
+    fontColor: {
+      color: '#18A4E0',
+    },
+    separator: {
+      padding: 0,
+      color: '#18A4E0',
+      width: '30vh',
+      margin: '0 auto',
+      backgroundColor: TestimonyTheme.palette.background.default,
+      border: '1px solid',
+    },
+    img: {
+      height: 240,
+      maxWidth: 400,
+      overflow: 'hidden',
+      display: 'block',
+      width: '80%',
+      margin: '2vh auto',
+    },
+  }),
+);
+
+const SliderPaper = withStyles((theme) => ({
+  root: {
+    display: 'block',
+    width: '100%',
+  },
+}))(Paper);
+
+function TestimonySlidesMobile() {
   const slides = [
     {
       label: 'Dr. Dilip Kumar_M',
@@ -771,19 +809,19 @@ function TestimonySlides_Mobile() {
   };
 
   return (
-    <div className={classes.root}>
-      <Paper square={true} elevation={0} className={classes.header}>
+    <SlideGrid className={classes.root} container={true} item={true} xs={12}>
+      <SliderPaper square={true} elevation={0} className={classes.header}>
         <Typography>{slides[activeStep].label}</Typography>
-      </Paper>
-      <Paper square={true} elevation={0} className={classes.header}>
+      </SliderPaper>
+      <SliderPaper square={true} elevation={0} className={classes.header}>
         <Typography className={classes.fontColor}>
           {slides[activeStep].designation}
         </Typography>
-      </Paper>
-      <Paper square={true} elevation={0} className={classes.header}>
+      </SliderPaper>
+      <SliderPaper square={true} elevation={0} className={classes.header}>
         <Typography className={classes.separator} />
-      </Paper>
-      <Paper
+      </SliderPaper>
+      <SliderPaper
         style={{
           overflow: 'auto',
           width: 'auto',
@@ -793,7 +831,7 @@ function TestimonySlides_Mobile() {
         elevation={0}
         className={classes.header}>
         <Typography>{slides[activeStep].description}</Typography>
-      </Paper>
+      </SliderPaper>
 
       <img
         className={classes.img}
@@ -829,8 +867,8 @@ function TestimonySlides_Mobile() {
           </Button>
         }
       />
-    </div>
+    </SlideGrid>
   );
 }
 
-export default AppLayout;
+export default HomeScreen;
