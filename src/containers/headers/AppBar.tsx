@@ -9,6 +9,7 @@ import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppUtil from 'util/appUtil';
 import { useHistory } from 'react-router-dom';
 import paths from 'routes/paths';
+import DivTypography from 'containers/typography/DivTypography';
 
 const NextLevelHeader = withStyles((theme) => ({
   root: {
@@ -38,12 +39,14 @@ function NextLevelAppBAr({ children }: INextLevelAppBArProps) {
   return (
     <NextLevelHeader>
       <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
-        <img
-          onClick={goToHome}
-          className="brand-img"
-          src={AppUtil.getLogoURL()}
-          alt="NextLevel logo"
-        />
+        <DivTypography onClick={goToHome}>
+          <img
+            className="brand-img"
+            src={AppUtil.getLogoURL()}
+            alt="NextLevel logo"
+          />
+        </DivTypography>
+
         {children ? children : ''}
       </Toolbar>
     </NextLevelHeader>
