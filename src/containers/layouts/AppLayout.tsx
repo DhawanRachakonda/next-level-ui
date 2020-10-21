@@ -10,7 +10,7 @@ interface INextLevelContainerProps {
   children: any;
 }
 
-export const AppContainer = withStyles((theme) => ({
+const AppContainer = withStyles((theme) => ({
   root: {
     [theme.breakpoints.up('md')]: {
       padding: '0em 5em',

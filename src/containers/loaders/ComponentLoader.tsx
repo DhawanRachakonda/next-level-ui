@@ -5,19 +5,21 @@ import { Typography } from '@material-ui/core';
 
 ///////////////////////////// Local imports /////////////////////////////
 
+// JS
+import AppUtil from 'util/appUtil';
+
 // Components
-import { AppContainer } from 'containers/layouts/AppLayout';
+import NextLevelContainer from 'containers/layouts/AppLayout';
 import AppBar from 'containers/headers/AppBar';
 
 function ComponentLoader() {
   return (
-    <AppContainer>
-      <AppBar>
-        <Typography variant="h3" component="h3">
-          Loading
-        </Typography>
-      </AppBar>
-    </AppContainer>
+    <NextLevelContainer>
+      <AppBar />
+      <Typography className="site-loader">
+        <img src={AppUtil.getLoaderGIF()} alt="Site Loader" />
+      </Typography>
+    </NextLevelContainer>
   );
 }
 

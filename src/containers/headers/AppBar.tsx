@@ -19,7 +19,7 @@ const NextLevelHeader = withStyles((theme) => ({
 }))((props) => <AppBar className="nextLevel-appBar" {...props} />);
 
 interface INextLevelAppBArProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -44,7 +44,7 @@ function NextLevelAppBAr({ children }: INextLevelAppBArProps) {
           src={AppUtil.getLogoURL()}
           alt="NextLevel logo"
         />
-        {children}
+        {children ? children : ''}
       </Toolbar>
     </NextLevelHeader>
   );

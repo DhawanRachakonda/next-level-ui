@@ -3,4 +3,12 @@
 
 body {
   display: flex;
+  background-color: #fff;
+}
+
+.site-loader {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
