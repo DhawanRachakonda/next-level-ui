@@ -7,6 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 // styles
 import { withStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppUtil from 'util/appUtil';
+import { useHistory } from 'react-router-dom';
+import paths from 'routes/paths';
 
 const NextLevelHeader = withStyles((theme) => ({
   root: {
@@ -28,10 +30,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function NextLevelAppBAr({ children }: INextLevelAppBArProps) {
   const classes = useStyles();
+
+  const history = useHistory();
+  const goToHome = () => {
+    history.push(paths.home.path);
+  };
   return (
     <NextLevelHeader>
       <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
         <img
+          onClick={goToHome}
           className="brand-img"
           src={AppUtil.getLogoURL()}
           alt="NextLevel logo"
