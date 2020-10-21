@@ -18,7 +18,6 @@ interface IAppLayoutProps {
 }
 
 function NextLevelAppLayout({ children, isSecure = false }: IAppLayoutProps) {
-  console.log('isSecure?', isSecure);
   return (
     <NextLevelContainer>
       <Header isSecure={isSecure} />
