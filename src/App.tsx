@@ -1,7 +1,7 @@
 import React from 'react';
 import './AppStyles.scss';
 
-import NextLevelRouter from './routing/Router';
+import NextLevelRouter from 'route';
 
 import ThemeProvider from 'providers/ThemeProvider';
 
