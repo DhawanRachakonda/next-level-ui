@@ -37,22 +37,9 @@ function RouteWithSubRoutes(route: any) {
   if (route.isRedirect) {
     return <Redirect exact={true} from={route.from} to={route.to} />;
   }
-  if (route.exact) {
-    return (
-      <Route
-        exact={true}
-        path={route.path}
-        render={(props: any) => (
-          // pass the sub-routes down to keep nesting
-          <NextLevelAppLayout {...props} {...route}>
-            <route.Component {...props} routes={route.routes} />
-          </NextLevelAppLayout>
-        )}
-      />
-    );
-  }
   return (
     <Route
+      exact={!!route.exact}
       path={route.path}
       render={(props: any) => (
         // pass the sub-routes down to keep nesting

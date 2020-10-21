@@ -19,7 +19,7 @@ const NextLevelHeader = withStyles((theme) => ({
   },
 }))((props) => <AppBar className="nextLevel-appBar" {...props} />);
 
-interface INextLevelAppBArProps {
+interface INextLevelAppBarProps {
   children?: React.ReactNode;
 }
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function NextLevelAppBAr({ children }: INextLevelAppBArProps) {
+function NextLevelAppBar({ children }: INextLevelAppBarProps) {
   const classes = useStyles();
 
   const history = useHistory();
@@ -53,4 +53,4 @@ function NextLevelAppBAr({ children }: INextLevelAppBArProps) {
   );
 }
 
-export default NextLevelAppBAr;
+export default NextLevelAppBar;
