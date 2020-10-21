@@ -54,7 +54,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false && react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "set CI=true && react-scripts test --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand  --no-cache",
