@@ -15,18 +15,21 @@ import ThemeProvider from 'providers/ThemeProvider';
 
 // store
 import { history, configureStore } from 'store';
+import NextLevelIntlProvider from 'lang/NextLevelIntl';
 
 const store = configureStore();
 
 function App() {
   return (
-    <ThemeProvider>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <NextLevelRouter />
-        </ConnectedRouter>
-      </Provider>
-    </ThemeProvider>
+    <NextLevelIntlProvider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <NextLevelRouter />
+          </ConnectedRouter>
+        </Provider>
+      </ThemeProvider>
+    </NextLevelIntlProvider>
   );
 }
 

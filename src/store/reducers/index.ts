@@ -6,4 +6,6 @@ const rootReducer = (history: any) =>
     router: connectRouter(history),
   });
 
+export type NextLevelApState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;

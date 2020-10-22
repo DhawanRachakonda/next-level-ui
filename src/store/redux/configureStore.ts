@@ -5,11 +5,14 @@ import createRootReducer from 'store/reducers';
 
 export const history = createBrowserHistory();
 
-function configureStoreWithHistory(preloadedState: any = {}) {
+function configureStoreWithHistory(
+  preloadedState: any = {},
+  browserHistory = history,
+) {
   const composeEnhancer =
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
-    createRootReducer(history),
+    createRootReducer(browserHistory),
     preloadedState,
     composeEnhancer(applyMiddleware(routerMiddleware(history))),
   );
@@ -24,5 +27,7 @@ function configureStoreWithHistory(preloadedState: any = {}) {
 
   return store;
 }
+
+export type NextLevelStore = ReturnType<typeof configureStoreWithHistory>;
 
 export default configureStoreWithHistory;
