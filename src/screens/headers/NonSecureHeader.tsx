@@ -1,85 +1,40 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-import SearchIcon from '@material-ui/icons/Search';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import InputBase from '@material-ui/core/InputBase';
-import Button from '@material-ui/core/Button';
-
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MoreIcon from '@material-ui/icons/MoreVert';
-
-import AppUtil from 'util/appUtil';
-
-import './header.scss';
 import { useHistory } from 'react-router-dom';
 
+// Material UI styles
+import { makeStyles } from '@material-ui/core/styles';
+
+// Material UI Icons
+import IconButton from '@material-ui/core/IconButton';
+import MoreIcon from '@material-ui/icons/MoreVert';
+
+// Material UI Components
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
+////////////////////////////// Local imports //////////////////////////////
+
+// styles
+import './header.scss';
+
+// components
+import AppBar from 'containers/headers/AppBar';
+import SearchBarComponent from 'containers/inputs/SearchBar';
+
 const useStyles = makeStyles((theme) => ({
-  appBarRoot: {
-    [theme.breakpoints.up('sm')]: {
-      padding: '1em 0',
-    },
-  },
-  toolBarAfterHeader: {
-    [theme.breakpoints.up('sm')]: {
-      padding: '1rem',
-    },
-  },
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: '10vw',
-    backgroundColor: '#F1F1F1',
-    marginRight: theme.spacing(0),
-    width: '17rem',
-    marginLeft: theme.spacing(2),
-    boxShadow:
-      '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
-    [theme.breakpoints.up('sm')]: {
-      width: '18rem',
-      marginLeft: theme.spacing(10),
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    right: 0,
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#2F3D4A',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(0.5em + ${theme.spacing(1)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-  },
+}));
 
+const menuClasses = makeStyles((theme) => ({
+  moreIconButton: {
+    paddingRight: '0px',
+    [theme.breakpoints.up('sm')]: {
+      paddingRight: 'inherit',
+    },
+  },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -93,25 +48,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  moreIconButton: {
-    paddingRight: '0px',
-    [theme.breakpoints.up('sm')]: {
-      paddingRight: 'inherit',
-    },
-  },
-
-  appBarToolBarGutters: {
-    padding: 'unset',
-  },
 }));
 
-function Header() {
-  const classes = useStyles();
+function NextLevelMenu() {
+  const styles = menuClasses();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const history = useHistory();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -185,60 +128,49 @@ function Header() {
   );
   return (
     <React.Fragment>
-      <AppBar
-        classes={{ root: classes.appBarRoot }}
-        className="nextLevel-appBar">
-        <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
-          <img
-            className="brand-img"
-            src={AppUtil.getLogoURL()}
-            alt="NextLevel logo"
-          />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder={matches ? 'What do you want to learn?' : 'Courses'}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+      <div className={styles.sectionDesktop}>
+        <Button
+          onClick={redirectToLoginPage}
+          variant="contained"
+          color="secondary">
+          Login
+        </Button>
 
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <Button
-              onClick={redirectToLoginPage}
-              variant="contained"
-              color="secondary">
-              Login
-            </Button>
+        <Button
+          onClick={redirectToSignUpPage}
+          variant="contained"
+          color="primary">
+          Sign Up
+        </Button>
+      </div>
+      <div className={styles.sectionMobile}>
+        <IconButton
+          aria-label="show more"
+          aria-controls={mobileMenuId}
+          aria-haspopup="true"
+          onClick={handleMobileMenuOpen}
+          classes={{ root: styles.moreIconButton }}
+          color="inherit">
+          <MoreIcon />
+        </IconButton>
+      </div>
 
-            <Button
-              onClick={redirectToSignUpPage}
-              variant="contained"
-              color="primary">
-              Sign Up
-            </Button>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              classes={{ root: classes.moreIconButton }}
-              color="inherit">
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
       {renderMobileMenu}
       {renderMenu}
+    </React.Fragment>
+  );
+}
+
+function Header() {
+  const headerClasses = useStyles();
+
+  return (
+    <React.Fragment>
+      <AppBar>
+        <SearchBarComponent />
+        <div className={headerClasses.grow} />
+        <NextLevelMenu />
+      </AppBar>
     </React.Fragment>
   );
 }
