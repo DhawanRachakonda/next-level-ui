@@ -21,14 +21,14 @@
     "react-intl": "^5.8.6",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.4",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "typescript": "~3.7.2"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
+    "@formatjs/ts-transformer": "^2.11.3",
     "@types/axios": "^0.14.0",
     "@types/http-proxy-middleware": "^0.19.3",
     "@types/react-intl": "^3.0.0",
@@ -50,12 +50,13 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
     "tslint-react": "^5.0.0",
-    "tslint-react-hooks": "^2.2.2"
+    "tslint-react-hooks": "^2.2.2",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
+    "test": "export CI=true&&react-scripts test",
     "test:coverage": "set CI=true && react-scripts test --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand  --no-cache",
     "eject": "react-scripts eject",

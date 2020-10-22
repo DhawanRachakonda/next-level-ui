@@ -21,6 +21,7 @@ import './header.scss';
 // components
 import AppBar from 'containers/headers/AppBar';
 import SearchBarComponent from 'containers/inputs/SearchBar';
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -113,7 +114,7 @@ function NextLevelMenu() {
           onClick={redirectToLoginPage}
           variant="contained"
           color="secondary">
-          Login
+          <FormattedMessage id="nonSecureHeader.login.btn" />
         </Button>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
@@ -121,7 +122,7 @@ function NextLevelMenu() {
           onClick={redirectToSignUpPage}
           variant="contained"
           color="primary">
-          Sign Up
+          <FormattedMessage id="nonSecureHeader.signUp.btn" />
         </Button>
       </MenuItem>
     </Menu>
@@ -133,14 +134,14 @@ function NextLevelMenu() {
           onClick={redirectToLoginPage}
           variant="contained"
           color="secondary">
-          Login
+          <FormattedMessage id="nonSecureHeader.login.btn" />
         </Button>
 
         <Button
           onClick={redirectToSignUpPage}
           variant="contained"
           color="primary">
-          Sign Up
+          <FormattedMessage id="nonSecureHeader.signUp.btn" />
         </Button>
       </div>
       <div className={styles.sectionMobile}>

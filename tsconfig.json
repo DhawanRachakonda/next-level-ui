@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "es5",
-      "es6",
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "lib": ["es5", "es6", "dom", "dom.iterable", "esnext"],
+    "plugins": [
+      {
+        "transform": "@formatjs/ts-transformer",
+        "import": "transform",
+        "type": "config",
+        "overrideIdFn": "[sha512:contenthash:base64:6]",
+        "ast": true
+      }
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,12 +23,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "experimentalDecorators": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "typeRoots": ["src/types/setupTests.d.ts"],
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "files": ["src/types/setupTests.d.ts"]
 }
