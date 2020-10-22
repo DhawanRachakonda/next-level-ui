@@ -3,6 +3,7 @@
 
 .nextLevel-appBar {
   .brand-img {
+    cursor: pointer;
     width: 5rem;
     @include sm {
       width: 10rem;

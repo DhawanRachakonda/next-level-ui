@@ -3,7 +3,12 @@
 
 body {
   display: flex;
+  background-color: #fff;
 }
 
-.app-container {
+.site-loader {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
