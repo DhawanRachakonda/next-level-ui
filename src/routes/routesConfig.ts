@@ -12,7 +12,7 @@ export default [
     Component: HomePage,
     exact: false,
     isSecure: false,
-    displayMenu: true,
+    displayMenu: false,
   },
   {
     path: paths.login.path,
