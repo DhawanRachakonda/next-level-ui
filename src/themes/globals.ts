@@ -44,6 +44,11 @@ function GlobalStyles(mode = 'default') {
       },
     },
     overrides: {
+      MuiIconButton: {
+        root: {
+          color: '#2F3D4A',
+        },
+      },
       MuiDivider: {
         root: {
           backgroundColor: '#b3c1cd',

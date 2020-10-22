@@ -12,18 +12,21 @@ export default [
     Component: HomePage,
     exact: false,
     isSecure: false,
+    displayMenu: true,
   },
   {
     path: paths.login.path,
     Component: LoginPage,
     exact: true,
     isSecure: false,
+    displayMenu: false,
   },
   {
     path: paths.signUp.path,
     Component: SignUpPage,
     exact: true,
     isSecure: false,
+    displayMenu: false,
   },
   {
     isRedirect: true,
@@ -34,5 +37,6 @@ export default [
     path: '*',
     Component: PageNotFound,
     isSecure: false,
+    displayMenu: false,
   },
 ];
