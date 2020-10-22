@@ -4,7 +4,12 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import {
+  makeStyles,
+  withStyles,
+  Theme,
+  createStyles,
+} from '@material-ui/core/styles';
 
 const BreadcrumbLink = withStyles((theme) => ({
   root: {
@@ -19,15 +24,17 @@ const BreadcrumbLink = withStyles((theme) => ({
   },
 }))(Link);
 
-const useStyles = makeStyles((theme) => ({
-  typography: {
-    fontSize: '1.875rem',
-    color: '#2F3D4A',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '0.875rem',
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    typography: {
+      fontSize: '1.875rem',
+      color: '#2F3D4A',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '0.875rem',
+      },
     },
-  },
-}));
+  }),
+);
 
 interface Breadcrumb {
   link?: string;
