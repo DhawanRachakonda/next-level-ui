@@ -4,7 +4,7 @@ import NextLevelIntl from './NextLevelIntl';
 
 describe('test suit for NextLevelIntl', () => {
   it('should generate snapshot', () => {
-    generateSnapShot(
+    generateSnapshot(
       <NextLevelIntl>
         <div />
       </NextLevelIntl>,

@@ -1,1 +1,1 @@
-declare function generateSnapShot(Component: any): any;
+declare function generateSnapshot(Component: any): any;
