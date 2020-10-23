@@ -2,17 +2,18 @@ import React from 'react';
 
 import './Layout.scss';
 
-// Footer
+// Material UI components
 import Divider from '@material-ui/core/Divider';
-import Header from 'screens/headers/NextLevelHeader';
+import { Grid } from '@material-ui/core';
 
 ////////////////////////////// Local imports //////////////////////////////
 
 // Components
+import Header from 'screens/headers/NextLevelHeader';
 import NextLevelContainer from 'containers/layouts/AppLayout';
 import Footer from 'screens/footer';
-import { Grid } from '@material-ui/core';
 import LeftSweapableDrawer from 'containers/drawers/LeftSweapableDrawer';
+import SecureGrid from 'containers/grid/SecureGrid';
 
 interface INextLevelSecureLayoutProps {
   children: React.ReactNode;
@@ -42,14 +43,14 @@ function NextLevelSecureLayout({
         handleDrawerOpen={handleDrawerOpen}
       />
       {displayMenu && (
-        <Grid container={true} item={true} xs={12}>
+        <SecureGrid container={true} item={true} xs={12}>
           <Grid item={true} xl={4}>
             <div />
           </Grid>
           <Grid item={true} xs={12} xl={8}>
             {children}
           </Grid>
-        </Grid>
+        </SecureGrid>
       )}
       {!displayMenu && children}
       <LeftSweapableDrawer
