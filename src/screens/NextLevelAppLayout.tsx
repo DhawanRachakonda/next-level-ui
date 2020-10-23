@@ -90,7 +90,7 @@ function NextLevelAppLayout({
 }: IAppLayoutProps) {
   return (
     <NextLevelContainer>
-      {isSecure ? (
+      {!isSecure ? (
         <NextLevelNonSecureLayout>{children} </NextLevelNonSecureLayout>
       ) : (
         <NextLevelSecureLayout displayMenu={displayMenu}>
