@@ -50,7 +50,8 @@ function RelatedCourses({ relatedCourses }: RelatedCoursesProps) {
       container={true}
       direction="column"
       justify="space-evenly"
-      alignItems="center">
+      alignItems="center"
+      data-testid="related-courses">
       {relatedCourses.map((course) => (
         <Card className={styles.cardRoot} key={course.courseName}>
           <CardActionArea>
