@@ -42,7 +42,7 @@ function NextLevelSecureLayout({
         handleDrawerOpen={handleDrawerOpen}
       />
       {displayMenu && (
-        <Grid container={true} xs={12}>
+        <Grid container={true} item={true} xs={12}>
           <Grid item={true} xl={4}>
             <div />
           </Grid>
