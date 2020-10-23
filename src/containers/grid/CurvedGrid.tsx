@@ -6,7 +6,8 @@ import { Grid } from '@material-ui/core';
 
 const CurvedGrid = withStyles((theme) => ({
   root: {
-    borderRadius: '3em',
+    borderRadius: theme.spacing(5),
+    marginBottom: theme.spacing(2),
   },
 }))((props: any) => {
   return <Grid {...props} />;
