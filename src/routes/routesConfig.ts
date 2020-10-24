@@ -13,8 +13,8 @@ export default [
     path: paths.home.path,
     Component: HomePage,
     exact: false,
-    isSecure: true,
-    displayMenu: true,
+    isSecure: false,
+    displayMenu: false,
   },
   {
     path: paths.login.path,
