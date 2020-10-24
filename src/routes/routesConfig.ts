@@ -8,6 +8,12 @@ const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
   {
+    path: '/',
+    Component: HomePage,
+    exact: true,
+    isSecure: false,
+  },
+  {
     path: '/home',
     Component: HomePage,
     exact: false,
@@ -24,11 +30,6 @@ export default [
     Component: SignUpPage,
     exact: false,
     isSecure: false,
-  },
-  {
-    isRedirect: true,
-    from: '/',
-    to: '/home',
   },
   {
     path: '*',
