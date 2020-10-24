@@ -11,7 +11,7 @@ const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
   {
-    path: '/',
+    path: '',
     Component: HomePage,
     exact: true,
     isSecure: false,
