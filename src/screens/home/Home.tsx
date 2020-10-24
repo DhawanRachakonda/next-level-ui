@@ -24,10 +24,6 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Slide from '@material-ui/core/Slide';
 
 // Mobile Steeper styles
-// import Paper from '@material-ui/core/Paper';
-// import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-// import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-// import MobileStepper from '@material-ui/core/MobileStepper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // Footer
@@ -315,8 +311,6 @@ const TestimonialGrid = withStyles((theme) => ({
 
 function Testimonials() {
   const styles = useTestimonialsStyles();
-  // const theme = useTheme();
-  // const isScreenWithBellowLG = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <TestimonialGridContainer container={true} item={true} xs={12}>
