@@ -1,10 +1,5 @@
 import React, { Suspense } from 'react';
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 // import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -34,9 +29,6 @@ function NextLevelRoutes() {
 // handle "sub"-routes by passing them in a `routes`
 // prop to the component it renders.
 function RouteWithSubRoutes(route: any) {
-  if (route.isRedirect) {
-    return <Redirect exact={true} from={route.from} to={route.to} />;
-  }
   if (route.exact) {
     return (
       <Route
