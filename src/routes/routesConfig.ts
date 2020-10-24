@@ -21,8 +21,8 @@ export default [
     path: paths.topic.path,
     Component: TopicPage,
     exact: true,
-    isSecure: false,
-    displayMenu: false,
+    isSecure: true,
+    displayMenu: true,
   },
   {
     path: paths.login.path,
