@@ -17,6 +17,15 @@ const useStyles = makeStyles((theme: Theme) =>
     cardMedia: {
       height: '165px',
       width: '280px',
+      position: 'relative',
+    },
+    cardCategory: {
+      position: 'absolute',
+      right: theme.spacing(2),
+      bottom: theme.spacing(2),
+      background: theme.palette.background.paper,
+      padding: '0px 12px',
+      borderRadius: '10px',
     },
     cardContent: {
       background: theme.palette.background.paper,
@@ -37,8 +46,14 @@ function CourseCard({ course }: any) {
         <CardMedia
           className={styles.cardMedia}
           image={course.imgUrl}
-          title={course.courseName}
-        />
+          title={course.courseName}>
+          <Typography
+            variant="subtitle1"
+            component="span"
+            className={styles.cardCategory}>
+            {course.category}
+          </Typography>
+        </CardMedia>
         <CardContent className={styles.cardContent}>
           <Typography gutterBottom={true} variant="h6" align="center">
             {course.courseName}

@@ -29,16 +29,19 @@ const relatedCourseData = [
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 1',
     author: 'Dr. ashok chak',
+    category: 'BioChemistry',
   },
   {
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 2',
     author: 'Dr. ashok chakr',
+    category: 'BioChemistry',
   },
   {
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 3',
     author: 'Dr. ashok ckra',
+    category: 'BioChemistry',
   },
 ];
 
@@ -63,13 +66,13 @@ function Topic() {
   const styles = useStyles();
   return (
     <Grid container={true} data-testid="topic-container">
-      <Grid item xs={12} className={styles.gridItem}>
+      <Grid item={true} xs={12} className={styles.gridItem}>
         <TopicDuration />
       </Grid>
-      <Grid item xs={12} md={4} className={styles.gridItem}>
+      <Grid item={true} xs={12} md={4} className={styles.gridItem}>
         <RelatedCourses courses={relatedCourseData} />
       </Grid>
-      <Grid item xs={12} md={8} className={styles.gridItem}>
+      <Grid item={true} xs={12} md={8} className={styles.gridItem}>
         <TopicsList topicList={topicsData} />
       </Grid>
     </Grid>

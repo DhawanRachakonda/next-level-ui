@@ -22,6 +22,7 @@ interface RelatedCourseItem {
   imgUrl: string;
   courseName: string;
   author: string;
+  category: string;
 }
 
 interface RelatedCoursesProps {

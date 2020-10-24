@@ -7,16 +7,19 @@ const testData = [
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 1',
     author: 'Dr. ashok chak',
+    category: 'BioChemistry',
   },
   {
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 2',
     author: 'Dr. ashok chakr',
+    category: 'BioChemistry',
   },
   {
     imgUrl: 'http://localhost:3000/assets/images/medical-abortion-2x_dw.png',
     courseName: 'Comprehisive course 3',
     author: 'Dr. ashok ckra',
+    category: 'BioChemistry',
   },
 ];
 
