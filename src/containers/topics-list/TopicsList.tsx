@@ -10,9 +10,11 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '100%',
-      maxWidth: '480px',
       backgroundColor: theme.palette.background.paper,
+      boxShadow:
+        '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
+      borderRadius: '3em',
+      padding: theme.spacing(4),
     },
     listItem: {
       margin: '5px 0',

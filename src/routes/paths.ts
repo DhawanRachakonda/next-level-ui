@@ -19,4 +19,8 @@ export default {
     link: '/#live-classes',
     path: '/live-classes',
   },
+  topic: {
+    link: '/#topic',
+    path: '/topic',
+  },
 };
