@@ -53,11 +53,9 @@ export default [
     displayMenu: true,
   },
   {
-    path: '/',
-    Component: HomePage,
-    exact: true,
-    isSecure: false,
-    displayMenu: false,
+    isRedirect: true,
+    from: '/',
+    to: '/home',
   },
   {
     path: '*',
