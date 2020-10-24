@@ -598,7 +598,7 @@ const SliderRightArrow = withStyles((theme) => ({
 const ArrowContainer = withStyles((theme: any) => ({
   root: {
     borderRadius: theme.spacing(1),
-    boxShadow: '0 0 5px #b6b6b6',
+    boxShadow: '0 0 5px #b3c1cd',
     position: 'absolute',
     [theme.position]: theme.value,
   },

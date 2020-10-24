@@ -49,7 +49,9 @@ function NextLevelAppBar({
   };
   return (
     <NextLevelHeader {...headerProps}>
-      <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
+      <Toolbar
+        classes={{ gutters: classes.appBarToolBarGutters }}
+        id="back-to-top-anchor">
         {displayDrawer && <MenuButton handleDrawerOpen={handleDrawerOpen} />}
         <DivTypography onClick={goToHome}>
           <img

@@ -1,0 +1,18 @@
+@import 'styles/Variables.scss';
+@import 'styles/mixins.scss';
+
+.MuiGrid-root.menu-grid {
+  @include lg {
+    border-radius: 2em;
+    position: fixed;
+    margin: unset;
+    width: 12%;
+    padding: unset;
+    bottom: 30vh;
+    top: 20vh;
+  }
+  border-radius: 0;
+  margin: unset;
+  width: 100%;
+  padding: 1em;
+}
