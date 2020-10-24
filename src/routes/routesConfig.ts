@@ -26,9 +26,10 @@ export default [
     isSecure: false,
   },
   {
-    isRedirect: true,
-    from: '/',
-    to: '/home',
+    path: '/',
+    Component: HomePage,
+    exact: true,
+    isSecure: false,
   },
   {
     path: '*',
