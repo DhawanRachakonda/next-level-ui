@@ -11,6 +11,11 @@ const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
   {
+    isRedirect: true,
+    from: '/',
+    to: '/home',
+  },
+  {
     path: paths.home.path,
     Component: HomePage,
     exact: false,
@@ -20,42 +25,37 @@ export default [
   {
     path: paths.topic.path,
     Component: TopicPage,
-    exact: true,
+    exact: false,
     isSecure: true,
     displayMenu: true,
   },
   {
     path: paths.login.path,
     Component: LoginPage,
-    exact: true,
+    exact: false,
     isSecure: false,
     displayMenu: false,
   },
   {
     path: paths.signUp.path,
     Component: SignUpPage,
-    exact: true,
+    exact: false,
     isSecure: false,
     displayMenu: false,
   },
   {
     path: paths.dashboard.path,
     Component: DashboardPage,
-    exact: true,
+    exact: false,
     isSecure: true,
     displayMenu: true,
   },
   {
     path: paths.liveClasses.path,
     Component: LiveClassesPage,
-    exact: true,
+    exact: false,
     isSecure: true,
     displayMenu: true,
-  },
-  {
-    isRedirect: true,
-    from: '/',
-    to: '/home',
   },
   {
     path: '*',
