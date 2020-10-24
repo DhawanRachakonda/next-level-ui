@@ -18,6 +18,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useHistory } from 'react-router-dom';
 
 type NextLevelMenuItem = {
   key: string;
@@ -32,12 +33,16 @@ interface ISideMenuOptionsProps {
 }
 
 function SideMenuOptions({ menuList }: ISideMenuOptionsProps) {
+  const history = useHistory();
+  const onClick = (routeName: string) => {
+    history.push(routeName);
+  };
   return (
     <MenuList>
       {menuList.map((menu) => {
         if (menu.isActive) {
           return (
-            <ActiveMenuListItem key={menu.key}>
+            <ActiveMenuListItem key={menu.key} onClick={onClick}>
               {menu.isBlue ? (
                 <MenuListItemBlueIcon>{menu.icon}</MenuListItemBlueIcon>
               ) : (
@@ -48,7 +53,7 @@ function SideMenuOptions({ menuList }: ISideMenuOptionsProps) {
           );
         }
         return (
-          <MenuListItem key={menu.key}>
+          <MenuListItem key={menu.key} onClick={onClick}>
             {menu.isBlue ? (
               <MenuListItemBlueIcon>{menu.icon}</MenuListItemBlueIcon>
             ) : (
