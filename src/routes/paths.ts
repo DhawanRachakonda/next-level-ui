@@ -15,4 +15,8 @@ export default {
     link: '/#dashboard',
     path: '/dashboard',
   },
+  liveClasses: {
+    link: '/#live-classes',
+    path: '/live-classes',
+  },
 };
