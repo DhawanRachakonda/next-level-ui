@@ -11,14 +11,16 @@ const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
   {
-    isRedirect: true,
-    from: '/',
-    to: '/home',
+    path: '/',
+    Component: HomePage,
+    exact: true,
+    isSecure: false,
+    displayMenu: false,
   },
   {
     path: paths.home.path,
     Component: HomePage,
-    exact: false,
+    exact: true,
     isSecure: false,
     displayMenu: false,
   },
