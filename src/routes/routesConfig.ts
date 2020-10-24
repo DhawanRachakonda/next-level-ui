@@ -10,7 +10,7 @@ export default [
   {
     path: '/',
     Component: HomePage,
-    exact: false,
+    exact: true,
     isSecure: false,
   },
   {
