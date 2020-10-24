@@ -3,11 +3,11 @@
 
 .box-layout {
   background-color: #fff;
-  padding-top: 40%;
+  padding: 10% 0%;
   @include sm {
-    padding: 30% 25%;
+    padding: 10% 20%;
   }
   @include md {
-    padding: 10% 30%;
+    padding: 2% 33%;
   }
 }

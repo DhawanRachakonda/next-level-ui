@@ -14,7 +14,7 @@ import './SignUp.scss';
 function SignUp() {
   const history = useHistory();
   const handleClose = () => {
-    history.goBack();
+    history.replace('home');
   };
   const redirectToSignInPage = () => {
     history.push('login');
@@ -100,7 +100,7 @@ function SignUpForm() {
     <form id="sign-up-form">
       <TextField
         className={'signup-data-field'}
-        id="outlined-required"
+        id="username"
         label="User name"
         variant="outlined"
         type="text"
@@ -115,7 +115,7 @@ function SignUpForm() {
               ? 'signup-data-field left disabled'
               : 'signup-data-field left'
           }
-          id="outlined-required"
+          id="fname"
           label="First name"
           variant="outlined"
           type="text"
@@ -130,7 +130,7 @@ function SignUpForm() {
               ? 'signup-data-field right disabled'
               : 'signup-data-field right'
           }
-          id="outlined-required"
+          id="lname"
           label="Last name"
           variant="outlined"
           type="text"
@@ -144,7 +144,7 @@ function SignUpForm() {
         className={
           isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
         }
-        id="outlined-required"
+        id="emailId"
         label="Email-Id"
         variant="outlined"
         type="emailId"
@@ -157,7 +157,7 @@ function SignUpForm() {
         className={
           isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
         }
-        id="outlined-required"
+        id="conatctNo"
         label="Contact No"
         variant="outlined"
         type="number"
@@ -170,7 +170,7 @@ function SignUpForm() {
         className={
           isFieldsDisabled ? 'signup-data-field disabled' : 'signup-data-field'
         }
-        id="outlined-required"
+        id="pwd"
         label="Password"
         variant="outlined"
         type="password"
