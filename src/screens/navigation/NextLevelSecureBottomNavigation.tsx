@@ -11,6 +11,7 @@ import {
 } from 'containers/navigation/BottomNavigation';
 import { Drawer } from '@material-ui/core';
 import SideMenuScreen, { mobileMenuOptions } from 'screens/menu/SideMenu';
+import { useHistory } from 'react-router-dom';
 
 interface IMenuListDrawer {
   onClose: any;
@@ -25,6 +26,7 @@ function MenuListDrawer({ onClose }: IMenuListDrawer) {
 }
 
 function NextLevelSecureBottomNavigation() {
+  const history = useHistory();
   const [value, setValue] = React.useState<any>(0);
   const [isMenuListOpen, setMenuListOpen] = React.useState(false);
   const onOpen = () => {
@@ -42,6 +44,9 @@ function NextLevelSecureBottomNavigation() {
       <NextLevelBottomNavigation
         value={value}
         onChange={(event: any, newValue: any) => {
+          if (value === 'home') {
+            history.push('home');
+          }
           setValue(newValue);
           if (newValue === 'menu') {
             onOpen();

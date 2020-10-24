@@ -23,6 +23,7 @@ function Login(props: LoginProps) {
     history.replace('home');
   };
   const login = () => {
+    history.push('dashboard');
     console.log('user logged in');
   };
   const updateUserName = (
