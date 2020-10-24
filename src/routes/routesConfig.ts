@@ -7,6 +7,11 @@ import PageNotFound from 'screens/404/PageNotFound';
 
 export default [
   {
+    isRedirect: true,
+    from: '/',
+    to: '/home',
+  },
+  {
     path: '/',
     Component: HomePage,
     exact: true,
