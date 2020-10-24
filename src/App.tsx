@@ -1,6 +1,4 @@
 import React from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { Provider } from 'react-redux';
 
 // styles
 import './AppStyles.scss';
@@ -14,20 +12,21 @@ import NextLevelRouter from 'route';
 import ThemeProvider from 'providers/ThemeProvider';
 
 // store
-import { history, configureStore } from 'store';
+//import { history, configureStore } from 'store';
 import NextLevelIntlProvider from 'lang/NextLevelIntl';
 
-const store = configureStore();
+//const store = configureStore();
 
 function App() {
   return (
     <NextLevelIntlProvider>
       <ThemeProvider>
-        <Provider store={store}>
+        <NextLevelRouter />
+        {/* <Provider store={store}>
           <ConnectedRouter history={history}>
-            <NextLevelRouter />
+            
           </ConnectedRouter>
-        </Provider>
+        </Provider> */}
       </ThemeProvider>
     </NextLevelIntlProvider>
   );

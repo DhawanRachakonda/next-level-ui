@@ -1,5 +1,10 @@
 import React, { Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
 // import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -13,13 +18,15 @@ import NextLevelAppLayout from 'screens/NextLevelAppLayout';
 
 function NextLevelRoutes() {
   return (
-    <Suspense fallback={<ComponentLoader />}>
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
-    </Suspense>
+    <Router>
+      <Suspense fallback={<ComponentLoader />}>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </Suspense>
+    </Router>
   );
 }
 
