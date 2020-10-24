@@ -11,4 +11,8 @@ export default {
     link: '/#home',
     path: '/home',
   },
+  dashboard: {
+    link: '/#dashboard',
+    path: '/dashboard',
+  },
 };
