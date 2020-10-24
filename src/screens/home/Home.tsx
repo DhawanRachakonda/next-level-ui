@@ -7,12 +7,7 @@ import Button from '@material-ui/core/Button';
 
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-import {
-  makeStyles,
-  withStyles,
-  useTheme,
-  createStyles,
-} from '@material-ui/core/styles';
+import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 
 // Testimonials
 import Card from '@material-ui/core/Card';
@@ -29,10 +24,10 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Slide from '@material-ui/core/Slide';
 
 // Mobile Steeper styles
-import Paper from '@material-ui/core/Paper';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import MobileStepper from '@material-ui/core/MobileStepper';
+// import Paper from '@material-ui/core/Paper';
+// import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+// import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+// import MobileStepper from '@material-ui/core/MobileStepper';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 // Footer
@@ -293,10 +288,12 @@ const useTestimonialsStyles = makeStyles((theme) => ({
   },
   testimonialsCardTitleTypo: {
     fontWeight: 100,
+    fontSize: '1.4rem',
     textShadow: 'unset',
   },
   testimonialCardRow2: {
     marginTop: theme.spacing(5),
+    fontSize: '1.6rem',
     [theme.breakpoints.up('lg')]: {
       lineHeight: `${theme.spacing(8)}px`,
       width: theme.spacing(30),
@@ -304,6 +301,7 @@ const useTestimonialsStyles = makeStyles((theme) => ({
   },
   testimonialCardRow3: {
     fontWeight: 100,
+    fontSize: '1rem',
     marginTop: theme.spacing(1),
   },
 }));
@@ -317,8 +315,8 @@ const TestimonialGrid = withStyles((theme) => ({
 
 function Testimonials() {
   const styles = useTestimonialsStyles();
-  const theme = useTheme();
-  const isScreenWithBellowLG = useMediaQuery(theme.breakpoints.down('md'));
+  // const theme = useTheme();
+  // const isScreenWithBellowLG = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <TestimonialGridContainer container={true} item={true} xs={12}>
@@ -355,11 +353,12 @@ function Testimonials() {
         </NonOutlinedCard>
       </Grid>
       <TestimonialGrid container={true} item={true} xs={12} md={8}>
-        {!isScreenWithBellowLG ? (
+        {/* {!isScreenWithBellowLG ? (
           <TestimonySlides />
         ) : (
-          <TestimonySlidesMobile />
-        )}
+          <TestimonySlides />
+        )} */}
+        <TestimonySlides />
       </TestimonialGrid>
     </TestimonialGridContainer>
   );
@@ -686,6 +685,10 @@ function TestimonySlides() {
       setSlideIn(true);
     }, 500);
   };
+  const theme = useTheme();
+  const isScreenBetSMMD = useMediaQuery(theme.breakpoints.between('xs', 'md'));
+  const isScreenWithBelowMd = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <SlideGrid container={true} item={true} xs={12}>
       <Arrow
@@ -695,10 +698,16 @@ function TestimonySlides() {
         }}
       />
       <Slide in={slideIn} direction={slideDirection as any}>
-        <SlideGrid container={true} item={true} xs={12}>
-          {slides.slice(index, index + 2).map((item, id) => (
-            <TestimonySlide key={id} item={{ ...item, id }} />
-          ))}
+        <SlideGrid
+          container={true}
+          item={true}
+          xs={isScreenBetSMMD ? 10 : 12}
+          className={'testimonialSlider'}>
+          {slides
+            .slice(index, !isScreenWithBelowMd ? index + 2 : index + 1)
+            .map((item, id) => (
+              <TestimonySlide key={id} item={{ ...item, id }} />
+            ))}
         </SlideGrid>
       </Slide>
       <Arrow
@@ -706,166 +715,6 @@ function TestimonySlides() {
         clickFunction={() => {
           onArrowClick('right');
         }}
-      />
-    </SlideGrid>
-  );
-}
-
-const useStylesTestimony = makeStyles((TestimonyTheme) =>
-  createStyles({
-    root: {
-      maxWidth: 400,
-      flexGrow: 1,
-    },
-    header: {
-      display: 'flex',
-      alignItems: 'center',
-      height: 'auto',
-      padding: '2vh 3vh',
-    },
-    fontColor: {
-      color: '#18A4E0',
-    },
-    separator: {
-      padding: 0,
-      color: '#18A4E0',
-      width: '30vh',
-      margin: '0 auto',
-      backgroundColor: TestimonyTheme.palette.background.default,
-      border: '1px solid',
-    },
-    img: {
-      height: 240,
-      maxWidth: 400,
-      overflow: 'hidden',
-      display: 'block',
-      width: '80%',
-      margin: '2vh auto',
-    },
-  }),
-);
-
-const SliderPaper = withStyles((theme) => ({
-  root: {
-    display: 'block',
-    width: '100%',
-  },
-}))(Paper);
-
-function TestimonySlidesMobile() {
-  const slides = [
-    {
-      label: 'Dr. Dilip Kumar_M',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Anatomy`,
-      imgPath: '/assets/images/Ellipse_2.png',
-    },
-    {
-      name: 'Dr. Manoj Kumar',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Pathology`,
-      imgPath: '/assets/images/Ellipse_6.png',
-    },
-    {
-      name: 'Dr. Dilip Kumar',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Anatomy`,
-      imgPath: '/assets/images/Ellipse_2.png',
-    },
-    {
-      name: 'Dr. Manoj Kumar',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Pathology`,
-      imgPath: '/assets/images/Ellipse_6.png',
-    },
-    {
-      name: 'Dr. Dilip Kumar',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Anatomy`,
-    },
-    {
-      name: 'Dr. Manoj Kumar',
-      description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
-      designation: `Pathology`,
-    },
-  ];
-  const classes = useStylesTestimony();
-  const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = slides.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  return (
-    <SlideGrid className={classes.root} container={true} item={true} xs={12}>
-      <SliderPaper square={true} elevation={0} className={classes.header}>
-        <Typography>{slides[activeStep].label}</Typography>
-      </SliderPaper>
-      <SliderPaper square={true} elevation={0} className={classes.header}>
-        <Typography className={classes.fontColor}>
-          {slides[activeStep].designation}
-        </Typography>
-      </SliderPaper>
-      <SliderPaper square={true} elevation={0} className={classes.header}>
-        <Typography className={classes.separator} />
-      </SliderPaper>
-      <SliderPaper
-        style={{
-          overflow: 'auto',
-          width: 'auto',
-          height: '50px',
-        }}
-        square={true}
-        elevation={0}
-        className={classes.header}>
-        <Typography>{slides[activeStep].description}</Typography>
-      </SliderPaper>
-
-      <img
-        className={classes.img}
-        src={slides[activeStep].imgPath}
-        alt={slides[activeStep].name}
-      />
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}>
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
       />
     </SlideGrid>
   );
