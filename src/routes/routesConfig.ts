@@ -4,13 +4,12 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('screens/home'));
 const LoginPage = lazy(() => import('screens/login'));
 const SignUpPage = lazy(() => import('screens/signup'));
-const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
   {
-    path: paths.home.path,
+    path: '/',
     Component: HomePage,
-    exact: false,
+    exact: true,
     isSecure: false,
   },
   {
@@ -23,17 +22,6 @@ export default [
     path: paths.signUp.path,
     Component: SignUpPage,
     exact: true,
-    isSecure: false,
-  },
-  {
-    path: '/',
-    Component: HomePage,
-    exact: true,
-    isSecure: false,
-  },
-  {
-    path: '*',
-    Component: PageNotFound,
     isSecure: false,
   },
 ];
