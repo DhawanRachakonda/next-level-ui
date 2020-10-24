@@ -8,6 +8,7 @@ import ThemeProvider from 'providers/ThemeProvider';
 function App() {
   return (
     <ThemeProvider>
+      <h1>Rendering...</h1>
       <NextLevelRouter />
     </ThemeProvider>
   );
