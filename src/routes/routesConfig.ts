@@ -5,6 +5,8 @@ const HomePage = lazy(() => import('screens/home'));
 const TopicPage = lazy(() => import('screens/topic'));
 const LoginPage = lazy(() => import('screens/login'));
 const SignUpPage = lazy(() => import('screens/signup'));
+const DashboardPage = lazy(() => import('screens/dashboard'));
+const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
@@ -35,6 +37,20 @@ export default [
     exact: true,
     isSecure: false,
     displayMenu: false,
+  },
+  {
+    path: paths.dashboard.path,
+    Component: DashboardPage,
+    exact: true,
+    isSecure: true,
+    displayMenu: true,
+  },
+  {
+    path: paths.liveClasses.path,
+    Component: LiveClassesPage,
+    exact: true,
+    isSecure: true,
+    displayMenu: true,
   },
   {
     isRedirect: true,

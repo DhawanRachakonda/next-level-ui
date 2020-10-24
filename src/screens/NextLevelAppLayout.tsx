@@ -4,7 +4,7 @@ import './Layout.scss';
 
 // Material UI components
 import Divider from '@material-ui/core/Divider';
-import { Grid } from '@material-ui/core';
+import { Grid, useMediaQuery, useTheme } from '@material-ui/core';
 
 ////////////////////////////// Local imports //////////////////////////////
 
@@ -14,6 +14,9 @@ import NextLevelContainer from 'containers/layouts/AppLayout';
 import Footer from 'screens/footer';
 import LeftSweapableDrawer from 'containers/drawers/LeftSweapableDrawer';
 import SecureGrid from 'containers/grid/SecureGrid';
+
+import SideMenuScreen from 'screens/menu/SideMenu';
+import NextLevelSecureBottomNavigation from './navigation/NextLevelSecureBottomNavigation';
 
 interface INextLevelSecureLayoutProps {
   children: React.ReactNode;
@@ -25,6 +28,10 @@ function NextLevelSecureLayout({
   displayMenu,
 }: INextLevelSecureLayoutProps) {
   const [showDrawer, setShowDrawer] = React.useState(false);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+
+  const matchesSmallScreen = useMediaQuery(theme.breakpoints.only('xs'));
 
   const handleDrawerOpen = () => {
     setShowDrawer(true);
@@ -32,8 +39,6 @@ function NextLevelSecureLayout({
   const handleDrawerClose = () => {
     setShowDrawer(false);
   };
-
-  const list = () => <div />;
 
   return (
     <React.Fragment>
@@ -44,10 +49,10 @@ function NextLevelSecureLayout({
       />
       {displayMenu && (
         <SecureGrid container={true} item={true} xs={12}>
-          <Grid item={true} xl={4}>
-            <div />
+          <Grid item={true} lg={2}>
+            {!matches && <SideMenuScreen />}
           </Grid>
-          <Grid item={true} xs={12} xl={8}>
+          <Grid item={true} xs={12} lg={10}>
             {children}
           </Grid>
         </SecureGrid>
@@ -57,8 +62,9 @@ function NextLevelSecureLayout({
         open={showDrawer}
         onClose={handleDrawerClose}
         onOpen={handleDrawerOpen}>
-        {list()}
+        <SideMenuScreen />
       </LeftSweapableDrawer>
+      {matchesSmallScreen && <NextLevelSecureBottomNavigation />}
     </React.Fragment>
   );
 }

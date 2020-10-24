@@ -20,9 +20,10 @@ function Login(props: LoginProps) {
   const [password, setPassword] = useState('');
   const [keepMeChecked, setKeepMeChecked] = useState(false);
   const handleClose = () => {
-    history.goBack();
+    history.replace('home');
   };
   const login = () => {
+    history.push('dashboard');
     console.log('user logged in');
   };
   const updateUserName = (
@@ -56,7 +57,7 @@ function Login(props: LoginProps) {
         <form id="login-form">
           <TextField
             className="login-data-field"
-            id="outlined-required"
+            id="username"
             label="User name/Email-Id"
             variant="outlined"
             type="text"
@@ -66,7 +67,7 @@ function Login(props: LoginProps) {
           />
           <TextField
             className="login-data-field"
-            id="outlined-required"
+            id="pwd"
             label="Password"
             variant="outlined"
             type="Password"

@@ -139,7 +139,7 @@ function GlobalStyles(mode = 'default') {
       MuiOutlinedInput: {
         root: {
           borderRadius: '10px',
-          boxShadow: '0px 2px 2px 0px #b6b6b6',
+          boxShadow: '0px 2px 2px 0px #b3c1cd',
           '&$disabled': {
             boxShadow: 'none',
           },
@@ -151,6 +151,30 @@ function GlobalStyles(mode = 'default') {
         },
         notchedOutline: {
           border: 'none',
+        },
+      },
+      MuiListItemText: {
+        secondary: {
+          fontWeight: 500,
+          fontSize: 'large',
+        },
+        primary: {
+          color: '#18A4E0',
+          fontWeight: 'bolder',
+          fontSize: 'x-large',
+        },
+      },
+      MuiFab: {
+        primary: {
+          backgroundColor: '#18A4E0',
+          '&:hover': {
+            backgroundColor: '#18A4E0',
+          },
+        },
+      },
+      MuiBottomNavigationAction: {
+        root: {
+          color: '#2F3D4A',
         },
       },
       MuiCssBaseline: {
