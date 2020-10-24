@@ -12,12 +12,6 @@ export default [
     to: '/home',
   },
   {
-    path: '/',
-    Component: HomePage,
-    exact: true,
-    isSecure: false,
-  },
-  {
     path: '/home',
     Component: HomePage,
     exact: false,
