@@ -122,7 +122,7 @@ function DashboardLiveVideos() {
         </Typography>
       </Grid>
 
-      <Grid container spacing={1} style={{ margin: '10px' }}>
+      <Grid container={true} spacing={1} style={{ margin: '10px' }}>
         <ReturnVideoGrid />
         <ReturnVideoGrid />
         <ReturnVideoGrid />
@@ -149,7 +149,7 @@ function UpComingVideos() {
         </Typography>
       </Grid>
 
-      <Grid container spacing={1} style={{ margin: '10px' }}>
+      <Grid container={true} spacing={1} style={{ margin: '10px' }}>
         <ReturnVideoGrid />
         <ReturnVideoGrid />
         <ReturnVideoGrid />
@@ -176,7 +176,7 @@ function PopularCourses() {
         </Typography>
       </Grid>
 
-      <Grid container spacing={1} style={{ margin: '10px' }}>
+      <Grid container={true} spacing={1} style={{ margin: '10px' }}>
         <ReturnVideoGrid />
         <ReturnVideoGrid />
         <ReturnVideoGrid />
