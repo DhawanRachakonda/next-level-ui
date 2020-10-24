@@ -37,7 +37,7 @@ function RouteWithSubRoutes(route: any) {
   if (route.exact) {
     return (
       <Route
-        exact={true}
+        exact
         path={route.path}
         render={(props: any) => (
           // pass the sub-routes down to keep nesting
