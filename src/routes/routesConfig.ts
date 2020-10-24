@@ -1,10 +1,9 @@
 import paths from './paths';
-import { lazy } from 'react';
 
-const HomePage = lazy(() => import('screens/home'));
-const LoginPage = lazy(() => import('screens/login'));
-const SignUpPage = lazy(() => import('screens/signup'));
-const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
+import HomePage from 'screens/home';
+import LoginPage from 'screens/login';
+import SignUpPage from 'screens/signup';
+import PageNotFound from 'screens/404/PageNotFound';
 
 export default [
   {

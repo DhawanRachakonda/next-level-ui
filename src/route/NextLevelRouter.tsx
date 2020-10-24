@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import {
   HashRouter as Router,
   Switch,
@@ -13,19 +13,16 @@ import {
 import routes from 'routes/routesConfig';
 
 // components
-import ComponentLoader from 'containers/loaders/ComponentLoader';
 import NextLevelAppLayout from 'screens/NextLevelAppLayout';
 
 function NextLevelRoutes() {
   return (
     <Router>
-      <Suspense fallback={<ComponentLoader />}>
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
-      </Suspense>
+      <Switch>
+        {routes.map((route, i) => (
+          <RouteWithSubRoutes key={i} {...route} />
+        ))}
+      </Switch>
     </Router>
   );
 }
