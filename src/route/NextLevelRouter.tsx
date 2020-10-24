@@ -53,9 +53,10 @@ function RouteWithSubRoutes(route: any) {
       path={route.path}
       render={(props: any) => (
         // pass the sub-routes down to keep nesting
-        <NextLevelAppLayout {...props} {...route}>
+        <React.Fragment>
+          <h1>Comming</h1>
           <route.Component {...props} routes={route.routes} />
-        </NextLevelAppLayout>
+        </React.Fragment>
       )}
     />
   );
