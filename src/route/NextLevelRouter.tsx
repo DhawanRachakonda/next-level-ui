@@ -23,7 +23,7 @@ function NextLevelRoutes() {
   return (
     <Suspense fallback={<ComponentLoader />}>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact={true} from="/" to="/home" />
         <Route
           path="/home"
           render={() => (
