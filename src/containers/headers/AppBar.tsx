@@ -10,6 +10,7 @@ import AppUtil from 'util/appUtil';
 import { useHistory } from 'react-router-dom';
 import paths from 'routes/paths';
 import DivTypography from 'containers/typography/DivTypography';
+import MenuButton from 'containers/button/MenuButton';
 
 const NextLevelHeader = withStyles((theme) => ({
   root: {
@@ -21,6 +22,11 @@ const NextLevelHeader = withStyles((theme) => ({
 
 interface INextLevelAppBarProps {
   children?: React.ReactNode;
+  displayDrawer?: boolean;
+  headerProps?: {
+    [key: string]: any;
+  };
+  handleDrawerOpen?: ReturnType<typeof Function>;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -29,7 +35,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-function NextLevelAppBar({ children }: INextLevelAppBarProps) {
+function NextLevelAppBar({
+  children,
+  displayDrawer = false,
+  headerProps = {},
+  handleDrawerOpen = () => ({}),
+}: INextLevelAppBarProps) {
   const classes = useStyles();
 
   const history = useHistory();
@@ -37,8 +48,11 @@ function NextLevelAppBar({ children }: INextLevelAppBarProps) {
     history.push(paths.home.path);
   };
   return (
-    <NextLevelHeader>
-      <Toolbar classes={{ gutters: classes.appBarToolBarGutters }}>
+    <NextLevelHeader {...headerProps}>
+      <Toolbar
+        classes={{ gutters: classes.appBarToolBarGutters }}
+        id="back-to-top-anchor">
+        {displayDrawer && <MenuButton handleDrawerOpen={handleDrawerOpen} />}
         <DivTypography onClick={goToHome}>
           <img
             className="brand-img"
