@@ -21,13 +21,13 @@ const testData = [
 ];
 
 test('renders related courses component', () => {
-  const { getByTestId } = render(<RelatedCourses relatedCourses={testData} />);
+  const { getByTestId } = render(<RelatedCourses courses={testData} />);
   const relatedCourseComponent = getByTestId('related-courses');
   expect(relatedCourseComponent).toBeInTheDocument();
 });
 
 test('render course and author in related courses component', () => {
-  const { getByText } = render(<RelatedCourses relatedCourses={testData} />);
+  const { getByText } = render(<RelatedCourses courses={testData} />);
   const firstCourseName = getByText(testData[0].courseName);
   const firstCourseAuthor = getByText(testData[0].author);
   expect(firstCourseName).toBeInTheDocument();

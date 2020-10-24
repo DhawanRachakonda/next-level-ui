@@ -11,4 +11,8 @@ export default {
     link: '/#home',
     path: '/home',
   },
+  topic: {
+    link: '/#topic',
+    path: '/topic',
+  },
 };
