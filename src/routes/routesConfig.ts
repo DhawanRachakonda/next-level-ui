@@ -4,7 +4,7 @@ import { lazy } from 'react';
 const HomePage = lazy(() => import('screens/home'));
 const LoginPage = lazy(() => import('screens/login'));
 const SignUpPage = lazy(() => import('screens/signup'));
-const DashBoardPage = lazy(() => import('screens/dashboard'));
+const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 
 export default [
@@ -30,8 +30,8 @@ export default [
     displayMenu: false,
   },
   {
-    path: paths.dashboard.path,
-    Component: DashBoardPage,
+    path: paths.liveclasses.path,
+    Component: LiveClassesPage,
     exact: true,
     isSecure: true,
     displayMenu: true,
