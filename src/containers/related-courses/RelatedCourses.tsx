@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 // local imports
+import DivTypography from 'containers/typography/DivTypography';
 import CourseCard from 'containers/cards/CourseCard';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -14,6 +15,9 @@ const useStyles = makeStyles((theme: Theme) =>
         '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
       borderRadius: '3em',
       padding: theme.spacing(4),
+      '& > .MuiPaper-root': {
+        marginTop: theme.spacing(3),
+      },
     },
   }),
 );
@@ -39,6 +43,9 @@ function RelatedCourses({ courses }: RelatedCoursesProps) {
       justify="space-evenly"
       alignItems="center"
       data-testid="related-courses">
+      <Grid item={true} sm={12}>
+        <DivTypography variant="h5">Related Courses</DivTypography>
+      </Grid>
       {courses.map((course) => (
         <CourseCard key={course.courseName} course={course} />
       ))}
