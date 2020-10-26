@@ -16,10 +16,16 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: '12px',
         fontSize: '1.25rem',
         textAlign: 'center',
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '0.8125rem',
+        },
         '& > .MuiTypography-caption': {
           fontSize: '1.5rem',
           fontFamily: 'times new roman',
           color: '#20A2E5',
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '0.875rem',
+          },
         },
       },
     },
@@ -35,26 +41,26 @@ function TopicDuration() {
   return (
     <Card className={styles.cardRoot}>
       <Grid container={true} className={styles.countsGrid}>
-        <Grid item={true} xs={6} md={3}>
+        <Grid item={true} xs={12} md={6} lg={3}>
           Updated{' '}
           <Typography gutterBottom={true} variant="caption">
             10-10-2020
           </Typography>
         </Grid>
-        <Grid item={true} xs={6} md={3}>
+        <Grid item={true} xs={12} md={6} lg={3}>
           Released{' '}
           <Typography gutterBottom={true} variant="caption">
             10-10-2020
           </Typography>
         </Grid>
-        <Grid item={true} xs={6} md={3}>
+        <Grid item={true} xs={12} md={6} lg={3}>
           Duration{' '}
           <Typography gutterBottom={true} variant="caption">
             15h 30m
           </Typography>
           <AccessTimeIcon fontSize="small" className={styles.durationIcon} />
         </Grid>
-        <Grid item={true} xs={6} md={3}>
+        <Grid item={true} xs={12} md={6} lg={3}>
           Views{' '}
           <Typography gutterBottom={true} variant="caption">
             85

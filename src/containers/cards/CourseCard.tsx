@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
       background: theme.palette.background.paper,
       padding: '0px 12px',
       borderRadius: '10px',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8125rem',
+      },
     },
     cardContent: {
       background: theme.palette.background.paper,
@@ -36,6 +39,11 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '1em',
       padding: '0',
       margin: '2em 0 5px',
+      '& > .MuiTypography-h6': {
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '0.85rem',
+        },
+      },
     },
     liveCaption: {
       backgroundColor: 'red',
@@ -45,6 +53,9 @@ const useStyles = makeStyles((theme: Theme) =>
       bottom: theme.spacing(2),
       left: theme.spacing(2),
       padding: '0px 12px',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8125rem',
+      },
     },
     linkArrow: {
       position: 'relative',
