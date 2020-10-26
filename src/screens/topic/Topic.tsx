@@ -3,6 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 // local imports
+import TopicDetails from 'containers/topic-details';
 import RelatedCourses from 'containers/related-courses';
 import TopicsList from 'containers/topics-list';
 import TopicDuration from 'containers/topic-duration';
@@ -66,6 +67,9 @@ function Topic() {
   const styles = useStyles();
   return (
     <Grid container={true} data-testid="topic-container">
+      <Grid item={true} xs={12} className={styles.gridItem}>
+        <TopicDetails />
+      </Grid>
       <Grid item={true} xs={12} className={styles.gridItem}>
         <TopicDuration />
       </Grid>

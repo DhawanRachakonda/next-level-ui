@@ -2,8 +2,10 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+
+// local imports
+import DivTypography from 'containers/typography/DivTypography';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,28 +45,28 @@ function TopicDuration() {
       <Grid container={true} className={styles.countsGrid}>
         <Grid item={true} xs={12} md={6} lg={3}>
           Updated{' '}
-          <Typography gutterBottom={true} variant="caption">
+          <DivTypography gutterBottom={true} variant="caption">
             10-10-2020
-          </Typography>
+          </DivTypography>
         </Grid>
         <Grid item={true} xs={12} md={6} lg={3}>
           Released{' '}
-          <Typography gutterBottom={true} variant="caption">
+          <DivTypography gutterBottom={true} variant="caption">
             10-10-2020
-          </Typography>
+          </DivTypography>
         </Grid>
         <Grid item={true} xs={12} md={6} lg={3}>
           Duration{' '}
-          <Typography gutterBottom={true} variant="caption">
+          <DivTypography gutterBottom={true} variant="caption">
             15h 30m
-          </Typography>
+          </DivTypography>
           <AccessTimeIcon fontSize="small" className={styles.durationIcon} />
         </Grid>
         <Grid item={true} xs={12} md={6} lg={3}>
           Views{' '}
-          <Typography gutterBottom={true} variant="caption">
+          <DivTypography gutterBottom={true} variant="caption">
             85
-          </Typography>
+          </DivTypography>
         </Grid>
       </Grid>
     </Card>
