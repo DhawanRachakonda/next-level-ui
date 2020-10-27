@@ -124,7 +124,7 @@ function TopicDetails() {
             </CardActionArea>
           </Card>
           <DivTypography className={styles.ratingSection}>
-            <DivTypography variant="h6">Rating</DivTypography>
+            <DivTypography variant="subtitle1">Rating</DivTypography>
             <DivTypography variant="caption">
               <StarIcon />
               <StarIcon />

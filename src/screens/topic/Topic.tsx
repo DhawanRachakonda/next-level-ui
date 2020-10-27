@@ -47,20 +47,15 @@ const relatedCourseData = [
 ];
 
 const topicsData = [
-  { heading: 'chapter 1', duration: '03:10:00' },
-  { heading: 'chapter 2', duration: '03:30:00' },
-  { heading: 'chapter 3', duration: '03:10:00' },
-  { heading: 'chapter 4', duration: '03:30:00' },
-  { heading: 'chapter 5', duration: '03:10:00' },
-  { heading: 'chapter 6', duration: '03:30:00' },
-  { heading: 'chapter 7', duration: '03:10:00' },
-  { heading: 'chapter 8', duration: '03:30:00' },
-  { heading: 'chapter 9', duration: '03:10:00' },
-  { heading: 'chapter 10', duration: '03:30:00' },
-  { heading: 'chapter 11', duration: '03:10:00' },
-  { heading: 'chapter 12', duration: '03:30:00' },
-  { heading: 'chapter 13', duration: '03:10:00' },
-  { heading: 'chapter 14', duration: '03:30:00' },
+  { heading: 'chapter 1', duration: '03:10' },
+  { heading: 'chapter 2', duration: '03:30' },
+  { heading: 'chapter 3', duration: '03:10' },
+  { heading: 'chapter 4', duration: '03:30' },
+  { heading: 'chapter 5', duration: '03:10' },
+  { heading: 'chapter 6', duration: '03:30' },
+  { heading: 'chapter 7', duration: '03:10' },
+  { heading: 'chapter 8', duration: '03:30' },
+  { heading: 'chapter 9', duration: '03:10' },
 ];
 
 function Topic() {
