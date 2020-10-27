@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '2em',
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
+      boxShadow: '0px 2px 5px #b3c1cd',
     },
     cardMedia: {
       minHeight: theme.spacing(35),
@@ -61,9 +62,10 @@ const useStyles = makeStyles((theme: Theme) =>
       right: theme.spacing(1),
     },
     ratingSection: {
-      display: 'inline-flex',
+      display: 'flex',
       '& > .MuiTypography-caption': {
-        marginLeft: '8em',
+        flex: '1',
+        textAlign: 'right',
       },
       '& > .MuiTypography-body2': {
         marginTop: '3px',
@@ -87,6 +89,10 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(12),
       height: theme.spacing(12),
       margin: theme.spacing(3),
+      boxShadow: '1px 1px 5px 0px #b3c1cd',
+    },
+    startButton: {
+      minWidth: '125px',
     },
   }),
 );
@@ -103,7 +109,7 @@ function TopicDetails() {
   return (
     <Card className={styles.cardRoot}>
       <Grid container={true}>
-        <Grid item={true} lg={5} className={styles.topicMedia}>
+        <Grid item={true} sm={12} lg={5} className={styles.topicMedia}>
           <Card className={styles.topicCard}>
             <CardActionArea>
               <CardMedia
@@ -135,7 +141,7 @@ function TopicDetails() {
             <DivTypography variant="body2">(25)</DivTypography>
           </DivTypography>
         </Grid>
-        <Grid item={true} lg={7} className={styles.detailGrid}>
+        <Grid item={true} sm={12} lg={7} className={styles.detailGrid}>
           <Grid container={true} direction="row" justify="space-between">
             <Grid item={true} sm={8}>
               <DivTypography gutterBottom={true} variant="h5">
@@ -171,7 +177,10 @@ function TopicDetails() {
               </DivTypography>
             </Grid>
             <Grid item={true} sm={4}>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                className={styles.startButton}>
                 Start
               </Button>
             </Grid>

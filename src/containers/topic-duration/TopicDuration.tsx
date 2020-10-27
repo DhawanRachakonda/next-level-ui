@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardRoot: {
       backgroundColor: theme.palette.background.paper,
       borderRadius: '2em',
+      boxShadow: '0px 2px 5px #b3c1cd',
     },
     countsGrid: {
       '& > .MuiGrid-item': {
