@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function CourseCard({ course }: any) {
   const styles = useStyles();
   return (
-    <Card className={styles.cardRoot} key={course.courseName}>
+    <Card className={styles.cardRoot}>
       <CardActionArea>
         <CardMedia
           className={styles.cardMedia}

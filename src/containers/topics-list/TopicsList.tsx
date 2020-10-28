@@ -15,6 +15,7 @@ import AccordionSummary from 'containers/accordions/AccordionSummary';
 import AccordionDetails from 'containers/accordions/AccordionDetails';
 import DivTypography from 'containers/typography/DivTypography';
 import BorderLinearProgress from 'containers/progress-bars/LinearProgressBar';
+import QuizCard from 'containers/cards/QuizCard';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -207,6 +208,7 @@ function TopicsList({ topicList }: ListProps) {
           </List>
         </AccordionDetails>
       </Accordion>
+      <QuizCard />
     </>
   );
 }
