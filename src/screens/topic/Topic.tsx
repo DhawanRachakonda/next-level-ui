@@ -17,10 +17,17 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     gridItem: {
       padding: theme.spacing(4),
+      [theme.breakpoints.down('sm')]: {
+        padding: theme.spacing(1),
+      },
     },
     breadCrumbs: {
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
+      [theme.breakpoints.down('sm')]: {
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+      },
     },
     countsGrid: {
       '& > .MuiGrid-item': {

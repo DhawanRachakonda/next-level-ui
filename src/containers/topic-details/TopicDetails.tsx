@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     topicMedia: {
       padding: '16px 32px',
+      [theme.breakpoints.down('sm')]: {
+        padding: '0',
+      },
     },
     topicCard: {
       boxShadow: 'none',
@@ -109,7 +112,7 @@ function TopicDetails() {
   return (
     <Card className={styles.cardRoot}>
       <Grid container={true}>
-        <Grid item={true} sm={12} lg={5} className={styles.topicMedia}>
+        <Grid item={true} xs={12} lg={5} className={styles.topicMedia}>
           <Card className={styles.topicCard}>
             <CardActionArea>
               <CardMedia
@@ -141,7 +144,7 @@ function TopicDetails() {
             <DivTypography variant="body2">(25)</DivTypography>
           </DivTypography>
         </Grid>
-        <Grid item={true} sm={12} lg={7} className={styles.detailGrid}>
+        <Grid item={true} xs={12} lg={7} className={styles.detailGrid}>
           <Grid container={true} direction="row" justify="space-between">
             <Grid item={true} sm={8}>
               <DivTypography gutterBottom={true} variant="h5">
