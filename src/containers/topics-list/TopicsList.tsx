@@ -140,7 +140,7 @@ function TopicsList({ topicList }: ListProps) {
                 />
                 <ListItemText
                   primaryTypographyProps={{ className: styles.listItemStatus }}
-                  primary={topicItem.heading}
+                  primary={'completed'}
                 />
                 <ListItemText
                   primaryTypographyProps={{

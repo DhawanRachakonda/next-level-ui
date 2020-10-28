@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -8,6 +9,7 @@ import RelatedCourses from 'containers/related-courses';
 import TopicsList from 'containers/topics-list';
 import TopicDuration from 'containers/topic-duration';
 import Breadcrumbs from 'containers/bread-crumbs';
+import RelatedCoursesCarousel from 'containers/carousel/RelatedCourses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -72,6 +74,10 @@ const topicsData = [
 
 function Topic() {
   const styles = useStyles();
+
+  const theme = useTheme();
+  const matchesSmallScreen = useMediaQuery(theme.breakpoints.only('xs'));
+
   return (
     <Grid container={true} data-testid="topic-container">
       <Grid item={true} xs={12} className={styles.breadCrumbs}>
@@ -88,12 +94,19 @@ function Topic() {
       <Grid item={true} xs={12} className={styles.gridItem}>
         <TopicDuration />
       </Grid>
-      <Grid item={true} xs={12} md={4} className={styles.gridItem}>
-        <RelatedCourses courses={relatedCourseData} />
-      </Grid>
+      {!matchesSmallScreen && (
+        <Grid item={true} xs={12} md={4} className={styles.gridItem}>
+          <RelatedCourses courses={relatedCourseData} />
+        </Grid>
+      )}
       <Grid item={true} xs={12} md={8} className={styles.gridItem}>
         <TopicsList topicList={topicsData} />
       </Grid>
+      {matchesSmallScreen && (
+        <Grid item={true} xs={12} md={4} className={styles.gridItem}>
+          <RelatedCoursesCarousel />
+        </Grid>
+      )}
     </Grid>
   );
 }

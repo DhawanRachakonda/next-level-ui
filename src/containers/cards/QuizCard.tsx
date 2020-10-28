@@ -1,6 +1,9 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import TimerIcon from '@material-ui/icons/Timer';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
@@ -29,6 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
         fontWeight: 'normal',
       },
     },
+    button: {
+      margin: '15px 0',
+      fontWeight: 'normal',
+      borderRadius: '2em',
+    },
   }),
 );
 
@@ -45,6 +53,14 @@ function QuizCard() {
           scelraea eu. Lectus nulla at volutant diam ut. Purus viverra accumeus
           in insis nisi scelraea eu.
         </DivTypography>
+        <Button
+          variant="contained"
+          color="primary"
+          className={styles.button}
+          startIcon={<TimerIcon />}
+          endIcon={<ArrowRightAltIcon />}>
+          Take the quiz
+        </Button>
       </CardContent>
     </Card>
   );
