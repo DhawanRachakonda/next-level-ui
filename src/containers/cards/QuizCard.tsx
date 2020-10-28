@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme: Theme) =>
           fontSize: '0.85rem',
         },
       },
+      '& > .MuiTypography-caption': {
+        fontWeight: 'normal',
+      },
     },
   }),
 );

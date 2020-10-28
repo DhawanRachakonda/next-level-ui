@@ -23,10 +23,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     listItem: {
-      padding: '0',
-      margin: '5px 0',
+      padding: '10px 0',
       '& .MuiSvgIcon-root': {
         marginRight: '5px',
+      },
+      '&:nth-child(odd)': {
+        backgroundColor: '#fbfeff',
       },
     },
     listItemText: {
