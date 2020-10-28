@@ -70,7 +70,7 @@ function Topic() {
       <Grid item={true} xs={12} className={styles.breadCrumbs}>
         <Breadcrumbs
           navLinks={[
-            { link: '/#home', label: 'Home' },
+            { link: '/home', label: 'Home' },
             { link: '', label: 'Topic' },
           ]}
         />
