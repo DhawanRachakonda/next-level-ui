@@ -7,6 +7,7 @@ import TopicDetails from 'containers/topic-details';
 import RelatedCourses from 'containers/related-courses';
 import TopicsList from 'containers/topics-list';
 import TopicDuration from 'containers/topic-duration';
+import Breadcrumbs from 'containers/bread-crumbs';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,6 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     gridItem: {
       padding: theme.spacing(4),
+    },
+    breadCrumbs: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
     },
     countsGrid: {
       '& > .MuiGrid-item': {
@@ -62,6 +67,14 @@ function Topic() {
   const styles = useStyles();
   return (
     <Grid container={true} data-testid="topic-container">
+      <Grid item={true} xs={12} className={styles.breadCrumbs}>
+        <Breadcrumbs
+          navLinks={[
+            { link: '/#home', label: 'Home' },
+            { link: '', label: 'Topic' },
+          ]}
+        />
+      </Grid>
       <Grid item={true} xs={12} className={styles.gridItem}>
         <TopicDetails />
       </Grid>
