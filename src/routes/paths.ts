@@ -7,6 +7,10 @@ export default {
     link: '/#login',
     path: '/login',
   },
+  agora: {
+    link: '/#agora-page',
+    path: '/agora-page',
+  },
   home: {
     link: '/#home',
     path: '/home',

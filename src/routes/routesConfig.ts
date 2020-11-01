@@ -4,6 +4,7 @@ import paths from './paths';
 const HomePage = lazy(() => import('screens/home'));
 const TopicPage = lazy(() => import('screens/topic'));
 const LoginPage = lazy(() => import('screens/login'));
+const AgoraPage = lazy(() => import('screens/agora-page'));
 const SignUpPage = lazy(() => import('screens/signup'));
 const DashboardPage = lazy(() => import('screens/dashboard'));
 const LiveClassesPage = lazy(() => import('screens/live-classes'));
@@ -27,6 +28,13 @@ export default [
   {
     path: paths.login.path,
     Component: LoginPage,
+    exact: true,
+    isSecure: false,
+    displayMenu: false,
+  },
+  {
+    path: paths.agora.path,
+    Component: AgoraPage,
     exact: true,
     isSecure: false,
     displayMenu: false,
