@@ -1,5 +1,4 @@
 import React from 'react';
-import { useMediaQuery, useTheme } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -36,9 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function Dashboard() {
   const styles = useStyles();
-
-  const theme = useTheme();
-  const matchesSmallScreen = useMediaQuery(theme.breakpoints.only('xs'));
 
   return (
     <Grid container={true} data-testid="dashboard-container">

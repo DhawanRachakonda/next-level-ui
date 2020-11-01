@@ -11,6 +11,9 @@ class AppUtil {
   static getRelatedCourseImageURL() {
     return `${process.env.PUBLIC_URL}/assets/images/medical-abortion-2x_dw.png`;
   }
+  static getUserImageURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/Ellipse_131.png`;
+  }
 }
 
 export default AppUtil;

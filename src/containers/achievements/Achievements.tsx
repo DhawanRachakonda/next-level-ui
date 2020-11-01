@@ -45,7 +45,7 @@ function Achievements() {
       xs={12}
       data-testid="achievements-container"
       className={styles.gridItemAchievements}>
-      <Grid container>
+      <Grid container={true}>
         <AchievementCard data={cardsData.first} />
         <AchievementCard data={cardsData.second} />
         <AchievementCard data={cardsData.third} />
