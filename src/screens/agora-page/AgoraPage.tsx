@@ -100,12 +100,15 @@ function AgoraApp() {
       rtc.localVideoTrack?.close();
 
       setJoined(false);
+
+      // tslint:disable-next-line: no-unused-expression
       localContainer && (localContainer.textContent = '');
 
       // Traverse all remote users
       rtc.client?.remoteUsers.forEach((user) => {
         // Destroy the dynamically created DIV container
         const playerContainer = document.getElementById(String(user.uid));
+        // tslint:disable-next-line: no-unused-expression
         playerContainer && playerContainer.remove();
       });
 
