@@ -24,6 +24,7 @@ function AgoraCallWindow(data: any) {
   const [displayMode, setDisplayMode] = useState<string>('pip');
   const [readyState, setReadyState] = useState(false);
   const [change, setChange] = useState(false);
+  const [streamAdded, setStreamAdded] = useState(false);
   const [_toolbarToggle, setToolBarToggel] = useState<any>(undefined);
   // const [client, setClient] = useState<AgoraRTC.Client | null>(null);
   // const [agoraVal.localStream, setagoraVal.localStream] = useState<any>(undefined);
@@ -110,29 +111,29 @@ function AgoraCallWindow(data: any) {
     // screen share mode (tbd)
     // else if (displayMode === 'share') {
     // }
-  }, [displayMode, streamListObject]); // componenetDidUpdate
+  }, [displayMode, streamListObject, streamAdded]); // componenetDidUpdate
 
-  useEffect(() => {
-    const canvas = document.querySelector('#ag-canvas');
-    const btnGroup = document.querySelector('.ag-btn-group');
-    if (canvas) {
-      canvas.addEventListener('mousemove', () => {
-        if (_toolbarToggle) {
-          clearTimeout(_toolbarToggle);
-        }
-        if (btnGroup) {
-          btnGroup.classList.add('active');
-        }
-        setToolBarToggel(
-          setTimeout(() => {
-            if (btnGroup) {
-              btnGroup.classList.remove('active');
-            }
-          }, 2000),
-        );
-      });
-    }
-  }, [_toolbarToggle, change]);
+  // useEffect(() => {
+  //   const canvas = document.querySelector('#ag-canvas');
+  //   const btnGroup = document.querySelector('.ag-btn-group');
+  //   if (canvas) {
+  //     canvas.addEventListener('mousemove', () => {
+  //       if (_toolbarToggle) {
+  //         clearTimeout(_toolbarToggle);
+  //       }
+  //       if (btnGroup) {
+  //         btnGroup.classList.add('active');
+  //       }
+  //       setToolBarToggel(
+  //         setTimeout(() => {
+  //           if (btnGroup) {
+  //             btnGroup.classList.remove('active');
+  //           }
+  //         }, 2000),
+  //       );
+  //     });
+  //   }
+  // }, [_toolbarToggle, change]);
 
   useEffect(() => {
     agoraVal.client = AgoraRTC.createClient(config);
@@ -238,14 +239,21 @@ function AgoraCallWindow(data: any) {
       return;
     }
     if (push) {
-      setStreamListObject({
-        streamList: streamListObject.streamList.concat([stream]),
-      });
+      streamListObject.streamList = streamListObject.streamList.concat([
+        stream,
+      ]);
+      // setStreamListObject({
+      //   streamList: streamListObject.streamList.concat([stream]),
+      // });
     } else {
-      setStreamListObject({
-        streamList: [stream].concat(streamListObject.streamList),
-      });
+      streamListObject.streamList = [stream].concat(
+        streamListObject.streamList,
+      );
+      // setStreamListObject({
+      //   streamList: [stream].concat(streamListObject.streamList),
+      // });
     }
+    setStreamAdded(!streamAdded);
   };
 
   const handleCamera = (e: any) => {
