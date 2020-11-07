@@ -18,7 +18,9 @@ function AgoraCallWindow(data: any) {
   };
   const history = useHistory();
   const props: AgoraCallObject = data?.history?.location?.state || sampleObj;
-  const [streamList, setStreamList] = useState<AgoraRTC.Stream[]>([]);
+  const [streamListObject, setStreamListObject] = useState<{
+    streamList: AgoraRTC.Stream[];
+  }>({ streamList: [] });
   const [displayMode, setDisplayMode] = useState<string>('pip');
   const [readyState, setReadyState] = useState(false);
   const [change, setChange] = useState(false);
@@ -38,16 +40,16 @@ function AgoraCallWindow(data: any) {
   // let agoraVal.localStream: any;
 
   const removeStream = (uid: string) => {
-    streamList.map((item: any, index) => {
+    streamListObject.streamList.forEach((item: any, index) => {
       if (item.getId && item.getId() === uid) {
         item.close();
         const element = document.querySelector('#ag-item-' + uid);
         if (element && element.parentNode) {
           element.parentNode.removeChild(element);
         }
-        const tempList = [...streamList];
+        const tempList = [...streamListObject.streamList];
         tempList.splice(index, 1);
-        setStreamList(tempList);
+        setStreamListObject({ streamList: tempList });
       }
     });
   };
@@ -56,12 +58,12 @@ function AgoraCallWindow(data: any) {
     const canvas = document.querySelector('#ag-canvas');
     // pip mode (can only use when less than 4 people in channel)
     if (displayMode === 'pip') {
-      const no = streamList.length;
+      const no = streamListObject.streamList.length;
       if (no > 4) {
         setDisplayMode('tile');
         return;
       }
-      streamList.map((item, index) => {
+      streamListObject.streamList.forEach((item, index) => {
         const id = item.getId();
         let dom = document.querySelector('#ag-item-' + id);
         if (!dom) {
@@ -88,8 +90,8 @@ function AgoraCallWindow(data: any) {
     }
     // tile mode
     else if (displayMode === 'tile') {
-      // const no = streamList.length;
-      streamList.map((item, index) => {
+      // const no = streamListObject.streamList.length;
+      streamListObject.streamList.forEach((item, index) => {
         const id = item.getId();
         let dom = document.querySelector('#ag-item-' + id);
         if (!dom) {
@@ -108,7 +110,7 @@ function AgoraCallWindow(data: any) {
     // screen share mode (tbd)
     // else if (displayMode === 'share') {
     // }
-  }, [displayMode, streamList]); // componenetDidUpdate
+  }, [displayMode, streamListObject]); // componenetDidUpdate
 
   useEffect(() => {
     const canvas = document.querySelector('#ag-canvas');
@@ -134,9 +136,6 @@ function AgoraCallWindow(data: any) {
 
   useEffect(() => {
     agoraVal.client = AgoraRTC.createClient(config);
-    // const shareClient = {};
-    // const shareStream = {};
-    // setClient(agoraVal.client);
     agoraVal.client?.init(appId, () => {
       console.log('AgoraRTC client initialized');
       agoraVal.client?.on('stream-added', (evt: any) => {
@@ -183,10 +182,12 @@ function AgoraCallWindow(data: any) {
     });
     setChange(true);
     return () => {
-      agoraVal.client?.unpublish(agoraVal.localStream);
-      agoraVal.localStream?.close();
+      agoraVal?.client?.unpublish(agoraVal.localStream);
+      if (agoraVal?.localStream?.close) {
+        agoraVal?.localStream?.close();
+      }
 
-      agoraVal.client?.leave(
+      agoraVal?.client?.leave(
         () => {
           console.log('Client succeed to leave.');
         },
@@ -230,16 +231,20 @@ function AgoraCallWindow(data: any) {
   };
 
   const addStream = (stream: AgoraRTC.Stream, push = false) => {
-    const repeatition = streamList.some((item: any) => {
+    const repeatition = streamListObject.streamList.some((item: any) => {
       return item.getId() === stream.getId();
     });
     if (repeatition) {
       return;
     }
     if (push) {
-      setStreamList(streamList.concat([stream]));
+      setStreamListObject({
+        streamList: streamListObject.streamList.concat([stream]),
+      });
     } else {
-      setStreamList([stream].concat(streamList));
+      setStreamListObject({
+        streamList: [stream].concat(streamListObject.streamList),
+      });
     }
   };
 
@@ -314,30 +319,7 @@ function AgoraCallWindow(data: any) {
       // redirect to index
     }
   };
-  // const switchDisplayBtn = (
-  //   <span
-  //     onClick={this.switchDisplay}
-  //     className={
-  //       streamList.length > 4
-  //         ? 'ag-btn displayModeBtn disabled'
-  //         : 'ag-btn displayModeBtn'
-  //     }
-  //     title="Switch Display Mode">
-  //     <i className="ag-icon ag-icon-switch-display"/>
-  //   </span>
-  // );
-  // const hideRemoteBtn: JSX.Element = (
-  //   <span
-  //     className={
-  //       streamList.length > 4
-  //         ? 'ag-btn disableRemoteBtn disabled'
-  //         : 'ag-btn disableRemoteBtn'
-  //     }
-  //     onClick={(e) => hideRemote(e)}
-  //     title="Hide Remote Stream">
-  //     <i className="ag-icon ag-icon-remove-pip" />
-  //   </span>
-  // );
+
   const exitBtn: JSX.Element = (
     <button
       onClick={(e) => handleExit(e)}
