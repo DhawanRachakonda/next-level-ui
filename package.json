@@ -31,6 +31,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
+  "resolutions": {
+    "@formatjs/ecma402-abstract": "1.2.6"
+  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@formatjs/ts-transformer": "^2.11.3",
