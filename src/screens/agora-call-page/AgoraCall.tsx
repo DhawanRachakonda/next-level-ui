@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react-hooks/exhaustive-deps */
 import AgoraRTC from 'agora-rtc-sdk';
 import React, { useState, useEffect } from 'react';
 import { options } from '../agora-page/environment';
@@ -20,7 +22,7 @@ function AgoraCallWindow(data: any) {
   const [displayMode, setDisplayMode] = useState<string>('pip');
   const [readyState, setReadyState] = useState(false);
   const [change, setChange] = useState(false);
-  let _toolbarToggle: any;
+  const [_toolbarToggle, setToolBarToggel] = useState<any>(undefined);
   const config: AgoraRTC.ClientConfig = {
     mode:
       props.baseMode === 'rtc' || props.baseMode === 'live'
@@ -29,17 +31,18 @@ function AgoraCallWindow(data: any) {
     codec: 'h264',
   };
   const appId = options.appId;
+  // const [client, setClient] = useState<>(null)
   let client: AgoraRTC.Client | null = null;
-  const [localStream, setLocalStream] = useState<any>({});
+  let localStream: any;
 
   const removeStream = (uid: string) => {
     streamList.map((item: any, index) => {
       if (item.getId && item.getId() === uid) {
         item.close();
         const element = document.querySelector('#ag-item-' + uid);
-        !!element &&
-          element.parentNode &&
+        if (element && element.parentNode) {
           element.parentNode.removeChild(element);
+        }
         const tempList = [...streamList];
         tempList.splice(index, 1);
         setStreamList(tempList);
@@ -63,7 +66,9 @@ function AgoraCallWindow(data: any) {
           dom = document.createElement('section');
           dom.setAttribute('id', 'ag-item-' + id);
           dom.setAttribute('class', 'ag-item');
-          canvas && canvas.appendChild(dom);
+          if (canvas) {
+            canvas.appendChild(dom);
+          }
           item.play('ag-item-' + id);
         }
         if (index === no - 1) {
@@ -90,7 +95,9 @@ function AgoraCallWindow(data: any) {
           dom = document.createElement('section');
           dom.setAttribute('id', 'ag-item-' + id);
           dom.setAttribute('class', 'ag-item');
-          canvas && canvas.appendChild(dom);
+          if (canvas) {
+            canvas.appendChild(dom);
+          }
           item.play('ag-item-' + id);
         }
         // dom.setAttribute('style', `grid-area: ${tile_canvas[no][index]});
@@ -98,24 +105,31 @@ function AgoraCallWindow(data: any) {
       });
     }
     // screen share mode (tbd)
-    else if (displayMode === 'share') {
-    }
+    // else if (displayMode === 'share') {
+    // }
   }, [displayMode, streamList]); // componenetDidUpdate
 
   useEffect(() => {
     const canvas = document.querySelector('#ag-canvas');
     const btnGroup = document.querySelector('.ag-btn-group');
-    canvas &&
+    if (canvas) {
       canvas.addEventListener('mousemove', () => {
         if (_toolbarToggle) {
           clearTimeout(_toolbarToggle);
         }
-        btnGroup && btnGroup.classList.add('active');
-        _toolbarToggle = setTimeout(function () {
-          btnGroup && btnGroup.classList.remove('active');
-        }, 2000);
+        if (btnGroup) {
+          btnGroup.classList.add('active');
+        }
+        setToolBarToggel(
+          setTimeout(() => {
+            if (btnGroup) {
+              btnGroup.classList.remove('active');
+            }
+          }, 2000),
+        );
       });
-  }, [change]);
+    }
+  }, [_toolbarToggle, change]);
 
   useEffect(() => {
     client = AgoraRTC.createClient(config);
@@ -124,69 +138,60 @@ function AgoraCallWindow(data: any) {
 
     client.init(appId, () => {
       console.log('AgoraRTC client initialized');
-      client &&
+      if (client) {
         client.on('stream-added', (evt: any) => {
           const stream = evt.stream;
-          client && client.subscribe(stream);
+          client?.subscribe(stream);
         });
+      }
 
-      client &&
-        client.on('peer-leave', function (evt) {
-          removeStream(evt.uid);
-        });
+      client?.on('peer-leave', (evt) => {
+        removeStream(evt.uid);
+      });
 
-      client &&
-        client.on('stream-subscribed', function (evt) {
-          const stream = evt.stream;
-          addStream(stream);
-        });
+      client?.on('stream-subscribed', (evt) => {
+        const stream = evt.stream;
+        addStream(stream);
+      });
 
-      client &&
-        client.on('stream-removed', function (evt) {
-          const stream = evt.stream;
-          removeStream(stream.getId());
-        });
-      client &&
-        client.join(appId, props.channel, props.uid, (uid) => {
-          const _localStream = streamInit(
-            uid,
-            props.attendeeMode,
-            props.videoProfile,
-          );
-          _localStream.init(
-            () => {
-              if (props.attendeeMode !== 'audience') {
-                addStream(_localStream, true);
-                client &&
-                  client.publish(_localStream, (err) => {
-                    console.error('Publish local stream error: ' + err);
-                  });
-              }
-              setReadyState(true);
-              setLocalStream(_localStream);
-            },
-            (err: any) => {
-              console.error('getUserMedia failed', err);
-              setReadyState(true);
-            },
-          );
-          setLocalStream(_localStream);
-        });
+      client?.on('stream-removed', (evt) => {
+        const stream = evt.stream;
+        removeStream(stream.getId());
+      });
+      client?.join(appId, props.channel, props.uid, (uid) => {
+        localStream = streamInit(uid, props.attendeeMode, props.videoProfile);
+        localStream.init(
+          () => {
+            if (props.attendeeMode !== 'audience') {
+              addStream(localStream, true);
+              client?.publish(localStream, (err) => {
+                console.error('Publish local stream error: ' + err);
+              });
+            }
+            setReadyState(true);
+            // setLocalStream(localStream);
+          },
+          (err: any) => {
+            console.error('getUserMedia failed', err);
+            setReadyState(true);
+          },
+        );
+        // setLocalStream(localStream);
+      });
     });
     setChange(true);
     return () => {
-      client && client.unpublish(localStream);
-      localStream && localStream.close && localStream.close();
-      client &&
-        client.leave &&
-        client.leave(
-          () => {
-            console.log('Client succeed to leave.');
-          },
-          () => {
-            console.log('Client failed to leave.');
-          },
-        );
+      client?.unpublish(localStream);
+      localStream.close();
+
+      client?.leave(
+        () => {
+          console.log('Client succeed to leave.');
+        },
+        () => {
+          console.log('Client failed to leave.');
+        },
+      );
     };
   }, []); // conmponentDidMount
 
@@ -194,6 +199,7 @@ function AgoraCallWindow(data: any) {
     uid: any,
     attendeeMode: string,
     videoProfile: any,
+    // tslint:disable-next-line: no-shadowed-variable
     config?: any,
   ) => {
     const defaultConfig = {
@@ -237,14 +243,14 @@ function AgoraCallWindow(data: any) {
 
   const handleCamera = (e: any) => {
     e.currentTarget.classList.toggle('off');
-    localStream.isVideoOn()
+    localStream?.isVideoOn()
       ? localStream.disableVideo()
       : localStream.enableVideo();
   };
 
   const handleMic = (e: any) => {
     e.currentTarget.classList.toggle('off');
-    localStream.isAudioOn()
+    localStream?.isAudioOn()
       ? localStream.disableAudio()
       : localStream.enableAudio();
   };
@@ -288,21 +294,20 @@ function AgoraCallWindow(data: any) {
       return;
     }
     try {
-      client && client.unpublish(localStream);
-      localStream && localStream.close();
-      client &&
-        client.leave(
-          () => {
-            console.log('Client succeed to leave.');
-          },
-          () => {
-            console.log('Client failed to leave.');
-          },
-        );
+      client?.unpublish(localStream);
+      localStream?.close();
+      client?.leave(
+        () => {
+          console.log('Client succeed to leave.');
+        },
+        () => {
+          console.log('Client failed to leave.');
+        },
+      );
     } finally {
       setReadyState(false);
       client = null;
-      setLocalStream({});
+      localStream = {};
       history.push('agora-page');
       // redirect to index
     }
