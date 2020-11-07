@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import AgoraRTC from 'agora-rtc-sdk';
 import React, { useState, useEffect } from 'react';
-import { options } from '../agora-page/environment';
+import { options, agoraVal } from '../agora-page/environment';
 import { AgoraCallObject } from '../agora-page/AgoraPageNew';
 import { merge } from 'lodash';
 import './agoracall.scss';
@@ -23,6 +23,8 @@ function AgoraCallWindow(data: any) {
   const [readyState, setReadyState] = useState(false);
   const [change, setChange] = useState(false);
   const [_toolbarToggle, setToolBarToggel] = useState<any>(undefined);
+  // const [client, setClient] = useState<AgoraRTC.Client | null>(null);
+  // const [agoraVal.localStream, setagoraVal.localStream] = useState<any>(undefined);
   const config: AgoraRTC.ClientConfig = {
     mode:
       props.baseMode === 'rtc' || props.baseMode === 'live'
@@ -32,8 +34,8 @@ function AgoraCallWindow(data: any) {
   };
   const appId = options.appId;
   // const [client, setClient] = useState<>(null)
-  let client: AgoraRTC.Client | null = null;
-  let localStream: any;
+  // let client: AgoraRTC.Client | null = null;
+  // let agoraVal.localStream: any;
 
   const removeStream = (uid: string) => {
     streamList.map((item: any, index) => {
@@ -81,7 +83,6 @@ function AgoraCallWindow(data: any) {
              height:calc(100% - 20px)`,
           );
         }
-
         // item.player.resize && item.player.resize();
       });
     }
@@ -132,59 +133,60 @@ function AgoraCallWindow(data: any) {
   }, [_toolbarToggle, change]);
 
   useEffect(() => {
-    client = AgoraRTC.createClient(config);
+    agoraVal.client = AgoraRTC.createClient(config);
     // const shareClient = {};
     // const shareStream = {};
-
-    client.init(appId, () => {
+    // setClient(agoraVal.client);
+    agoraVal.client?.init(appId, () => {
       console.log('AgoraRTC client initialized');
-      if (client) {
-        client.on('stream-added', (evt: any) => {
-          const stream = evt.stream;
-          client?.subscribe(stream);
-        });
-      }
+      agoraVal.client?.on('stream-added', (evt: any) => {
+        const stream = evt.stream;
+        agoraVal.client?.subscribe(stream);
+      });
 
-      client?.on('peer-leave', (evt) => {
+      agoraVal.client?.on('peer-leave', (evt) => {
         removeStream(evt.uid);
       });
 
-      client?.on('stream-subscribed', (evt) => {
+      agoraVal.client?.on('stream-subscribed', (evt) => {
         const stream = evt.stream;
         addStream(stream);
       });
 
-      client?.on('stream-removed', (evt) => {
+      agoraVal.client?.on('stream-removed', (evt) => {
         const stream = evt.stream;
         removeStream(stream.getId());
       });
-      client?.join(appId, props.channel, props.uid, (uid) => {
-        localStream = streamInit(uid, props.attendeeMode, props.videoProfile);
-        localStream.init(
+      agoraVal.client?.join(appId, props.channel, props.uid, (uid) => {
+        agoraVal.localStream = streamInit(
+          uid,
+          props.attendeeMode,
+          props.videoProfile,
+        );
+        agoraVal.localStream?.init(
           () => {
             if (props.attendeeMode !== 'audience') {
-              addStream(localStream, true);
-              client?.publish(localStream, (err) => {
+              addStream(agoraVal.localStream, true);
+              agoraVal.client?.publish(agoraVal.localStream, (err) => {
                 console.error('Publish local stream error: ' + err);
               });
             }
             setReadyState(true);
-            // setLocalStream(localStream);
+            // setagoraVal.localStream(agoraVal.localStream);
           },
           (err: any) => {
             console.error('getUserMedia failed', err);
             setReadyState(true);
           },
         );
-        // setLocalStream(localStream);
       });
     });
     setChange(true);
     return () => {
-      client?.unpublish(localStream);
-      localStream.close();
+      agoraVal.client?.unpublish(agoraVal.localStream);
+      agoraVal.localStream?.close();
 
-      client?.leave(
+      agoraVal.client?.leave(
         () => {
           console.log('Client succeed to leave.');
         },
@@ -243,16 +245,16 @@ function AgoraCallWindow(data: any) {
 
   const handleCamera = (e: any) => {
     e.currentTarget.classList.toggle('off');
-    localStream?.isVideoOn()
-      ? localStream.disableVideo()
-      : localStream.enableVideo();
+    agoraVal.localStream?.isVideoOn()
+      ? agoraVal.localStream.disableVideo()
+      : agoraVal.localStream.enableVideo();
   };
 
   const handleMic = (e: any) => {
     e.currentTarget.classList.toggle('off');
-    localStream?.isAudioOn()
-      ? localStream.disableAudio()
-      : localStream.enableAudio();
+    agoraVal.localStream?.isAudioOn()
+      ? agoraVal.localStream.disableAudio()
+      : agoraVal.localStream.enableAudio();
   };
 
   const style = {
@@ -294,9 +296,9 @@ function AgoraCallWindow(data: any) {
       return;
     }
     try {
-      client?.unpublish(localStream);
-      localStream?.close();
-      client?.leave(
+      agoraVal.client?.unpublish(agoraVal.localStream);
+      agoraVal.localStream?.close();
+      agoraVal.client?.leave(
         () => {
           console.log('Client succeed to leave.');
         },
@@ -306,8 +308,8 @@ function AgoraCallWindow(data: any) {
       );
     } finally {
       setReadyState(false);
-      client = null;
-      localStream = {};
+      agoraVal.client = null;
+      agoraVal.localStream = {};
       history.push('agora-page');
       // redirect to index
     }

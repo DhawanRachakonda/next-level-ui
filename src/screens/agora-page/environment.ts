@@ -25,3 +25,12 @@ export const options = {
   // Pass a token if your project enables the App Certificate
   token: process.env.REACT_APP_AGORA_APP_TOKEN!,
 };
+interface Agora {
+  client: AgoraRTC.Client | null;
+  localStream: any;
+}
+
+export const agoraVal: Agora = {
+  client: null,
+  localStream: undefined,
+};
