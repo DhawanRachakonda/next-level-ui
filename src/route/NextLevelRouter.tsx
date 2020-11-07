@@ -18,6 +18,7 @@ const SignUpPage = lazy(() => import('screens/signup'));
 const DashboardPage = lazy(() => import('screens/dashboard'));
 const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
+const AgoraPage = lazy(() => import('screens/agora-page'));
 const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
 
 function NextLevelRoutes() {
@@ -70,6 +71,14 @@ function NextLevelRoutes() {
           render={() => (
             <NextLevelAppLayout isSecure={true} displayMenu={true}>
               <LiveClassesPage />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/agora-page"
+          render={() => (
+            <NextLevelAppLayout isSecure={true} displayMenu={true}>
+              <AgoraPage />
             </NextLevelAppLayout>
           )}
         />
