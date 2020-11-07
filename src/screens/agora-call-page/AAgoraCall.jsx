@@ -57,15 +57,15 @@ class AgoraCallWindow extends React.Component {
       streamList: [],
       readyState: false,
     };
-    this.initialize();
+    // this.initialize();
   }
 
-  initialize() {
+  UNSAFE_componentWillMount() {
     // init AgoraRTC local client
     this.client = AgoraRTC.createClient({
       mode:
-        this.props.baseMode === 'rtc' || this.props.baseMode === 'live'
-          ? this.props.baseMode
+        this.props.location.state.baseMode === 'rtc' || this.props.location.state.baseMode === 'live'
+          ? this.props.location.state.baseMode
           : 'rtc',
     });
     this.client.init(options.appId, () => {
@@ -73,8 +73,8 @@ class AgoraCallWindow extends React.Component {
       this.subscribeStreamEvents();
       this.client.join(
         options.appId,
-        this.props.channel,
-        this.props.uid,
+        this.props.location.state.channel,
+        this.props.location.state.uid,
         (uid) => {
           console.log('User ' + uid + ' join channel successfully');
           console.log('At ' + new Date().toLocaleTimeString());
@@ -82,12 +82,12 @@ class AgoraCallWindow extends React.Component {
           // It is not recommended to setState in function addStream
           this.localStream = this.streamInit(
             uid,
-            this.props.attendeeMode,
-            this.props.videoProfile,
+            this.props.location.state.attendeeMode,
+            this.props.location.state.videoProfile,
           );
           this.localStream.init(
             () => {
-              if (this.props.attendeeMode !== 'audience') {
+              if (this.props.location.state.attendeeMode !== 'audience') {
                 this.addStream(this.localStream, true);
                 this.client.publish(this.localStream, (err) => {
                   console.log('Publish local stream error: ' + err);
@@ -380,7 +380,7 @@ class AgoraCallWindow extends React.Component {
       gridTemplateColumns: 'repeat(24, auto)',
     };
     const videoControlBtn =
-      this.props.attendeeMode === 'video' ? (
+      this.props.location.state.attendeeMode === 'video' ? (
         <>
           <button
             onClick={(e) => this.handleCamera(e)}
@@ -394,7 +394,7 @@ class AgoraCallWindow extends React.Component {
       );
 
     const audioControlBtn =
-      this.props.attendeeMode !== 'audience' ? (
+      this.props.location.state.attendeeMode !== 'audience' ? (
         <button
           onClick={(e) => this.handleMic(e)}
           className="ag-btn audioControlBtn"
