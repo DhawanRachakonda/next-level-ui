@@ -3,6 +3,7 @@ import {
   ICameraVideoTrack,
   IMicrophoneAudioTrack,
 } from 'agora-rtc-sdk-ng';
+import AgoraRTC from 'agora-rtc-sdk';
 
 declare type RTCTypes = {
   client: IAgoraRTCClient | null;
