@@ -9,7 +9,7 @@ const SignUpPage = lazy(() => import('screens/signup'));
 const DashboardPage = lazy(() => import('screens/dashboard'));
 const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
-const AgoraCall = lazy(() => import('screens/agora-call-page/AgoraCall'));
+const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
 
 export default [
   {
