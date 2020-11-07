@@ -152,7 +152,7 @@ class AgoraCallWindow extends React.Component {
           dom.setAttribute(
             'style',
             `grid-area: span 3/span 4/${4 + 3 * index}/25;
-                    z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`,
+                    z-index:1;width:200px;height:200px`,
           );
         }
 
