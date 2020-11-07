@@ -183,7 +183,7 @@ class AgoraCallWindow extends React.Component {
 
   componentWillUnmount() {
     this.client && this.client.unpublish(this.localStream);
-    this.localStream && this.localStream.close();
+    this.localStream && this.localStream.close && this.localStream.close();
     this.client &&
       this.client.leave(
         () => {
