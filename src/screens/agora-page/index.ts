@@ -1,3 +1,3 @@
-import AgoraPage from './AgoraPage';
+import AgoraPageNew from './AgoraPageNew';
 
-export default AgoraPage;
+export default AgoraPageNew;

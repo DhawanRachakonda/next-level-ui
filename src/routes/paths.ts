@@ -27,4 +27,8 @@ export default {
     link: '/#topic',
     path: '/topic',
   },
+  agoraCall: {
+    link: '/#agora-call-page',
+    path: '/agora-call-page',
+  },
 };

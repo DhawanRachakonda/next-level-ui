@@ -9,6 +9,7 @@ const SignUpPage = lazy(() => import('screens/signup'));
 const DashboardPage = lazy(() => import('screens/dashboard'));
 const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
+const AgoraCall = lazy(() => import('screens/agora-call-page/AgoraCall'));
 
 export default [
   {
@@ -56,6 +57,13 @@ export default [
   {
     path: paths.liveClasses.path,
     Component: LiveClassesPage,
+    exact: true,
+    isSecure: false,
+    displayMenu: false,
+  },
+  {
+    path: paths.agoraCall.path,
+    Component: AgoraCall,
     exact: true,
     isSecure: true,
     displayMenu: true,
