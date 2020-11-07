@@ -1,6 +1,6 @@
 {
   "name": "next-level-ui",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -64,7 +64,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "set CI=true && react-scripts test --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand  --no-cache",

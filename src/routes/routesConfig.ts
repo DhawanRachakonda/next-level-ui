@@ -13,23 +13,16 @@ const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
 
 export default [
   {
-    path: paths.home.path,
-    Component: HomePage,
-    exact: false,
-    isSecure: false,
-    displayMenu: false,
-  },
-  {
     path: paths.topic.path,
     Component: TopicPage,
-    exact: true,
+    exact: false,
     isSecure: true,
     displayMenu: true,
   },
   {
     path: paths.login.path,
     Component: LoginPage,
-    exact: true,
+    exact: false,
     isSecure: false,
     displayMenu: false,
   },
@@ -43,14 +36,14 @@ export default [
   {
     path: paths.signUp.path,
     Component: SignUpPage,
-    exact: true,
+    exact: false,
     isSecure: false,
     displayMenu: false,
   },
   {
     path: paths.dashboard.path,
     Component: DashboardPage,
-    exact: true,
+    exact: false,
     isSecure: true,
     displayMenu: true,
   },
@@ -69,9 +62,18 @@ export default [
     displayMenu: true,
   },
   {
-    isRedirect: true,
-    from: '/',
-    to: '/home',
+    path: paths.home.path,
+    Component: HomePage,
+    exact: true,
+    isSecure: false,
+    displayMenu: false,
+  },
+  {
+    path: '/',
+    Component: HomePage,
+    exact: true,
+    isSecure: false,
+    displayMenu: false,
   },
   {
     path: '*',
