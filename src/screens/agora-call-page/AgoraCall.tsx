@@ -23,9 +23,8 @@ function AgoraCallWindow(data: any) {
   }>({ streamList: [] });
   const [displayMode, setDisplayMode] = useState<string>('pip');
   const [readyState, setReadyState] = useState(false);
-  const [change, setChange] = useState(false);
+  const [, setChange] = useState(false);
   const [streamAdded, setStreamAdded] = useState(false);
-  const [_toolbarToggle, setToolBarToggel] = useState<any>(undefined);
   // const [client, setClient] = useState<AgoraRTC.Client | null>(null);
   // const [agoraVal.localStream, setagoraVal.localStream] = useState<any>(undefined);
   const config: AgoraRTC.ClientConfig = {
