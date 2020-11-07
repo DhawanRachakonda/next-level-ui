@@ -5,41 +5,6 @@ import { AgoraCallObject } from '../agora-page/AgoraPageNew';
 import { merge } from 'lodash';
 import './agoracall.scss';
 import { useHistory } from 'react-router-dom';
-const tile_canvas: any = {
-  '1': ['span 12/span 24'],
-  '2': ['span 12/span 12/13/25', 'span 12/span 12/13/13'],
-  '3': ['span 6/span 12', 'span 6/span 12', 'span 6/span 12/7/19'],
-  '4': [
-    'span 6/span 12',
-    'span 6/span 12',
-    'span 6/span 12',
-    'span 6/span 12/7/13',
-  ],
-  '5': [
-    'span 3/span 4/13/9',
-    'span 3/span 4/13/13',
-    'span 3/span 4/13/17',
-    'span 3/span 4/13/21',
-    'span 9/span 16/10/21',
-  ],
-  '6': [
-    'span 3/span 4/13/7',
-    'span 3/span 4/13/11',
-    'span 3/span 4/13/15',
-    'span 3/span 4/13/19',
-    'span 3/span 4/13/23',
-    'span 9/span 16/10/21',
-  ],
-  '7': [
-    'span 3/span 4/13/5',
-    'span 3/span 4/13/9',
-    'span 3/span 4/13/13',
-    'span 3/span 4/13/17',
-    'span 3/span 4/13/21',
-    'span 3/span 4/13/25',
-    'span 9/span 16/10/21',
-  ],
-};
 
 function AgoraCallWindow(data: any) {
   const sampleObj = {
@@ -107,7 +72,8 @@ function AgoraCallWindow(data: any) {
           dom.setAttribute(
             'style',
             `grid-area: span 3/span 4/${4 + 3 * index}/25;
-                      z-index:1;width:calc(100% - 20px);height:calc(100% - 20px)`,
+             z-index:1;width:calc(100% - 20px);
+             height:calc(100% - 20px)`,
           );
         }
 
@@ -116,7 +82,7 @@ function AgoraCallWindow(data: any) {
     }
     // tile mode
     else if (displayMode === 'tile') {
-      const no = streamList.length;
+      // const no = streamList.length;
       streamList.map((item, index) => {
         const id = item.getId();
         let dom = document.querySelector('#ag-item-' + id);
