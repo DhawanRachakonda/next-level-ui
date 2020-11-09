@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     gridItemRoot: {
       padding: '32px 0',
+      borderBottom: '1px solid #b0b3b5',
     },
     gridItem: {
       '&:first-of-type': {
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
     gridIcon: {
       fontSize: '0.875rem',
       verticalAlign: 'middle',
-      marginRight: theme.spacing(1),
+      marginRight: '14px',
     },
   }),
 );
