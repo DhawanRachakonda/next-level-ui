@@ -6,14 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import DivTypography from 'containers/typography/DivTypography';
 import CourseCard from './Course';
 
-const course = {
-  imgUrl:
-    'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  courseName: 'San Francisco',
-  category: 'BioChemistry',
-  author: 'Dr. Tony',
-};
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     gridItemRoot: {
@@ -47,13 +39,13 @@ function MyCourses() {
       </DivTypography>
       <div className={styles.courseContainer}>
         <div className={styles.courseItem}>
-          <CourseCard course={course} />
+          <CourseCard />
         </div>
         <div className={styles.courseItem}>
-          <CourseCard course={course} />
+          <CourseCard />
         </div>
         <div className={styles.courseItem}>
-          <CourseCard course={course} />
+          <CourseCard />
         </div>
       </div>
     </Grid>
