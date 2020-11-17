@@ -8,7 +8,8 @@ import { merge } from 'lodash';
 import './agoracall.scss';
 import { withRouter } from 'react-router-dom';
 import { options } from '../agora-page/environment';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const tile_canvas = {
   1: ['span 12/span 24'],
   2: ['span 12/span 12/13/25', 'span 12/span 12/13/13'],
@@ -370,6 +371,8 @@ class AgoraCallWindow extends React.Component {
     }
   };
 
+  
+
   render() {
     const style = {
       display: 'grid',
@@ -405,6 +408,17 @@ class AgoraCallWindow extends React.Component {
         <span />
       );
 
+    const toasterDisplayFunction = () => {
+      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+      .then(function(stream) {
+        /* use the stream */
+        notifySuccess();
+      })
+      .catch(function(err) {
+        notifyFailure();
+        /* handle the error */
+      });
+    }
     const exitBtn = (
       <button
         onClick={(e) => this.handleExit(e)}
@@ -416,12 +430,42 @@ class AgoraCallWindow extends React.Component {
       </button>
     );
 
+    const notifyFailure = () => {
+      const customId = "custom-id-yes";
+    toast.error('Video and Audio are accesible!', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    toastId: customId,
+  });
+    }
+    const notifySuccess = () => {
+      const customId = "custom-id-yes";
+      toast.success('Video and Audio are accessible!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      toastId: customId,
+      });
+    }
+
     return (
       <>
         <div id="ag-canvas" style={style}>
+        <ToastContainer position="top-center" draggable
+            pauseOnHover
+          />
           <div className="ag-btn-group">
             {exitBtn}
-
+            {toasterDisplayFunction()}
             {videoControlBtn}
             {audioControlBtn}
             {
