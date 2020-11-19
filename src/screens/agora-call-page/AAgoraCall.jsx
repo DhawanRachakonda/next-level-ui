@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom';
 import { options } from '../agora-page/environment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 const tile_canvas = {
   1: ['span 12/span 24'],
   2: ['span 12/span 12/13/25', 'span 12/span 12/13/13'],
@@ -45,6 +46,9 @@ const tile_canvas = {
     'span 9/span 16/10/21',
   ],
 };
+export interface State extends SnackbarOrigin {
+  open: boolean;
+}
 
 class AgoraCallWindow extends React.Component {
   constructor(props) {
@@ -57,9 +61,15 @@ class AgoraCallWindow extends React.Component {
       displayMode: 'pip',
       streamList: [],
       readyState: false,
+      open: false,
+      vertical: 'top',
+      horizontal: 'center',
+      message: 'hi'
     };
     // this.initialize();
   }
+
+  
 
   UNSAFE_componentWillMount() {
     // init AgoraRTC local client
@@ -382,6 +392,31 @@ class AgoraCallWindow extends React.Component {
       gridTemplateRows: 'repeat(12, auto)',
       gridTemplateColumns: 'repeat(24, auto)',
     };
+    
+    
+    const handleMediaPopup = () => {
+      const _this = this;
+      console.log('media popup')
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+      .then(function(stream) {
+        /* use the stream */
+        _this.setState({ open: true, vertical: 'top', horizontal: 'center',message: 'Camera and Audio options are available' });
+      })
+      .catch(function(err) {
+        /* handle the error */
+        console.log(' handle media popup false');
+        _this.setState({ open: false, vertical: 'top', horizontal: 'center',message: '' });
+      });
+    }
+    const handleClose = () => {
+      // setState({ ...state, open: false });
+      console.log(this,'_handle close')
+      this.setState({ open: false, message: '' })
+    };
+    const handleClick = (newState: SnackbarOrigin) => () => {
+      console.log('handle click method ,', newState, this);
+      this.setState({ open: true, ...newState });
+    };
     const videoControlBtn =
       this.props.location.state.attendeeMode === 'video' ? (
         <>
@@ -408,17 +443,7 @@ class AgoraCallWindow extends React.Component {
         <span />
       );
 
-    const toasterDisplayFunction = () => {
-      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-      .then(function(stream) {
-        /* use the stream */
-        notifySuccess();
-      })
-      .catch(function(err) {
-        notifyFailure();
-        /* handle the error */
-      });
-    }
+    
     const exitBtn = (
       <button
         onClick={(e) => this.handleExit(e)}
@@ -430,42 +455,23 @@ class AgoraCallWindow extends React.Component {
       </button>
     );
 
-    const notifyFailure = () => {
-      const customId = "custom-id-yes";
-    toast.error('Video and Audio are accesible!', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    toastId: customId,
-  });
-    }
-    const notifySuccess = () => {
-      const customId = "custom-id-yes";
-      toast.success('Video and Audio are accessible!', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      toastId: customId,
-      });
-    }
-
+    const { vertical, horizontal, open, message } = this.state;
+    console.log(vertical, horizontal, open, message,'vertical, horizontal, open');
     return (
       <>
+        <div>
+            <Snackbar
+              open={open}
+              onClose={handleClose}
+              message={message}
+              autoHideDuration={3000}
+            ></Snackbar>
+        </div>
         <div id="ag-canvas" style={style}>
-        <ToastContainer position="top-center" draggable
-            pauseOnHover
-          />
+          
           <div className="ag-btn-group">
             {exitBtn}
-            {toasterDisplayFunction()}
+            {!open && message && handleMediaPopup()}
             {videoControlBtn}
             {audioControlBtn}
             {
