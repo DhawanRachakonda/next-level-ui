@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function RecipeReviewCard() {
+export default function MyCourseCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -77,7 +77,7 @@ export default function RecipeReviewCard() {
           mussels, if you like.
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions disableSpacing={true}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -94,14 +94,14 @@ export default function RecipeReviewCard() {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout="auto" unmountOnExit={true}>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
+          <Typography paragraph={true}>Method:</Typography>
+          <Typography paragraph={true}>
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and
             set aside for 10 minutes.
           </Typography>
-          <Typography paragraph>
+          <Typography paragraph={true}>
             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
             over medium-high heat. Add chicken, shrimp and chorizo, and cook,
             stirring occasionally until lightly browned, 6 to 8 minutes.
@@ -111,7 +111,7 @@ export default function RecipeReviewCard() {
             fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
             cups chicken broth; bring to a boil.
           </Typography>
-          <Typography paragraph>
+          <Typography paragraph={true}>
             Add rice and stir very gently to distribute. Top with artichokes and
             peppers, and cook without stirring, until most of the liquid is
             absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 // local imports
 import DivTypography from 'containers/typography/DivTypography';
-import CourseCard from './Course';
+import MyCourseCard from './Course';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,13 +39,13 @@ function MyCourses() {
       </DivTypography>
       <div className={styles.courseContainer}>
         <div className={styles.courseItem}>
-          <CourseCard />
+          <MyCourseCard />
         </div>
         <div className={styles.courseItem}>
-          <CourseCard />
+          <MyCourseCard />
         </div>
         <div className={styles.courseItem}>
-          <CourseCard />
+          <MyCourseCard />
         </div>
       </div>
     </Grid>
