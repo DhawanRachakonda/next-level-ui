@@ -43,3 +43,9 @@
     height: 40vh;
   }
 }
+#root {
+  letter-spacing: 0.01em;
+  h1, h2, h3, h4, h5, h6, button{
+    text-shadow: none;
+  }
+}
