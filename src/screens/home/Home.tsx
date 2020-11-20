@@ -487,7 +487,7 @@ const SmallAvatar = withStyles((theme) => ({
 const StyledAvatar = withStyles((theme) => ({
   root: {
     width: '7em',
-    height: '6em',
+    height: '7em',
   },
 }))(Avatar);
 
