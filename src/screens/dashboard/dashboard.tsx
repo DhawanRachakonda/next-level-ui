@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Overview from 'containers/overview';
 import Achievements from 'containers/achievements';
 import Users from 'containers/users';
+import AboutMe from 'containers/about-me';
+import MyCourses from 'containers/my-courses';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -42,6 +44,8 @@ function Dashboard() {
         <Grid container={true}>
           <Overview />
           <Achievements />
+          <AboutMe />
+          <MyCourses />
         </Grid>
       </Grid>
       <Grid item={true} xs={12} sm={4} className={styles.gridItem}>
