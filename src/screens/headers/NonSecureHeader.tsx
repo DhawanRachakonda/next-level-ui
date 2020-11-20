@@ -164,11 +164,23 @@ function NextLevelMenu() {
 
 function Header() {
   const headerClasses = useStyles();
+  const history = useHistory();
+
+  const redirectToAgoraPage = () => {
+    history.push('agora-page');
+  };
 
   return (
     <React.Fragment>
       <AppBar>
         <SearchBarComponent />
+        {/* TODO: added for sample link  will be remove it  */}
+        <Button
+          onClick={redirectToAgoraPage}
+          variant="contained"
+          color="secondary">
+          Agora
+        </Button>
         <div className={headerClasses.grow} />
         <NextLevelMenu />
       </AppBar>

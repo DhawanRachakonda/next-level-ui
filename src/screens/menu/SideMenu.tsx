@@ -83,7 +83,7 @@ export const mobileMenuOptions = [
   },
   {
     isActive: true,
-    key: 'videos',
+    key: 'topic',
     icon: <OndemandVideoIcon />,
     item: <MenuListItemText secondary="Videos" />,
   },
@@ -108,7 +108,7 @@ const defaultMenuOptions = [
   },
   {
     isActive: true,
-    key: 'videos',
+    key: 'topic',
     icon: <OndemandVideoIcon />,
     item: <MenuListItemText secondary="Videos" />,
   },
