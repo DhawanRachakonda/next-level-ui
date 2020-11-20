@@ -8,9 +8,7 @@ import { merge } from 'lodash';
 import './agoracall.scss';
 import { withRouter } from 'react-router-dom';
 import { options } from '../agora-page/environment';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 const tile_canvas = {
   1: ['span 12/span 24'],
   2: ['span 12/span 12/13/25', 'span 12/span 12/13/13'],
@@ -46,9 +44,6 @@ const tile_canvas = {
     'span 9/span 16/10/21',
   ],
 };
-export interface State extends SnackbarOrigin {
-  open: boolean;
-}
 
 class AgoraCallWindow extends React.Component {
   constructor(props) {
@@ -64,18 +59,17 @@ class AgoraCallWindow extends React.Component {
       open: false,
       vertical: 'top',
       horizontal: 'center',
-      message: 'hi'
+      message: 'hi',
     };
     // this.initialize();
   }
-
-  
 
   UNSAFE_componentWillMount() {
     // init AgoraRTC local client
     this.client = AgoraRTC.createClient({
       mode:
-        this.props.location.state.baseMode === 'rtc' || this.props.location.state.baseMode === 'live'
+        this.props.location.state.baseMode === 'rtc' ||
+        this.props.location.state.baseMode === 'live'
           ? this.props.location.state.baseMode
           : 'rtc',
     });
@@ -381,8 +375,6 @@ class AgoraCallWindow extends React.Component {
     }
   };
 
-  
-
   render() {
     const style = {
       display: 'grid',
@@ -392,30 +384,36 @@ class AgoraCallWindow extends React.Component {
       gridTemplateRows: 'repeat(12, auto)',
       gridTemplateColumns: 'repeat(24, auto)',
     };
-    
-    
+
     const handleMediaPopup = () => {
       const _this = this;
-      console.log('media popup')
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-      .then(function(stream) {
-        /* use the stream */
-        _this.setState({ open: true, vertical: 'top', horizontal: 'center',message: 'Camera and Audio options are available' });
-      })
-      .catch(function(err) {
-        /* handle the error */
-        console.log(' handle media popup false');
-        _this.setState({ open: false, vertical: 'top', horizontal: 'center',message: '' });
-      });
-    }
+      console.log('media popup');
+      navigator.mediaDevices
+        .getUserMedia({ audio: true, video: true })
+        .then(function (stream) {
+          /* use the stream */
+          _this.setState({
+            open: true,
+            vertical: 'top',
+            horizontal: 'center',
+            message: 'Camera and Audio options are available',
+          });
+        })
+        .catch(function (err) {
+          /* handle the error */
+          console.log(' handle media popup false');
+          _this.setState({
+            open: false,
+            vertical: 'top',
+            horizontal: 'center',
+            message: '',
+          });
+        });
+    };
     const handleClose = () => {
       // setState({ ...state, open: false });
-      console.log(this,'_handle close')
-      this.setState({ open: false, message: '' })
-    };
-    const handleClick = (newState: SnackbarOrigin) => () => {
-      console.log('handle click method ,', newState, this);
-      this.setState({ open: true, ...newState });
+      console.log(this, '_handle close');
+      this.setState({ open: false, message: '' });
     };
     const videoControlBtn =
       this.props.location.state.attendeeMode === 'video' ? (
@@ -443,7 +441,6 @@ class AgoraCallWindow extends React.Component {
         <span />
       );
 
-    
     const exitBtn = (
       <button
         onClick={(e) => this.handleExit(e)}
@@ -456,19 +453,23 @@ class AgoraCallWindow extends React.Component {
     );
 
     const { vertical, horizontal, open, message } = this.state;
-    console.log(vertical, horizontal, open, message,'vertical, horizontal, open');
+    console.log(
+      vertical,
+      horizontal,
+      open,
+      message,
+      'vertical, horizontal, open',
+    );
     return (
       <>
         <div>
-            <Snackbar
-              open={open}
-              onClose={handleClose}
-              message={message}
-              autoHideDuration={3000}
-            ></Snackbar>
+          <Snackbar
+            open={open}
+            onClose={handleClose}
+            message={message}
+            autoHideDuration={3000}></Snackbar>
         </div>
         <div id="ag-canvas" style={style}>
-          
           <div className="ag-btn-group">
             {exitBtn}
             {!open && message && handleMediaPopup()}
