@@ -593,6 +593,7 @@ const ArrowContainer = withStyles((theme: any) => ({
     borderRadius: theme.spacing(1),
     boxShadow: '0 0 5px #b3c1cd',
     position: 'absolute',
+    zIndex: 5,
     [theme.position]: theme.value,
   },
 }))(ButtonBase);
@@ -602,6 +603,7 @@ const SlideGrid = withStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
+    overflowX: 'hidden',
   },
 }))(Grid);
 
@@ -627,37 +629,37 @@ function TestimonySlides() {
     {
       name: 'Dr. Dilip Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Anatomy`,
     },
     {
       name: 'Dr. Manoj Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Pathology`,
     },
     {
       name: 'Dr. Dilip Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Anatomy`,
     },
     {
       name: 'Dr. Manoj Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Pathology`,
     },
     {
       name: 'Dr. Dilip Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Anatomy`,
     },
     {
       name: 'Dr. Manoj Kumar',
       description: `Lizards are a widespread group of squamate reptiles, with over 6,000
-    species, ranging across all continents except Antarctica`,
+   species, ranging across all continents except Antarctica`,
       designation: `Pathology`,
     },
   ];
