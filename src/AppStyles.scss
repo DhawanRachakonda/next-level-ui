@@ -16,3 +16,12 @@ body {
 .MuiBottomNavigation-root .MuiBottomNavigationAction-root.Mui-selected {
   color: #18a4e0;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #18a4e0;
+}
