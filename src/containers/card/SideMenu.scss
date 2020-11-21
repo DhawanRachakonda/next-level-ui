@@ -3,10 +3,10 @@
 
 .MuiGrid-root.menu-grid {
   @include lg {
-    border-radius: 2em;
-    position: fixed;
+    border-radius: 3em;
+    position: sticky;
     margin: unset;
-    width: 12%;
+    width: 80%;
     padding: unset;
     bottom: 30vh;
     top: 20vh;
