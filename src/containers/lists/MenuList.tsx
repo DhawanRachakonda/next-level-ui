@@ -9,7 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const MenuList = withStyles((theme) => ({
   root: {
-    height: '60vh',
     width: '100%',
     [theme.breakpoints.only('xs')]: {
       height: '30vh',
