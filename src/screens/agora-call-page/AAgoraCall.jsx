@@ -73,41 +73,44 @@ class AgoraCallWindow extends React.Component {
           ? this.props.location.state.baseMode
           : 'rtc',
     });
-    this.client.init(options.appId, () => {
-      console.log('AgoraRTC client initialized');
-      this.subscribeStreamEvents();
-      this.client.join(
-        options.appId,
-        this.props.location.state.channel,
-        this.props.location.state.uid,
-        (uid) => {
-          console.log('User ' + uid + ' join channel successfully');
-          console.log('At ' + new Date().toLocaleTimeString());
-          // create local stream
-          // It is not recommended to setState in function addStream
-          this.localStream = this.streamInit(
-            uid,
-            this.props.location.state.attendeeMode,
-            this.props.location.state.videoProfile,
-          );
-          this.localStream.init(
-            () => {
-              if (this.props.location.state.attendeeMode !== 'audience') {
-                this.addStream(this.localStream, true);
-                this.client.publish(this.localStream, (err) => {
-                  console.log('Publish local stream error: ' + err);
-                });
-              }
-              this.setState({ readyState: true });
-            },
-            (err) => {
-              console.log('getUserMedia failed', err);
-              this.setState({ readyState: true });
-            },
-          );
-        },
-      );
-    });
+    this.client.init(
+      '006a88087f9bdcd468f9b8e28bcdf4d77c2IADUGEOpUQTQ65gQRPSJv3APDIYMQP6aspDv3w5lhBG6a2/A5uNPAoleIgBvJXg7Ag26XwQAAQCSybhfAgCSybhfAwCSybhfBACSybhf',
+      () => {
+        console.log('AgoraRTC client initialized');
+        this.subscribeStreamEvents();
+        this.client.join(
+          '006a88087f9bdcd468f9b8e28bcdf4d77c2IADUGEOpUQTQ65gQRPSJv3APDIYMQP6aspDv3w5lhBG6a2/A5uNPAoleIgBvJXg7Ag26XwQAAQCSybhfAgCSybhfAwCSybhfBACSybhf',
+          this.props.location.state.channel,
+          '2082341273',
+          (uid) => {
+            console.log('User ' + uid + ' join channel successfully');
+            console.log('At ' + new Date().toLocaleTimeString());
+            // create local stream
+            // It is not recommended to setState in function addStream
+            this.localStream = this.streamInit(
+              uid,
+              this.props.location.state.attendeeMode,
+              this.props.location.state.videoProfile,
+            );
+            this.localStream.init(
+              () => {
+                if (this.props.location.state.attendeeMode !== 'audience') {
+                  this.addStream(this.localStream, true);
+                  this.client.publish(this.localStream, (err) => {
+                    console.log('Publish local stream error: ' + err);
+                  });
+                }
+                this.setState({ readyState: true });
+              },
+              (err) => {
+                console.log('getUserMedia failed', err);
+                this.setState({ readyState: true });
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   componentDidMount() {
