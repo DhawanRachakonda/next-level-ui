@@ -7,7 +7,6 @@ import React from 'react';
 import { merge } from 'lodash';
 import './agoracall.scss';
 import { withRouter } from 'react-router-dom';
-import { options } from '../agora-page/environment';
 import Snackbar from '@material-ui/core/Snackbar';
 const tile_canvas = {
   1: ['span 12/span 24'],
@@ -61,6 +60,8 @@ class AgoraCallWindow extends React.Component {
       horizontal: 'center',
       message: 'hi',
     };
+    // this.token = this.props.location.state.token;
+    // this.userId = this.props.location.state.userId;
     // this.initialize();
   }
 
@@ -73,41 +74,44 @@ class AgoraCallWindow extends React.Component {
           ? this.props.location.state.baseMode
           : 'rtc',
     });
-    this.client.init(options.appId, () => {
-      console.log('AgoraRTC client initialized');
-      this.subscribeStreamEvents();
-      this.client.join(
-        options.appId,
-        this.props.location.state.channel,
-        this.props.location.state.uid,
-        (uid) => {
-          console.log('User ' + uid + ' join channel successfully');
-          console.log('At ' + new Date().toLocaleTimeString());
-          // create local stream
-          // It is not recommended to setState in function addStream
-          this.localStream = this.streamInit(
-            uid,
-            this.props.location.state.attendeeMode,
-            this.props.location.state.videoProfile,
-          );
-          this.localStream.init(
-            () => {
-              if (this.props.location.state.attendeeMode !== 'audience') {
-                this.addStream(this.localStream, true);
-                this.client.publish(this.localStream, (err) => {
-                  console.log('Publish local stream error: ' + err);
-                });
-              }
-              this.setState({ readyState: true });
-            },
-            (err) => {
-              console.log('getUserMedia failed', err);
-              this.setState({ readyState: true });
-            },
-          );
-        },
-      );
-    });
+    this.client.init(
+      this.props.location.state.token,
+      () => {
+        console.log('AgoraRTC client initialized');
+        this.subscribeStreamEvents();
+        this.client.join(
+          this.props.location.state.token,
+          this.props.location.state.channel,
+          this.props.location.state.userId,
+          (uid) => {
+            console.log('User ' + uid + ' join channel successfully');
+            console.log('At ' + new Date().toLocaleTimeString());
+            // create local stream
+            // It is not recommended to setState in function addStream
+            this.localStream = this.streamInit(
+              uid,
+              this.props.location.state.attendeeMode,
+              this.props.location.state.videoProfile,
+            );
+            this.localStream.init(
+              () => {
+                if (this.props.location.state.attendeeMode !== 'audience') {
+                  this.addStream(this.localStream, true);
+                  this.client.publish(this.localStream, (err) => {
+                    console.log('Publish local stream error: ' + err);
+                  });
+                }
+                this.setState({ readyState: true });
+              },
+              (err) => {
+                console.log('getUserMedia failed', err);
+                this.setState({ readyState: true });
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   componentDidMount() {
@@ -147,7 +151,7 @@ class AgoraCallWindow extends React.Component {
         if (!dom) {
           dom = document.createElement('section');
           dom.setAttribute('id', 'ag-item-' + id);
-          dom.setAttribute('class', 'ag-item');
+          dom.setAttribute('class', 'ag-item'); 
           canvas.appendChild(dom);
           item.play('ag-item-' + id);
         }
