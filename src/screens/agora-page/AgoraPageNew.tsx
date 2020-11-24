@@ -8,6 +8,8 @@ export interface AgoraCallObject {
   attendeeMode: string;
   videoProfile: string;
   uid?: undefined | string | any;
+  userId?: string;
+  token?: string;
 }
 
 const initObj = {
@@ -16,6 +18,9 @@ const initObj = {
   transcode: 'interop',
   attendeeMode: 'video',
   videoProfile: '480p_4',
+  userId: '2082341273',
+  token:
+    '006a88087f9bdcd468f9b8e28bcdf4d77c2IADUGEOpUQTQ65gQRPSJv3APDIYMQP6aspDv3w5lhBG6a2/A5uNPAoleIgBvJXg7Ag26XwQAAQCSybhfAgCSybhfAwCSybhfBACSybhf',
 };
 const baseModeOptions = [
   {
@@ -49,8 +54,15 @@ function AgoraPageNew() {
     setAgoraObj({ ...agoraObj, channel: val.target.value });
   };
 
+  const handleUserNameChange = (val: any): void => {
+    setAgoraObj({ ...agoraObj, userId: val.target.value });
+  };
+
+  const handleRandomNumberChange = (val: any): void => {
+    setAgoraObj({ ...agoraObj, token: val.target.value });
+  };
   const handleBaseModeChange = (val: any): void => {
-    setAgoraObj({ ...agoraObj, channel: val.target.value });
+    setAgoraObj({ ...agoraObj, baseMode: val.target.value });
   };
 
   const handleJoinBtn = (): void => {
@@ -61,12 +73,32 @@ function AgoraPageNew() {
     <>
       {
         <div id="aghora_call">
-          <div id="set_channel">
+          <div id="inputs">
             <input
               type="text"
               onChange={(e) => {
                 handleChannelChange(e);
               }}
+              name="channel"
+              placeholder="Set Channel Name"
+            />
+            <br />
+            <input
+              type="text"
+              onChange={(e) => {
+                handleUserNameChange(e);
+              }}
+              name="userId"
+              placeholder="Set User Name"
+            />
+            <br />
+            <input
+              type="text"
+              onChange={(e) => {
+                handleRandomNumberChange(e);
+              }}
+              name="randomId"
+              placeholder="Set RandomId Name"
             />
           </div>
           <div id="select_calType">

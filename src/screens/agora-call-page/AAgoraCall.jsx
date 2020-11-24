@@ -7,7 +7,6 @@ import React from 'react';
 import { merge } from 'lodash';
 import './agoracall.scss';
 import { withRouter } from 'react-router-dom';
-import { options } from '../agora-page/environment';
 import Snackbar from '@material-ui/core/Snackbar';
 const tile_canvas = {
   1: ['span 12/span 24'],
@@ -61,6 +60,8 @@ class AgoraCallWindow extends React.Component {
       horizontal: 'center',
       message: 'hi',
     };
+    // this.token = this.props.location.state.token;
+    // this.userId = this.props.location.state.userId;
     // this.initialize();
   }
 
@@ -74,14 +75,14 @@ class AgoraCallWindow extends React.Component {
           : 'rtc',
     });
     this.client.init(
-      '006a88087f9bdcd468f9b8e28bcdf4d77c2IADUGEOpUQTQ65gQRPSJv3APDIYMQP6aspDv3w5lhBG6a2/A5uNPAoleIgBvJXg7Ag26XwQAAQCSybhfAgCSybhfAwCSybhfBACSybhf',
+      this.props.location.state.token,
       () => {
         console.log('AgoraRTC client initialized');
         this.subscribeStreamEvents();
         this.client.join(
-          '006a88087f9bdcd468f9b8e28bcdf4d77c2IADUGEOpUQTQ65gQRPSJv3APDIYMQP6aspDv3w5lhBG6a2/A5uNPAoleIgBvJXg7Ag26XwQAAQCSybhfAgCSybhfAwCSybhfBACSybhf',
+          this.props.location.state.token,
           this.props.location.state.channel,
-          '2082341273',
+          this.props.location.state.userId,
           (uid) => {
             console.log('User ' + uid + ' join channel successfully');
             console.log('At ' + new Date().toLocaleTimeString());
@@ -150,7 +151,7 @@ class AgoraCallWindow extends React.Component {
         if (!dom) {
           dom = document.createElement('section');
           dom.setAttribute('id', 'ag-item-' + id);
-          dom.setAttribute('class', 'ag-item');
+          dom.setAttribute('class', 'ag-item'); 
           canvas.appendChild(dom);
           item.play('ag-item-' + id);
         }
