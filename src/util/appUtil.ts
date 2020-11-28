@@ -14,6 +14,9 @@ class AppUtil {
   static getUserImageURL() {
     return `${process.env.PUBLIC_URL}/assets/images/Ellipse_131.png`;
   }
+  static getCourseURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/image-4.png`;
+  }
 }
 
 export default AppUtil;

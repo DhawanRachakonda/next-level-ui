@@ -31,4 +31,8 @@ export default {
     link: '/#agora-call-page',
     path: '/agora-call-page',
   },
+  addCourse: {
+    link: '/#add-course',
+    path: '/add-course',
+  },
 };

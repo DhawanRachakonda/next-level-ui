@@ -10,12 +10,20 @@ const DashboardPage = lazy(() => import('screens/dashboard'));
 const LiveClassesPage = lazy(() => import('screens/live-classes'));
 const PageNotFound = lazy(() => import('screens/404/PageNotFound'));
 const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
+const AddCoursePage = lazy(() => import('screens/add-course'));
 
 export default [
   {
     path: paths.topic.path,
     Component: TopicPage,
     exact: false,
+    isSecure: true,
+    displayMenu: true,
+  },
+  {
+    path: paths.addCourse.path,
+    Component: AddCoursePage,
+    exact: true,
     isSecure: true,
     displayMenu: true,
   },
