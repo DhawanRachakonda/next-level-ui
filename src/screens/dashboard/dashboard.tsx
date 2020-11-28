@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '2em',
     },
     gridItemOverView: {
-      padding: theme.spacing(4),
+      padding: theme.spacing(2),
       [theme.breakpoints.down('sm')]: {
         padding: theme.spacing(1),
       },
     },
     gridItem: {
-      padding: theme.spacing(4),
+      padding: theme.spacing(2),
       [theme.breakpoints.down('sm')]: {
         padding: theme.spacing(1),
       },
@@ -40,7 +40,7 @@ function Dashboard() {
 
   return (
     <Grid container={true} data-testid="dashboard-container">
-      <Grid item={true} xs={12} sm={8} className={styles.gridItemOverView}>
+      <Grid item={true} xs={12} sm={9} className={styles.gridItemOverView}>
         <Grid container={true}>
           <Overview />
           <Achievements />
@@ -48,7 +48,7 @@ function Dashboard() {
           <MyCourses />
         </Grid>
       </Grid>
-      <Grid item={true} xs={12} sm={4} className={styles.gridItem}>
+      <Grid item={true} xs={12} sm={3} className={styles.gridItem}>
         <Users />
       </Grid>
     </Grid>
