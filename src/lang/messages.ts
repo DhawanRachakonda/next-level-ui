@@ -12,6 +12,9 @@ const messages: MessageObject = {
     'nonSecureHeader.login.btn': 'Login',
     'nonSecureHeader.signUp.btn': 'Sign Up',
 
+    // admin all courses
+    'allCourses.title': 'All Courses',
+
     // admin add or edit course page
     'adminAddCourse.title': 'Create/Edit Course',
     'classType.label': 'Class Type',

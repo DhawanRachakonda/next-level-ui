@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function MyCourseCard() {
+export default function AddCourse() {
   const classes = useStyles();
 
   return (
