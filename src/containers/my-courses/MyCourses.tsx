@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 // local imports
 import DivTypography from 'containers/typography/DivTypography';
-import MyCourseCard from './Course';
+import MyCourseCard from 'containers/cards/AdminCourseCard';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

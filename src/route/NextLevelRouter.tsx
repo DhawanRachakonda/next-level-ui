@@ -22,6 +22,7 @@ const AgoraPage = lazy(() => import('screens/agora-page'));
 const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
 const AddCoursePage = lazy(() => import('screens/add-course'));
 const AdminAddCoursePage = lazy(() => import('screens/admin-add-course'));
+const AdminAllCoursesPage = lazy(() => import('screens/admin-all-courses'));
 
 function NextLevelRoutes() {
   return (
@@ -89,6 +90,22 @@ function NextLevelRoutes() {
           render={() => (
             <NextLevelAppLayout isSecure={true} displayMenu={true}>
               <AgoraCall />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/admin-all-courses"
+          render={() => (
+            <NextLevelAppLayout isSecure={true} displayMenu={true}>
+              <AdminAllCoursesPage admin={true} />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/educator-all-courses"
+          render={() => (
+            <NextLevelAppLayout isSecure={true} displayMenu={true}>
+              <AdminAllCoursesPage admin={false} />
             </NextLevelAppLayout>
           )}
         />

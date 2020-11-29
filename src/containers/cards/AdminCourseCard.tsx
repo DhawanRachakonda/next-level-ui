@@ -12,7 +12,6 @@ import DivTypography from 'containers/typography/DivTypography';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
       padding: theme.spacing(1),
       '& .MuiCardContent-root': {
         padding: '8px 0',
@@ -20,7 +19,8 @@ const useStyles = makeStyles((theme: Theme) =>
           color: '#302d3a',
         },
         '& .MuiTypography-body2': {
-          paddingTop: theme.spacing(1),
+          marginTop: theme.spacing(1),
+          marginBottom: theme.spacing(1),
           color: '#6d7b82',
           fontSize: 10,
           fontWeight: 'normal',
@@ -28,8 +28,10 @@ const useStyles = makeStyles((theme: Theme) =>
         '& .MuiTypography-caption': {
           fontWeight: 'normal',
           fontSize: '1rem',
-          paddingTop: theme.spacing(1),
         },
+      },
+      '&:hover': {
+        boxShadow: '0 0 5px #b3c1cd',
       },
     },
     cardHeader: {
@@ -57,14 +59,10 @@ const useStyles = makeStyles((theme: Theme) =>
     courseImage: {
       width: '100%',
     },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
   }),
 );
 
-export default function MyCourseCard() {
+export default function AdminCourseCard() {
   const classes = useStyles();
 
   return (
