@@ -3,6 +3,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { FormattedMessage } from 'react-intl';
 
 // local imports
 import DivTypography from 'containers/typography/DivTypography';
@@ -71,7 +72,9 @@ function Overview() {
         <MenuItem value={20}>Twenty</MenuItem>
         <MenuItem value={30}>Thirty</MenuItem>
       </Select>
-      <DivTypography variant="subtitle2">Overview</DivTypography>
+      <DivTypography variant="subtitle2">
+        <FormattedMessage id="overview.label" />
+      </DivTypography>
       <Select value="10" displayEmpty={true} className={styles.selectEmpty}>
         <MenuItem value="">
           <em>None</em>
