@@ -45,7 +45,7 @@ function Dashboard() {
           <Overview />
           <Achievements />
           <AboutMe />
-          <MyCourses />
+          <MyCourses heading="myCourses.heading" />
         </Grid>
       </Grid>
       <Grid item={true} xs={12} sm={3} className={styles.gridItem}>
