@@ -12,6 +12,7 @@ import ComponentLoader from 'containers/loaders/ComponentLoader';
 import NextLevelAppLayout from 'screens/NextLevelAppLayout';
 
 const HomePage = lazy(() => import('screens/home'));
+const AdminHomePage = lazy(() => import('screens/admin-home'));
 const TopicPage = lazy(() => import('screens/topic'));
 const LoginPage = lazy(() => import('screens/login'));
 const SignUpPage = lazy(() => import('screens/signup'));
@@ -23,6 +24,7 @@ const AgoraCall = lazy(() => import('screens/agora-call-page/AAgoraCall'));
 const AddCoursePage = lazy(() => import('screens/add-course'));
 const AdminAddCoursePage = lazy(() => import('screens/admin-add-course'));
 const AdminAllCoursesPage = lazy(() => import('screens/admin-all-courses'));
+const BrowseSubjectsPage = lazy(() => import('screens/subjects'));
 
 function NextLevelRoutes() {
   return (
@@ -34,6 +36,22 @@ function NextLevelRoutes() {
           render={() => (
             <NextLevelAppLayout isSecure={false} displayMenu={false}>
               <HomePage />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/admin-home"
+          render={() => (
+            <NextLevelAppLayout isSecure={true} displayMenu={true}>
+              <AdminHomePage />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/subjects"
+          render={() => (
+            <NextLevelAppLayout isSecure={true} displayMenu={true}>
+              <BrowseSubjectsPage />
             </NextLevelAppLayout>
           )}
         />

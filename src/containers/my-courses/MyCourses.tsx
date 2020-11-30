@@ -1,10 +1,12 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { FormattedMessage } from 'react-intl';
 
 // local imports
 import DivTypography from 'containers/typography/DivTypography';
 import MyCourseCard from 'containers/cards/AdminCourseCard';
+import PaginationComponent from 'containers/pagination/Pagination';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-function MyCourses() {
+function MyCourses({ heading }: any) {
   const styles = useStyles();
 
   return (
@@ -35,7 +37,7 @@ function MyCourses() {
       data-testid="mycourses-container"
       className={styles.gridItemRoot}>
       <DivTypography variant="h5" gutterBottom={true}>
-        My Courses
+        <FormattedMessage id={heading} />
       </DivTypography>
       <div className={styles.courseContainer}>
         <div className={styles.courseItem}>
@@ -48,6 +50,7 @@ function MyCourses() {
           <MyCourseCard />
         </div>
       </div>
+      <PaginationComponent count={3} shape="rounded" />
     </Grid>
   );
 }

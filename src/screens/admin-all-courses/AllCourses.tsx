@@ -2,12 +2,12 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Grid, Card } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
-import Pagination from '@material-ui/lab/Pagination';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 import DivTypography from 'containers/typography/DivTypography';
 import MyCourseCard from 'containers/cards/AdminCourseCard';
 import SelectField from 'containers/inputs/Select';
+import PaginationComponent from 'containers/pagination/Pagination';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,10 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
       '& .MuiGrid-item': {
         padding: theme.spacing(2),
       },
-    },
-    pagination: {
-      float: 'right',
-      padding: theme.spacing(3),
     },
     courseSelect: {
       '&& .MuiInputBase-root': {
@@ -109,7 +105,7 @@ export default function AllCourses({ admin }: any) {
             </Grid>
           ))}
         </Grid>
-        <Pagination className={classes.pagination} count={3} shape="rounded" />
+        <PaginationComponent count={3} shape="rounded" />
       </div>
     </section>
   );

@@ -47,6 +47,20 @@ const messages: MessageObject = {
     'editCourse.submit.btn': 'Approve',
     'editCourse.cancel.btn': 'Delete',
 
+    // My courses
+    'myCourses.heading': 'My Courses',
+
+    // Admin home page
+    'upcomingCourses.heading': 'Upcoming Courses',
+    'completedCourses.heading': 'Completed Courses',
+    'toReview.heading': 'To Review',
+    'listofStudents.heading': 'List of New Students',
+    'listofEducators.heading': 'List of New Educators',
+
+    // browse subjects page
+    'browseSubjects.heading': 'Browse Subjects by Category',
+    'browseAllSubjects.label.btn': 'Browse All Courses',
+
     // home page
 
     // login page
@@ -58,6 +72,8 @@ const messages: MessageObject = {
     // Topics listing page
 
     // Live classes page
+    'liveClasses.heading': 'Live Classes',
+    'upcomingClasses.heading': 'Upcoming Classes',
 
     // Topic details page
   },
