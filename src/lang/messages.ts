@@ -11,6 +11,7 @@ const messages: MessageObject = {
     // header
     'nonSecureHeader.login.btn': 'Login',
     'nonSecureHeader.signUp.btn': 'Sign Up',
+    'overview.label': 'Overview',
 
     // admin all courses
     'allCourses.title': 'All Courses',
