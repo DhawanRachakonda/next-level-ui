@@ -33,6 +33,7 @@ const inputBaseStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: '18rem',
       marginLeft: theme.spacing(10),
+      marginRight: theme.spacing(1),
     },
   },
   searchIcon: {

@@ -17,6 +17,18 @@ class AppUtil {
   static getCourseURL() {
     return `${process.env.PUBLIC_URL}/assets/images/image-4.png`;
   }
+  static getFbURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/fb-layer-2.png`;
+  }
+  static getGoogleURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/google-layer-2.png`;
+  }
+  static getLinkedInURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/linkedin-layer-2.png`;
+  }
+  static getTwitterURL() {
+    return `${process.env.PUBLIC_URL}/assets/images/twitter-layer-2.png`;
+  }
 }
 
 export default AppUtil;

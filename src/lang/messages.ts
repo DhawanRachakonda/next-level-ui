@@ -13,6 +13,12 @@ const messages: MessageObject = {
     'nonSecureHeader.signUp.btn': 'Sign Up',
     'overview.label': 'Overview',
 
+    // footer
+    'footer.company.label': 'Company',
+    'footer.community.label': 'Community',
+    'footer.teaching.label': 'Teaching',
+    'footer.support.label': 'Support',
+
     // admin all courses
     'allCourses.title': 'All Courses',
 

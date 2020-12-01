@@ -98,7 +98,7 @@ function NextLevelAppLayout({
   return (
     <NextLevelContainer>
       {!isSecure ? (
-        <NextLevelNonSecureLayout>{children} </NextLevelNonSecureLayout>
+        <NextLevelNonSecureLayout>{children}</NextLevelNonSecureLayout>
       ) : (
         <NextLevelSecureLayout displayMenu={displayMenu}>
           {children}
