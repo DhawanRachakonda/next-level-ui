@@ -10,9 +10,9 @@
 
 .home-site--desc_img {
   background-image: url(/assets/images/Women.png);
-  height: 20vh;
+  height: 30vh;
   width: 100%;
-  background-position: right;
+  // background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
@@ -22,7 +22,7 @@
     right: 0em;
   }
   @include md {
-    height: 40vh;
+    height: 390px;
   }
 }
 

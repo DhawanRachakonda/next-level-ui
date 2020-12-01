@@ -68,6 +68,11 @@ const messages: MessageObject = {
     'browseAllSubjects.label.btn': 'Browse All Courses',
 
     // home page
+    'appAvailabel.label': 'App is Available for free',
+    'androidApp.label': 'Andrioid app',
+    'iosApp.label': 'IOS app',
+    'applyAsTeacher.btn': 'Apply as Teacher',
+    'nextLevelTeam.btn': 'Get NextLevel for Team',
 
     // login page
 
