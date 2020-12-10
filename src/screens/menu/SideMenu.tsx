@@ -14,10 +14,10 @@ import {
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
 import HomeIcon from '@material-ui/icons/Home';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
+import TodayIcon from '@material-ui/icons/Today';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
+import PersonIcon from '@material-ui/icons/Person';
 import SettingsIcon from '@material-ui/icons/Settings';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
 
 type NextLevelMenuItem = {
@@ -72,55 +72,76 @@ function SideMenuOptions({ menuList }: ISideMenuOptionsProps) {
 export const mobileMenuOptions = [
   {
     key: 'dashboard',
-    icon: <DashboardIcon />,
-    item: <MenuListItemText secondary="Dashboard" />,
-  },
-  {
-    key: 'live-classes',
-    isBlue: true,
-    icon: <PlayCircleFilledIcon fontSize="large" />,
-    item: <MenuListItemBlueText primary="Live" />,
-  },
-  {
-    isActive: true,
-    key: 'topic',
-    icon: <OndemandVideoIcon />,
-    item: <MenuListItemText secondary="Videos" />,
-  },
-];
-
-const defaultMenuOptions = [
-  {
-    key: 'home',
     icon: <HomeIcon />,
-    item: <MenuListItemText secondary="Home" />,
-  },
-  {
-    key: 'dashboard',
-    icon: <DashboardIcon />,
     item: <MenuListItemText secondary="Dashboard" />,
   },
   {
-    key: 'live-classes',
-    isBlue: true,
-    icon: <PlayCircleFilledIcon fontSize="large" />,
-    item: <MenuListItemBlueText primary="Live" />,
+    key: 'calendar',
+    icon: <TodayIcon />,
+    item: <MenuListItemText secondary="Calendar" />,
+  },
+  {
+    key: 'courses',
+    icon: <LiveTvIcon />,
+    item: <MenuListItemText secondary="Courses" />,
   },
   {
     isActive: true,
-    key: 'topic',
-    icon: <OndemandVideoIcon />,
-    item: <MenuListItemText secondary="Videos" />,
+    key: 'students',
+    icon: <PersonIcon />,
+    item: <MenuListItemText secondary="Students" />,
+  },
+  {
+    key: 'educators',
+    icon: <PersonIcon />,
+    item: <MenuListItemText secondary="Educators" />,
   },
   {
     key: 'settings',
     icon: <SettingsIcon />,
     item: <MenuListItemText secondary="Settings" />,
   },
+];
+
+const defaultMenuOptions = [
   {
-    key: 'logout',
-    icon: <ExitToAppIcon />,
-    item: <MenuListItemText secondary="Logout" />,
+    key: 'dashboard',
+    icon: <HomeIcon />,
+    item: <MenuListItemText secondary="Dashboard" />,
+  },
+  {
+    key: 'calendar',
+    icon: <TodayIcon />,
+    item: <MenuListItemText secondary="Calendar" />,
+  },
+  {
+    key: 'courses',
+    icon: <LiveTvIcon />,
+    item: (
+      <MenuListItemText secondary="Courses &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;>" />
+    ),
+  },
+  {
+    isActive: true,
+    key: 'students',
+    icon: <PersonIcon />,
+    item: (
+      <MenuListItemText secondary="Students &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;>" />
+    ),
+  },
+  {
+    key: 'educators',
+    icon: <PersonIcon />,
+    item: (
+      <MenuListItemText secondary="Educators &nbsp; &nbsp; &nbsp;  &nbsp;>" />
+    ),
+  },
+  {
+    key: 'settings',
+    icon: <SettingsIcon />,
+    item: (
+      <MenuListItemText secondary="Settings &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;>" />
+    ),
   },
 ];
 
