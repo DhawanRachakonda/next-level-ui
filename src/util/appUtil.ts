@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 class AppUtil {
   static getLogoURL() {
     return `${process.env.PUBLIC_URL}/assets/images/logo.png`;
@@ -28,6 +30,9 @@ class AppUtil {
   }
   static getTwitterURL() {
     return `${process.env.PUBLIC_URL}/assets/images/twitter-layer-2.png`;
+  }
+  static isResponseSuccessSeries(response: AxiosResponse<any>): boolean {
+    return response.status === 200 || response.status === 201;
   }
 }
 

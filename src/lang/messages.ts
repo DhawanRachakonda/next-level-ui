@@ -8,6 +8,9 @@ type MessageObject = {
 
 const messages: MessageObject = {
   en: {
+    // common
+    'access.privilege.missing': `You don't have :privilegeName to view this section`,
+
     // header
     'nonSecureHeader.login.btn': 'Login',
     'nonSecureHeader.signUp.btn': 'Sign Up',

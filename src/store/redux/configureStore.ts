@@ -1,5 +1,6 @@
 import { createBrowserHistory } from 'history';
 import { applyMiddleware, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from 'store/reducers';
 
@@ -14,7 +15,7 @@ function configureStoreWithHistory(
   const store = createStore(
     createRootReducer(browserHistory),
     preloadedState,
-    composeEnhancer(applyMiddleware(routerMiddleware(history))),
+    composeEnhancer(applyMiddleware(routerMiddleware(history), thunk)),
   );
 
   // Hot reloading

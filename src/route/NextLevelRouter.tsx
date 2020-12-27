@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 // import { ConnectedRouter as Router } from 'connected-react-router';
 
@@ -25,12 +25,12 @@ const AddCoursePage = lazy(() => import('screens/add-course'));
 const AdminAddCoursePage = lazy(() => import('screens/admin-add-course'));
 const AdminAllCoursesPage = lazy(() => import('screens/admin-all-courses'));
 const BrowseSubjectsPage = lazy(() => import('screens/subjects'));
+const LogoutPage = lazy(() => import('screens/logout'));
 
 function NextLevelRoutes() {
   return (
     <Suspense fallback={<ComponentLoader />}>
       <Switch>
-        <Redirect exact={true} from="/" to="/home" />
         <Route
           path="/home"
           render={() => (
@@ -148,6 +148,15 @@ function NextLevelRoutes() {
           render={() => (
             <NextLevelAppLayout isSecure={true} displayMenu={true}>
               <AddCoursePage add={false} />
+            </NextLevelAppLayout>
+          )}
+        />
+        <Route
+          path="/logout"
+          exact={true}
+          render={() => (
+            <NextLevelAppLayout isSecure={false}>
+              <LogoutPage />
             </NextLevelAppLayout>
           )}
         />

@@ -46,6 +46,8 @@ function NextLevelSecureBottomNavigation() {
         onChange={(event: any, newValue: any) => {
           if (value === 'home') {
             history.push('home');
+          } else if (value === 'logout') {
+            history.push('/logout');
           }
           setValue(newValue);
           if (newValue === 'menu') {

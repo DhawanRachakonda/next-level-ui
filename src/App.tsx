@@ -17,7 +17,13 @@ import ThemeProvider from 'providers/ThemeProvider';
 import { history, configureStore } from 'store';
 import NextLevelIntlProvider from 'lang/NextLevelIntl';
 
+// components
+import BroadcastListener from 'screens/listeners';
+import ScreenInitializer from 'screens/init';
+
 const store = configureStore();
+
+export type AppDispatch = typeof store.dispatch;
 
 function App() {
   return (
@@ -25,6 +31,8 @@ function App() {
       <ThemeProvider>
         <Provider store={store}>
           <ConnectedRouter history={history}>
+            <ScreenInitializer />
+            <BroadcastListener />
             <NextLevelRouter />
           </ConnectedRouter>
         </Provider>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './Layout.scss';
 
@@ -17,6 +17,8 @@ import SecureGrid from 'containers/grid/SecureGrid';
 
 import SideMenuScreen from 'screens/menu/SideMenu';
 import NextLevelSecureBottomNavigation from './navigation/NextLevelSecureBottomNavigation';
+import { shallowEqual, useSelector } from 'react-redux';
+import { NextLevelAppState } from 'store/reducers';
 
 interface INextLevelSecureLayoutProps {
   children: React.ReactNode;
@@ -73,15 +75,30 @@ interface INextLevelNonSecureLayoutProps {
   children: React.ReactNode;
 }
 
+const loginEventsChannel = new BroadcastChannel('login-events-channel');
+
 function NextLevelNonSecureLayout({
   children,
 }: INextLevelNonSecureLayoutProps) {
-  return (
-    <React.Fragment>
-      <Header isSecure={false} />
-      {children}
-    </React.Fragment>
+  const userDetails = useSelector(
+    (state: NextLevelAppState) => state.user.userDetails,
+    shallowEqual,
   );
+  useEffect(() => {
+    if (!userDetails || !userDetails.user_name) {
+      loginEventsChannel.postMessage('login');
+    }
+  }, [userDetails]);
+  if (userDetails?.user_name) {
+    return (
+      <React.Fragment>
+        <Header isSecure={false} />
+        {children}
+      </React.Fragment>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 interface IAppLayoutProps {

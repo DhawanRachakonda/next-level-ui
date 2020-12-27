@@ -1,0 +1,9 @@
+[
+  "CREATE_TEST",
+  "AWARD_MARKS",
+  "STUDENT",
+  "TAKE_TEST",
+  "FACULTY",
+  "APP_MANAGER",
+  "APP_USER"
+]

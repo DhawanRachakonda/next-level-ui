@@ -9,37 +9,56 @@ import {
 import { useHistory } from 'react-router-dom';
 import BoxLayout from '../box-layout/BoxLayout';
 import './Login.scss';
+import { useDispatch } from 'react-redux';
+
+import { login as loginUser } from 'store/user/actions';
 
 interface LoginProps {
   isOpen?: boolean;
 }
 
+interface ILoginFormState {
+  userName: string;
+  password: string;
+}
+
+const loginFormInitialState: ILoginFormState = {
+  userName: '',
+  password: '',
+};
+
 function Login(props: LoginProps) {
   const history = useHistory();
-  const [username, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginFormState, setLoginFormState] = useState<ILoginFormState>({
+    ...loginFormInitialState,
+  });
   const [keepMeChecked, setKeepMeChecked] = useState(false);
+  const dispatch = useDispatch();
   const handleClose = () => {
     history.replace('home');
   };
   const login = () => {
-    history.push('dashboard');
-    console.log('user logged in');
-  };
-  const updateUserName = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {
-    setUserName(event.currentTarget.value);
-  };
-
-  const updatePassword = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {
-    setPassword(event.currentTarget.value);
+    if (loginFormState.userName && loginFormState.password) {
+      dispatch(
+        loginUser({
+          userName: loginFormState.userName,
+          password: loginFormState.password,
+        }),
+      );
+    }
   };
 
   const redirectToSignUpPage = () => {
     history.push('sign-up');
+  };
+
+  const onChangeFormState = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => {
+    setLoginFormState({
+      ...loginFormState,
+      [event.target.name]: event.target.value,
+    });
   };
 
   return (
@@ -61,9 +80,10 @@ function Login(props: LoginProps) {
             label="User name/Email-Id"
             variant="outlined"
             type="text"
-            name="username"
-            value={username}
-            onChange={updateUserName}
+            name="userName"
+            value={loginFormState.userName}
+            onChange={onChangeFormState}
+            required
           />
           <TextField
             className="login-data-field"
@@ -72,8 +92,9 @@ function Login(props: LoginProps) {
             variant="outlined"
             type="Password"
             name="password"
-            value={password}
-            onChange={updatePassword}
+            value={loginFormState.password}
+            onChange={onChangeFormState}
+            required
           />
           <Button className="login-btn" onClick={login}>
             {' '}
