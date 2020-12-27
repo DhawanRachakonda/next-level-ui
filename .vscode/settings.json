@@ -25,6 +25,6 @@
   "prettier.jsxSingleQuote": false,
   "prettier.singleQuote": true,
   "workbench.colorTheme": "Night Owl",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "cSpell.words": ["Nextlevel", "Ondemand", "Swipeable"]
 }

@@ -17,9 +17,13 @@
     "@types/react-swipeable-views": "^0.13.0",
     "agora-rtc-sdk": "^3.2.3",
     "agora-rtc-sdk-ng": "^4.1.1",
+    "agora-rtm-sdk": "^1.4.1",
     "axios": "^0.20.0",
     "connected-react-router": "^6.8.0",
     "lodash": "^4.17.20",
+    "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5",
+    "mobx-react-router": "^4.1.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -29,7 +33,8 @@
     "react-swipeable-views": "^0.13.9",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "white-web-sdk": "^2.11.4"
   },
   "resolutions": {
     "@formatjs/ecma402-abstract": "1.2.6"
