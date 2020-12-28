@@ -83,7 +83,7 @@ function Login(props: LoginProps) {
             name="userName"
             value={loginFormState.userName}
             onChange={onChangeFormState}
-            required
+            required={true}
           />
           <TextField
             className="login-data-field"
@@ -94,7 +94,7 @@ function Login(props: LoginProps) {
             name="password"
             value={loginFormState.password}
             onChange={onChangeFormState}
-            required
+            required={true}
           />
           <Button className="login-btn" onClick={login}>
             {' '}

@@ -1,3 +1,3 @@
-import VivaScreenRenderer from './VivaScreenRender';
+import VivaScreenRenderer from './NextLevelScreenRender';
 
 export default VivaScreenRenderer;
