@@ -14,7 +14,7 @@ function VivaScreenRender() {
     if (!userDetails || !userDetails.user_name) {
       return '/login';
     }
-    return '/home'; // TODO take a previous page from connected router and return, if exists else return default landing page.
+    return ''; // TODO take a previous page from connected router and return, if exists else return default landing page.
   });
 
   useEffect(() => {

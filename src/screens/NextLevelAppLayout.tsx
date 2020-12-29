@@ -42,33 +42,47 @@ function NextLevelSecureLayout({
     setShowDrawer(false);
   };
 
-  return (
-    <React.Fragment>
-      <Header
-        isSecure={true}
-        displayMenu={displayMenu}
-        handleDrawerOpen={handleDrawerOpen}
-      />
-      {displayMenu && (
-        <SecureGrid container={true} item={true} xs={12}>
-          <Grid item={true} lg={2}>
-            {!matches && <SideMenuScreen />}
-          </Grid>
-          <Grid item={true} xs={12} lg={10}>
-            {children}
-          </Grid>
-        </SecureGrid>
-      )}
-      {!displayMenu && children}
-      <LeftSweapableDrawer
-        open={showDrawer}
-        onClose={handleDrawerClose}
-        onOpen={handleDrawerOpen}>
-        <SideMenuScreen />
-      </LeftSweapableDrawer>
-      {matchesSmallScreen && <NextLevelSecureBottomNavigation />}
-    </React.Fragment>
+  const userDetails = useSelector(
+    (state: NextLevelAppState) => state.user.userDetails,
+    shallowEqual,
   );
+  useEffect(() => {
+    if (!userDetails || !userDetails.user_name) {
+      loginEventsChannel.postMessage('login');
+    }
+  }, [userDetails]);
+
+  if (userDetails?.user_name) {
+    return (
+      <React.Fragment>
+        <Header
+          isSecure={true}
+          displayMenu={displayMenu}
+          handleDrawerOpen={handleDrawerOpen}
+        />
+        {displayMenu && (
+          <SecureGrid container={true} item={true} xs={12}>
+            <Grid item={true} lg={2}>
+              {!matches && <SideMenuScreen />}
+            </Grid>
+            <Grid item={true} xs={12} lg={10}>
+              {children}
+            </Grid>
+          </SecureGrid>
+        )}
+        {!displayMenu && children}
+        <LeftSweapableDrawer
+          open={showDrawer}
+          onClose={handleDrawerClose}
+          onOpen={handleDrawerOpen}>
+          <SideMenuScreen />
+        </LeftSweapableDrawer>
+        {matchesSmallScreen && <NextLevelSecureBottomNavigation />}
+      </React.Fragment>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 interface INextLevelNonSecureLayoutProps {
@@ -80,25 +94,12 @@ const loginEventsChannel = new BroadcastChannel('login-events-channel');
 function NextLevelNonSecureLayout({
   children,
 }: INextLevelNonSecureLayoutProps) {
-  const userDetails = useSelector(
-    (state: NextLevelAppState) => state.user.userDetails,
-    shallowEqual,
+  return (
+    <React.Fragment>
+      <Header isSecure={false} />
+      {children}
+    </React.Fragment>
   );
-  useEffect(() => {
-    if (!userDetails || !userDetails.user_name) {
-      loginEventsChannel.postMessage('login');
-    }
-  }, [userDetails]);
-  if (userDetails?.user_name) {
-    return (
-      <React.Fragment>
-        <Header isSecure={false} />
-        {children}
-      </React.Fragment>
-    );
-  } else {
-    return <></>;
-  }
 }
 
 interface IAppLayoutProps {
