@@ -67,6 +67,8 @@ export default function TextField({
   helperText,
   width,
   multiLine,
+  placeholder,
+  type,
 }: any) {
   const classes = useStyles(width)();
 
@@ -77,7 +79,13 @@ export default function TextField({
           <FormattedMessage id={label} />
         </InputLabel>
       )}
-      <InputField value={value} multiline={!!multiLine} rows={multiLine && 4} />
+      <InputField
+        value={value}
+        multiline={!!multiLine}
+        rows={multiLine && 4}
+        placeholder={placeholder}
+        type={type}
+      />
       {helperText && (
         <InputHelper>
           <FormattedMessage id={helperText} />
